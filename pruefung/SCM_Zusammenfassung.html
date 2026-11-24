@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Supply Chain Management – Prüfungsunterlage</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+:root { --c1:#1f4e79; --c2:#2e75b6; --bg:#eef4fa; --warn:#fff4d6; --ok:#e8f5e9; --line:#b8c7d6; }
+* { box-sizing: border-box; }
+body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 8.9pt; line-height: 1.32; color:#111; margin:0; background:#fff; }
+h1 { font-size: 20pt; color: var(--c1); margin: 0 0 4px; }
+h2 { font-size: 13pt; color:#fff; background: var(--c1); padding: 4px 8px; margin: 0 0 6px; break-after: avoid; }
+h3 { font-size: 10.2pt; color: var(--c1); border-bottom: 1.5px solid var(--c2); margin: 9px 0 4px; padding-bottom: 1px; break-after: avoid; }
+h4 { font-size: 9.2pt; margin: 6px 0 2px; color:#222; break-after: avoid; }
+p { margin: 2px 0 4px; }
+ul, ol { margin: 2px 0 4px 0; padding-left: 15px; }
+li { margin: 0 0 1px; }
+table { width: 100%; border-collapse: collapse; margin: 3px 0 6px; break-inside: auto; }
+tr { break-inside: avoid; }
+th, td { border: 1px solid var(--line); padding: 2px 4px; vertical-align: top; text-align: left; }
+th { background: var(--bg); font-weight: bold; }
+.ub { break-before: page; }
+.box { border-left: 4px solid var(--c2); background: var(--bg); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.merke { border-left: 4px solid #d4a017; background: var(--warn); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.ok { border-left: 4px solid #2e7d32; background: var(--ok); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.merke b:first-child, .box b:first-child, .ok b:first-child { color: #000; }
+.cols2 { column-count: 2; column-gap: 14px; }
+.cols2 > * { break-inside: avoid; }
+.cols2 table { font-size: 8pt; table-layout: fixed; }
+.cols2 td, .cols2 th { overflow-wrap: anywhere; hyphens: auto; }
+.lz { font-size: 8.3pt; color:#333; background:#f6f6f6; border:1px dashed #bbb; padding: 3px 6px; margin-bottom: 6px; }
+.small { font-size: 8pt; }
+code, .mono { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 8.4pt; background:#f1f1f1; padding: 0 2px; }
+.formel { font-family: "DejaVu Sans Mono", Consolas, monospace; background:#fff; border:1.5px solid var(--c1); padding: 4px 8px; margin: 4px 0; display:block; font-size: 9pt; break-inside: avoid; white-space: pre-line; }
+.toc td { border: none; border-bottom: 1px dotted #aaa; padding: 2px 4px; }
+.idx { column-count: 3; column-gap: 12px; font-size: 8.2pt; }
+.idx div { break-inside: avoid; }
+.tag { display:inline-block; background: var(--c2); color:#fff; border-radius: 3px; padding: 0 4px; font-size: 7.6pt; font-weight: bold; }
+.ans { color: #1b5e20; font-weight: bold; }
+.cover { border: 3px solid var(--c1); padding: 16px 18px; margin-top: 10px; }
+.flow { font-weight: bold; color: var(--c1); }
+</style>
+
+</head>
+<body>
+
+<div class="cover">
+  <h1>Supply Chain Management (SCM)</h1>
+  <p style="font-size:11pt; margin:0 0 4px;"><b>Prüfungsunterlage / Zusammenfassung des Prüfungsstoffs</b></p>
+  <p class="small">Lehrgang Dipl. Betriebswirtschafter/in HF 25-08 · Dozent: Roman Germann (ROGE) · Grundlage: „Zusammenfassung Prüfungsstoff“ (122 Folien, Stand Juli 2026). Inhalt: alle 20 Themen mit Definitionen, Tabellen, Formeln, Beispielen, sämtliche Übungsaufgaben mit Lösungsweg, Formelsammlung, Antwort-Schemas und Stichwortverzeichnis.</p>
+</div>
+
+<h3>Inhaltsverzeichnis</h3>
+<table class="toc">
+<tr><td style="width:7%"><b>1</b></td><td>SCM – Definition und Ziele</td><td><b>11</b></td><td>Entsorgung, Recycling, Kreislaufwirtschaft</td></tr>
+<tr><td><b>2</b></td><td>Wertschöpfungskette nach Porter</td><td><b>12</b></td><td>Geschäftsprozessoptimierung (GPO, BPR, TQM, Kaizen, PDCA, KVP, 5S, Gemba, VSM)</td></tr>
+<tr><td><b>3</b></td><td>Produktionstypen und Organisationstypen</td><td><b>13</b></td><td>Produkt-Design (Design Thinking, Prototyping, UX)</td></tr>
+<tr><td><b>4</b></td><td>ABC-Analyse, XYZ, C-Teile-Management</td><td><b>14</b></td><td>Design for Manufacturability (DfM)</td></tr>
+<tr><td><b>5</b></td><td>Magisches Zieldreieck</td><td><b>15</b></td><td>Logistik und Lager (7R, Lagerplatzzuordnung, Lagerkosten)</td></tr>
+<tr><td><b>6</b></td><td>Bedarfsermittlung</td><td><b>16</b></td><td>Beschaffung, Beschaffungsformen und -strategien, Bestellpolitiken</td></tr>
+<tr><td><b>7</b></td><td>Bestellmengen und Andler-Formel</td><td><b>17</b></td><td>Make or Buy</td></tr>
+<tr><td><b>8</b></td><td>Lean Management und Just in Time</td><td><b>18</b></td><td>Total Cost of Ownership (TCO)</td></tr>
+<tr><td><b>9</b></td><td>Transportarten</td><td><b>19</b></td><td>Balanced Scorecard (BSC)</td></tr>
+<tr><td><b>10</b></td><td>Verschwendung (3 Mu, 7+1 Arten, TIMWOOD)</td><td><b>20</b></td><td>Aufgaben und Lösungen (11 Musteraufgaben)</td></tr>
+<tr><td colspan="4"><b>Anhang:</b> A Formelsammlung · B Antwort-Schemas für Fallaufgaben · C Typische Fallen · D Stichwortverzeichnis</td></tr>
+</table>
+
+<div class="merke"><b>Prüfungsschwerpunkte laut Kursübersicht (Taxonomiestufe, je höher desto anspruchsvoller):</b> <b>Stufe 6:</b> Make-or-Buy / In- &amp; Outsourcing · <b>Stufe 5:</b> Bedarfsermittlung, Personal-Ressourcen-Bedarfsrechnung, Balanced Scorecard · <b>Stufe 4:</b> Porter, SCM, Bestandsoptimierung, Prozessoptimierung (Kaizen/BPR) · <b>Stufe 3:</b> Prozess-/Produktdesign, Technologiemanagement, Kreislaufwirtschaft, Lieferantenmanagement, Transport/Logistik/Lager · <b>Stufe 2:</b> St. Galler Prozessmanagement, Verschwendung, Zieldreieck, Produktionstypen/Lean/JIT, Entsorgung. → Bei Stufe 5–6 werden <b>Beurteilen, Berechnen, Begründen und Empfehlen</b> erwartet, nicht nur Aufzählen.</div>
+
+<div class="box"><b>Prüfungstipp:</b> Bei Rechenaufgaben immer <b>Formel → eingesetzte Zahlen → Resultat mit Einheit → Interpretation (1–2 Sätze)</b>. Bei Fallaufgaben: Auswirkungen, Risiken, kurzfristige und langfristige Massnahmen trennen; Empfehlung mit Begründung und Bedingung.</div>
+
+<!-- 1 -->
+<div class="ub">
+<h2>1 · Supply Chain Management – Definition und Ziele</h2>
+<div class="box"><b>Definition SCM:</b> Strategische <b>Planung, Steuerung und Optimierung der gesamten Wertschöpfungskette</b> – von der Rohstoffbeschaffung über die Produktion bis zur Auslieferung an den Endkunden. SCM koordiniert <b>Waren-, Informations- und Geldflüsse unternehmensübergreifend</b>, um Effizienz, Qualität und Kundenzufriedenheit zu steigern und Kosten zu minimieren. Umfasst externe Partner (Lieferanten, Distributoren) und interne Prozesse.</div>
+<p><b>Übergeordnetes Ziel:</b> die <b>richtigen Produkte</b> in der <b>richtigen Menge</b> zur <b>richtigen Zeit</b> am <b>richtigen Ort</b> in der <b>richtigen Qualität</b> zu den <b>richtigen Kosten</b> liefern.</p>
+<p><b>Aktivitäten:</b> Beschaffung (Lieferantenauswahl/-management) · Produktion (Fertigungsabläufe optimieren) · Logistik/Lagerhaltung (Transport, Lagerung, Bestandsmanagement) · Informationsfluss (Datenflüsse entlang der Kette).</p>
+<table>
+<tr><th style="width:32%">Ziel</th><th>Inhalt</th></tr>
+<tr><td>Lieferfähigkeit sicherstellen</td><td>Termintreue, Produktqualität; richtige Produkte zur richtigen Zeit am richtigen Ort</td></tr>
+<tr><td>Liefergeschwindigkeit erhöhen / DLZ reduzieren</td><td>schnellere Auftragsabwicklung und Produktion (DLZ = Durchlaufzeit)</td></tr>
+<tr><td>Lagerbestände optimieren/reduzieren</td><td>weniger Bestand und Kapitalbindung</td></tr>
+<tr><td>Prozesskosten senken</td><td>Beschaffungs-, Produktions-, Lager-, Transportkosten</td></tr>
+<tr><td>Flexibilität erhöhen</td><td>schnelle Anpassung an Nachfrage- und Marktänderungen</td></tr>
+<tr><td>Risiken reduzieren</td><td>Absicherung gegen Lieferausfälle, Störungen, Engpässe</td></tr>
+<tr><td>Kundenorientierung / -zufriedenheit</td><td>hohe Lieferfähigkeit, kurze, zuverlässige Lieferzeiten</td></tr>
+<tr><td>Wettbewerbsfähigkeit steigern</td><td>effizientere Prozesse, bessere Marktposition</td></tr>
+<tr><td>Wertschöpfung optimieren</td><td>effiziente Ressourcennutzung entlang der Lieferkette</td></tr>
+<tr><td>Zusammenarbeit entwickeln</td><td>stärkere Kooperation mit Lieferanten und Kunden</td></tr>
+<tr><td>Transparenz erhöhen</td><td>bessere Informationsverfügbarkeit in der ganzen Supply Chain</td></tr>
+<tr><td>Nachhaltigkeit fördern</td><td>CO₂-Reduktion, nachhaltige Beschaffung, Kreislaufwirtschaft</td></tr>
+</table>
+<div class="merke"><b>Zielkonflikte beachten:</b> tiefe Bestände ↔ hohe Lieferfähigkeit; tiefe Kosten ↔ Schnelligkeit/Qualität (→ Kapitel 5 Zieldreieck); Single Sourcing (Kosten) ↔ Risiko.</div>
+
+<!-- 2 -->
+<h2 style="margin-top:10px;">2 · Wertschöpfungskette nach Porter (Value Chain)</h2>
+<p>Porters Wertschöpfungskette spiegelt den <b>Wettbewerbsvorteil</b> wider. Der <b>Wert</b> = Betrag, den Käufer zu zahlen bereit sind. Sie besteht aus <b>Wertaktivitäten</b> (primär + unterstützend) und <b>Marge</b> (= Gesamtwert − Kosten der Wertaktivitäten).</p>
+<div class="cols2">
+<div><h4>Primäraktivitäten (direkter Wertbeitrag)</h4><ol><li>Eingangslogistik (Inbound)</li><li>Produktion (Operations)</li><li>Ausgangslogistik (Outbound)</li><li>Marketing &amp; Vertrieb</li><li>Kundenservice (After Sales)</li></ol></div>
+<div><h4>Unterstützungsaktivitäten (indirekter Beitrag, Voraussetzung)</h4><ol><li>Unternehmensinfrastruktur</li><li>Personalwirtschaft (HRM)</li><li>Technologieentwicklung (F&amp;E)</li><li>Beschaffung (Procurement)</li></ol><p class="small">Grafik: Unterstützungsaktivitäten oben als Querbalken, Primäraktivitäten unten als Pfeilkette, Marge an der Pfeilspitze.</p></div>
+</div>
+<table>
+<tr><th style="width:15%">Primäraktivität</th><th style="width:22%">Inhalt</th><th>Typische Aufgaben</th><th style="width:28%">KPIs</th></tr>
+<tr><td><b>Interne Logistik</b></td><td>Beschaffung, Annahme, Lagerung, Bereitstellung von Einsatzmaterial</td><td>Wareneingang, Entladung/Eingangskontrolle, Rohmateriallager, Bestandsführung, interne Transporte, Kommissionierung für Produktion</td><td>Lagerbestand/-reichweite, Lagerumschlag, Wareneingangsfehlerquote, Materialverfügbarkeit, DLZ Wareneingang</td></tr>
+<tr><td><b>Produktion</b></td><td>Einsatzgüter → marktfähige Produkte/DL transformieren</td><td>Fertigung/Montage, Bearbeitung, Verpackung, Qualitätsprüfung, Maschinenwartung, Produktionsplanung</td><td>Produktionskosten/Einheit, Produktivität, Ausschussquote, <b>OEE</b>, DLZ Produktion</td></tr>
+<tr><td><b>Externe Logistik</b></td><td>Lagerung, Kommissionierung, Auslieferung fertiger Produkte</td><td>Fertigwarenlager, Kommissionierung, Verpackung/Versand, Transportorganisation, Distribution</td><td>Liefertreue <b>OTIF</b> (On Time In Full), Lieferzeit, Versandkosten/Einheit, Lieferfehlerquote</td></tr>
+<tr><td><b>Marketing &amp; Verkauf</b></td><td>Marktbearbeitung, Nachfrage erzeugen, Kunden gewinnen</td><td>Marktanalyse, Positionierung, Preisgestaltung, Werbung, Vertrieb, Angebots-/Vertragsmanagement</td><td>Umsatz, Marktanteil, Kundenakquisitionskosten, Conversion Rate, Ø Verkaufspreis</td></tr>
+<tr><td><b>Service</b></td><td>Kundennutzen nach Kauf sichern, Kundenbindung</td><td>Installation, Wartung/Reparatur, Hotline, Ersatzteilservice, Reklamationsmanagement</td><td>Kundenzufriedenheit, Reklamationsquote, Reaktionszeit, Servicekosten, Wiederkaufsrate</td></tr>
+</table>
+<table>
+<tr><th style="width:15%">Unterstützung</th><th style="width:22%">Inhalt</th><th>Typische Aufgaben</th><th style="width:28%">KPIs</th></tr>
+<tr><td><b>Unternehmens­infrastruktur</b></td><td>Führung und Administration; organisatorische und finanzielle Rahmenbedingungen</td><td>Strategie/Planung, Finanzen/Controlling, Recht/Compliance, Qualitäts-, Risikomanagement, Steuerung</td><td>EBIT/Gewinnmarge, ROI, Budgetabweichungen, Risikoindikatoren, Compliance-Quote</td></tr>
+<tr><td><b>Personal­management</b></td><td>qualifizierte, motivierte Mitarbeitende bereitstellen</td><td>Personalplanung/Rekrutierung, Aus-/Weiterbildung, Beurteilung, Entwicklung, Arbeitszeit</td><td>Fluktuations-, Krankheitsrate, MA-Zufriedenheit, Weiterbildungstage/MA, Produktivität/MA</td></tr>
+<tr><td><b>Technologie­entwicklung</b></td><td>neue Produkte, Prozesse, Technologien; Verbesserung</td><td>F&amp;E, Produktentwicklung, Prozessoptimierung, Digitalisierung/Automatisierung, Patente</td><td>F&amp;E-Quote (% Umsatz), Anzahl Innovationen/Patente, Time-to-Market, Anteil neuer Produkte am Umsatz</td></tr>
+<tr><td><b>Beschaffung</b></td><td>Einkauf aller Ressourcen; Kosten, Qualität, Verfügbarkeit sichern</td><td>Lieferantensuche/-auswahl, Preisverhandlung, Vertragsmanagement, Lieferantenentwicklung, Strategie (Global Sourcing)</td><td>Einkaufspreise/Cost Savings, Lieferantenqualität, Liefertermintreue Lieferanten, Anteil strategischer Lieferanten</td></tr>
+</table>
+<p class="small"><b>Achtung:</b> „Beschaffung“ als Unterstützungsaktivität = Einkaufs<i>funktion</i> (Lieferanten, Verträge); „Eingangslogistik“ = physischer Materialfluss (Annahme, Lager).</p>
+</div>
+
+<!-- 3 -->
+<div class="ub">
+<h2>3 · Produktionstypen (Fertigungstypen) und Organisationstypen</h2>
+<p>Produktionstypen klassifizieren Herstellungsprozesse nach <b>Wiederholungszahl, Sortenvielfalt und technischer Organisation</b>; sie bestimmen, ob individuell (massgeschneidert) oder standardisiert in grossen Mengen produziert wird.</p>
+<div class="cols2">
+<div><h4>Programmbezogen (nach Wiederholungszahl)</h4><table>
+<tr><th>Typ</th><th>Merkmal</th><th>Beispiel</th></tr>
+<tr><td><b>Einzelfertigung</b></td><td>Unikat nach Kundenwunsch</td><td>Schiffbau, Massanzug</td></tr>
+<tr><td><b>Serienfertigung</b></td><td>mehrere identische Produkte in Losgrössen, dann Umrüsten</td><td>Auto, Elektronik</td></tr>
+<tr><td><b>Sortenfertigung</b></td><td>ähnliche Produkte in grossen Mengen, geringe Unterschiede</td><td>Brauerei, Bäckerei</td></tr>
+<tr><td><b>Massenfertigung</b></td><td>ein Produkt, unbegrenzte Menge, lange Zeit</td><td>Raffinerie, Zementwerk</td></tr>
+</table></div>
+<div><h4>Organisationstypen (räumliche/zeitliche Anordnung)</h4><table>
+<tr><th>Typ</th><th>Prinzip</th></tr>
+<tr><td><b>Werkstattfertigung</b></td><td><b>Verrichtungsprinzip</b>: gleiche Funktionen (Bohren, Fräsen) in Abteilungen</td></tr>
+<tr><td><b>Fliessfertigung</b> (Reihen)</td><td><b>Objektprinzip</b>: Maschinen nach Arbeitsablauf angeordnet, oft getaktet</td></tr>
+<tr><td><b>Gruppenfertigung</b></td><td>Kombination: Werkstück wird in einer Maschinengruppe komplett bearbeitet</td></tr>
+<tr><td><b>Baustellenfertigung</b></td><td>Produkt ortsgebunden (Brücken-, Hochbau)</td></tr>
+</table></div>
+</div>
+<p class="small"><b>Weitere Merkmalspaare (Morphologie-Grafik):</b> mittelbar/unmittelbar kundenorientiert · Massen-/Einzelproduktion · Fliess-/Werkstattproduktion · verbundene/unverbundene · zeitlich gebunden/nicht gebunden · analytisch/synthetisch · Parallel-/Wechselproduktion · lokal nicht fixiert/fixiert. Beispiele: Automobilmontage, Grossbehälterbau, Benzin-/Ölherstellung. <b>Make to Order</b> (auftragsbezogen) vs. <b>Make to Stock</b> (auf Lager).</p>
+
+<!-- 4 -->
+<h2 style="margin-top:10px;">4 · ABC-Analyse, XYZ-Analyse und C-Teile-Management</h2>
+<p><b>ABC-Analyse:</b> Klassifizierung von Materialien nach ihrem <b>jährlichen Verbrauchswert</b> (Preis × Jahresbedarf), um den Einkaufsaufwand auf kostenintensive Güter zu fokussieren.</p>
+<table>
+<tr><th>Klasse</th><th>Wertanteil</th><th>Fokus</th><th>Disposition / Strategie</th><th>Beispiel</th></tr>
+<tr><td><b>A</b></td><td>ca. 70–80 %<br><span class="small">(wenige Artikel)</span></td><td>Versorgungssicherheit &amp; Kapitalbindung – <b>intensive Beschaffungssteuerung</b></td><td>Single Sourcing, plangesteuerte Disposition (JIT), enge Lieferantenintegration, hohe Transparenz &amp; Monitoring</td><td>hochwertiges Rohmaterial, kritische Komponenten</td></tr>
+<tr><td><b>B</b></td><td>ca. 15–25 %</td><td>Gleichgewicht Aufwand/Nutzen – <b>standardisierte Beschaffung</b></td><td>verbrauchsgesteuert, Meldebestandsverfahren mit Sicherheitsbestand, Rahmenverträge/Standardlieferanten</td><td>Standard-Komponenten, Verpackung</td></tr>
+<tr><td><b>C</b></td><td>ca. 5 %<br><span class="small">(viele Artikel)</span></td><td>Prozesskosten minimieren – <b>effizienzorientierte Beschaffung</b></td><td>Multiple Sourcing, Jahres-/Vorratsbeschaffung, C-Teile-Management (Kanban, Lieferantenbewirtschaftung), Schüttgut</td><td>Schrauben, Normteile, Hilfsstoffe</td></tr>
+</table>
+<div class="box"><b>Vorgehen ABC-Analyse:</b> 1. Jahreswert je Artikel = Preis × Jahresbedarf · 2. absteigend sortieren · 3. Anteil am Gesamtwert und kumulierten Anteil berechnen · 4. Grenzen setzen (≈ 80 % / 95 % / 100 %) · 5. Strategie je Klasse ableiten.<br>
+<b>Folienbeispiel (10 Materialien, Total 322'500 €)</b> – eigene Durchrechnung: Mat. 8 112'800 (35,0 %, kum. 35,0) · 7 80'850 (25,1 %, 60,0) · 3 32'460 (10,1 %, 70,1) · 10 28'000 (8,7 %, 78,8) → <b>A</b> · 4 23'940 (86,2) · 1 18'400 (91,9) · 2 14'350 (96,4) → <b>B</b> · 6 6'000 (98,2) · 9 3'000 (99,2) · 5 2'700 (100) → <b>C</b>. Ergebnis: 40 % der Artikel = ca. 79 % des Werts. (Mat. 5 hat die grösste Menge 9'000 Stk., aber kleinsten Wert → C!)</div>
+<p><b>XYZ-Analyse</b> (nach <b>Vorhersagegenauigkeit / Verbrauchsschwankung</b>): <b>X</b> = gleichförmiger Verbrauch, geringe Schwankungen, hohe Vorhersagegenauigkeit, planbar · <b>Y</b> = unbeständig, fallender oder steigender Trend (saisonal), mittlere Genauigkeit, bedingt planbar · <b>Z</b> = absolut unregelmässig, niedrige Genauigkeit, schlecht planbar. ABC + XYZ kombiniert → Beschaffungsstrategie (siehe 16.2).</p>
+<p><b>C-Teile-Management (CTM):</b> strukturierte Beschaffung, Lagerung, Verwaltung von Artikeln mit <b>geringem Einkaufswert, aber hohem Prozessaufwand</b>. C-Teile = ca. <b>5–10 % des Einkaufsvolumens, aber 60–80 % der Bestellvorgänge</b>. Problem: administrativer Aufwand oft teurer als das Teil selbst. <b>Lösungen:</b> Automatisierung (E-Procurement, elektronische Kataloge) · Logistik-Systeme (Scanner, RFID, Kanban zur automatischen Nachbestellung) · Systemlieferanten (SFS, Würth, Bossard; JIT). Ziel: Prozesskosten senken, Nachschub automatisieren, Versorgungssicherheit.</p>
+</div>
+
+<!-- 5 6 -->
+<div class="ub">
+<h2>5 · Magisches Zieldreieck (Kosten – Zeit – Qualität)</h2>
+<p>Die drei Dimensionen sollen im Einklang stehen; <b>verändert man eine, verschieben sich die anderen zwei</b>. Das Dreieck macht Problemstellungen sichtbar, um Massnahmen gesamtheitlich zu erarbeiten.</p>
+<table>
+<tr><th>Kosten</th><th>Zeit</th><th>Qualität</th></tr>
+<tr><td><b>Lagerhaltungskosten</b> (Kapital-, Raum-, Risiko-, Instandhaltungskosten) · <b>Transportkosten</b> (fix/variabel: Treibstoff, Maut, Versicherung, Löhne) · <b>Umschlagskosten</b> (Be-/Entladen) · <b>Bestellkosten</b> (Auftragsabwicklung) · Personalkosten</td>
+<td><b>Durchlaufzeit</b> (Bestellung bis Lieferung) · <b>Lieferzeit</b> (Auftragsbestätigung bis Zustellung) · <b>Termintreue</b> (Anteil pünktlicher Lieferungen) · <b>Time to Market</b> (Idee bis Markteinführung)</td>
+<td><b>Lieferqualität</b> (korrekt, vollständig, unversehrt) · <b>Informationsqualität</b> (genaue, zeitnahe Statusinfos) · <b>Flexibilität</b>/Prozessqualität (schnell auf Nachfrageänderungen reagieren)</td></tr>
+</table>
+<div class="merke"><b>Zielkonflikte:</b> „Die Optimierung einer Zielgrösse führt meist zur Verschlechterung mindestens einer anderen.“ – „<b>Schneller – besser – günstiger: Zwei gehen, drei nicht.</b>“ Beispiele: tiefe Kosten → geringere Qualität (schwankende Spezifikationen, Ausbildungsstand MA); tiefe Kosten → mehr Zeit (Nacharbeit, langsame Transportmittel). <b>Lösungsansatz:</b> tiefe Kosten bei hoher Automatisierung → gleichbleibend gute Qualität bei geringer DLZ.</div>
+
+<h2 style="margin-top:10px;">6 · Bedarfsermittlung</h2>
+<p>Kernaufgabe im SCM: bestimmt, <b>welche Materialien/Dienstleistungen in welcher Menge zu welchem Zeitpunkt</b> benötigt werden. Steht am Anfang der Wertschöpfungskette und beeinflusst Beschaffung, Produktion (Planung &amp; Steuerung), Lagerhaltung, Distribution/Logistik. Ungenügend → Supply Chain im „<b>Feuerwehrmodus</b>“.</p>
+<p><b>Funktionen:</b> 1. Lieferfähigkeit sicherstellen (kein Out-of-Stock, Termine) · 2. Überbestände vermeiden (Lagerkosten, Kapitalbindung) · 3. Grundlage für Disposition &amp; Planung (was, wann, wie viel; Bestellmengen, Produktionspläne) · 4. Planungssicherheit erhöhen (weniger Hektik und Expresslösungen).</p>
+<table>
+<tr><th style="width:30%">Methode (Lehrbuch)</th><th>Beschreibung</th><th style="width:22%">Eignung</th></tr>
+<tr><td><b>Deterministisch / programmorientiert</b></td><td>Bedarf exakt aus Produktionsprogramm/Aufträgen und Stücklisten abgeleitet</td><td>A-Teile, Auftragsfertigung</td></tr>
+<tr><td><b>Stochastisch / verbrauchsorientiert</b></td><td>Bedarf aus Vergangenheitsverbrauch prognostiziert (Mittelwerte, Trends)</td><td>B/C-Teile, X/Y-Verbrauch</td></tr>
+<tr><td><b>Heuristisch / schätzungsbasiert</b></td><td>Schätzung durch Erfahrung/Experten (Analogie, intuitiv)</td><td>neue Produkte, keine Daten</td></tr>
+</table>
+<p><b>Aus der SCM-Praxis</b> (mit Zuordnung): Prognosebasiert/Forecasting → verbrauchsorientiert · Bedarfsgetrieben/Demand-Driven → verbrauchsorientiert · Kollaborativ (Collaborative Planning) → programmorientiert · Auftragsbezogen (Make-to-Order) → programmorientiert · Simulationsbasiert → hybrid (programmorientiert + schätzungsbasiert) · <b>KI-gestützt</b> (State of the Art) → verbrauchsorientiert.</p>
+<p class="small"><b>Personal-Ressourcen-Bedarfsrechnung</b> (Teil der Bedarfsermittlung): Einsatzbedarf (Menge ÷ Leistung/MA) + Ersatzbedarf (Fluktuation, Pensionierungen) = Gesamtbedarf → Aufgabe 20.8. Auslastungsgrad → Aufgabe 20.9.</p>
+</div>
+
+<!-- 7 -->
+<div class="ub">
+<h2>7 · Bestellmengen und Andler-Formel</h2>
+<table>
+<tr><th>Wenige, grosse Bestellungen</th><th>Viele, kleine Bestellungen</th></tr>
+<tr><td>hoher Ø Bestand → <b>hohe Lager(haltungs)kosten</b>, hohe Kapitalbindung, tiefe Bestellkosten</td><td>tiefer Ø Bestand → tiefe Zins-/Lagerkosten, <b>hohe Bestell(prozess)kosten</b></td></tr>
+</table>
+<p class="small">Grafik (Jahresbedarf 24'000 Stk.): Bestellmenge 12'000 = hoher Kapitalbedarf, hohe Zins-/Lagerkosten, tiefe Bestellkosten; 6'000 = mittel; 2'000 = tiefer Kapitalbedarf, tiefe Zins-/Lagerkosten, hohe Bestellkosten (Sägezahnkurve).</p>
+<p><b>Lagerkosten</b> = alle Kosten des Lagerbetriebs (Raummiete/Abschreibung, Energie, Löhne, Einrichtung, Instandhaltung …). <b>Lagerhaltungskosten</b> = Kosten für das Lagern der Ware (Opportunitäts-/Zinskosten = Kapitalbindung, Wertminderung, Risiko …).</p>
+<div class="box"><b>Optimale Bestellmenge:</b> Die Bestellmenge ist optimal, wenn die <b>Summe aus Bestellkosten und Lager(haltungs)kosten minimal</b> ist.</div>
+<span class="formel">Andler-Formel (Kursversion, Kostensatz in % als Zahl eingesetzt):
+x_opt = √ [ (200 × Jahresbedarf × Bestellkosten pro Bestellung) ÷ (Einstandspreis × Lagerkostensatz in %) ]
+
+Gleichwertig: x_opt = √( 2 × Jahresbedarf × Bestellkosten ÷ (Einstandspreis × Satz als Dezimalzahl) )
+(200 = 2 × 100, weil der Satz z. B. als „20“ statt „0,20“ eingesetzt wird)</span>
+<p><b>Voraussetzungen der Andler-Formel:</b> Jahresbedarf bekannt · regelmässiger Verbrauch · kleine Wiederbeschaffungszeit · konstanter Lagerhaltungskostensatz · konstante Einstandspreise (keine Mengenrabatte) · keine Fehlmengenkosten. <i>(Kritik: in der Praxis selten alle erfüllt → Richtwert.)</i></p>
+<div class="ok"><b>Musteraufgabe optimale Losgrösse (Folie 101/102):</b> Bedarf 10'000 Stk./Jahr, Einstandspreis CHF 14.00, bestellfixe Kosten CHF 50, Lagerkosten total CHF 10'000, Ø Lagerwert CHF 50'000.<br>
+Lagerhaltungskostensatz = 10'000 ÷ 50'000 × 100 = <b>20 %</b><br>
+x_opt = √(200 × 10'000 × 50 ÷ (14 × 20)) = √(100'000'000 ÷ 280) = √357'142,9 = <b>597,6 ≈ 597 Stück</b> (praktisch auf 598 bzw. Verpackungseinheit runden)<br>
+→ ca. 10'000 ÷ 598 ≈ 17 Bestellungen pro Jahr.</div>
+<p class="small"><b>Kontrolle:</b> Im Optimum sind Bestellkosten und Lagerkosten gleich gross: Bestellkosten = 10'000/597,6 × 50 ≈ 837; Lagerkosten = 597,6/2 × 14 × 20 % ≈ 837. ✓</p>
+</div>
+
+<!-- 8 -->
+<div class="ub">
+<h2>8 · Lean Management und Just in Time (JIT)</h2>
+<div class="box"><b>Lean Management</b> (schlankes Management): umfassende Management-/Unternehmensphilosophie, die Prozesse entlang der Wertschöpfungskette durch <b>konsequente Vermeidung von Verschwendung (Muda)</b> effizienter macht, Kosten senkt und den <b>Kundennutzen maximiert</b>. Ursprung: <b>Toyota-Produktionssystem (TPS)</b>. Fördert kontinuierliche Verbesserung (<b>Kaizen</b>) und Mitarbeitereinbindung.</div>
+<p><b>Lean-Haus (Folie):</b> Säulen = Verschwendung und Blindleistung vermeiden · Ressourcen und Kapital effizient nutzen · Overengineering vermeiden · flache Hierarchien und konstante Verbesserungen · Fehlleistungen und Fehlerkosten reduzieren; Fundament = <b>Kundenorientierung</b>.</p>
+<div class="cols2">
+<div><h4>5 Kernprinzipien</h4><ol><li><b>Wert definieren</b> (Value) – was ist aus Kundensicht wertvoll?</li><li><b>Wertstrom analysieren</b> (Value Stream) – wertschöpfende Schritte identifizieren, Verschwendung eliminieren</li><li><b>Flussprinzip</b> (Flow) – reibungslose Abläufe ohne Unterbrechung</li><li><b>Pull-Prinzip</b> – Produktion nur nach tatsächlicher Kundennachfrage</li><li><b>Perfektion</b> (Kaizen) – ständige Verbesserung</li></ol></div>
+<div><h4>8 Gestaltungsprinzipien (VDI 2870)</h4><ol><li>Vermeidung von Verschwendung</li><li>Kontinuierlicher Verbesserungsprozess</li><li>Standardisierung</li><li>Null-Fehler-Prinzip</li><li>Fliessprinzip</li><li>Pull-Prinzip</li><li>Mitarbeiterorientierung und zielorientierte Führung</li><li>Visuelles Management</li></ol><p class="small">Ganzheitliches Produktionssystem wird betrachtet.</p></div>
+</div>
+<div class="box"><b>Just in Time (JIT):</b> Produktions- und Beschaffungsstrategie, bei der Materialien <b>exakt dann geliefert werden, wenn sie in der Produktion benötigt werden</b> → Lagerbestände, Durchlaufzeiten und Kosten minimieren. Bedarfssynchrone Produktion, umgangssprachlich „<b>rollendes Lager</b>“. Aus Japan (Toyota). Reduziert Kapitalbindung, erhöht aber <b>Abhängigkeit</b> (enge Verzahnung Lieferant–Produktion).</div>
+<table>
+<tr><th>Ziel</th><td>Minimierung von Lagerhaltung, Abfall, Durchlaufzeiten</td></tr>
+<tr><th>Funktionsweise</th><td>Zulieferer liefern direkt an die Produktionslinie, oft ohne Zwischenlager</td></tr>
+<tr><th>Vorteile</th><td>tiefere Lagerkosten, höhere Effizienz, gesteigerte Qualität, geringe Kapitalbindung</td></tr>
+<tr><th>Risiken</th><td>hohe Anfälligkeit bei Lieferverzögerungen, Staus, Produktionsausfällen, Geopolitik, Wetter</td></tr>
+<tr><th>Anwendung</th><td>v. a. Automobil- und Fertigungsindustrie</td></tr>
+</table>
+<p><b>Rahmenbedingungen/Voraussetzungen JIT:</b> zuverlässige Logistik &amp; Infrastruktur (auch <b>JIS – Just in Sequence</b>: Anlieferung in Verbaureihenfolge) · <b>100 % Qualität</b> (keine Ersatzteile am Lager) · Vertrauen und Flexibilität des Lieferanten · hohe Planungssicherheit, exakte Prognosen („Bestand gegen Null“) · grosse Mengen / hohe Umschlagshäufigkeit · Informationstechnik (z. B. Kanban, automatisierter Informationsfluss).</p>
+<p class="small"><b>Kanban</b> = Pull-Steuerung mit Karten/Signalen: Verbrauch löst Nachschub aus (Ergänzung zum Folieninhalt).</p>
+
+<!-- 9 -->
+<h2 style="margin-top:10px;">9 · Transportarten</h2>
+<table>
+<tr><th style="width:11%">Art</th><th>Vorteile</th><th>Nachteile</th><th>Einsatz</th></tr>
+<tr><td><b>Strasse</b> (häufigste)</td><td>hohe Flexibilität (Routen, Zeiten), Tür-zu-Tür ohne Umladen, kleine/mittlere Mengen, dichtes Netz</td><td>Staus/Verzögerungen, hohe Umweltbelastung/CO₂, begrenzte Kapazität, abhängig von Infrastruktur und Fahrpersonal</td><td>national/regional, Konsumgüter, Belieferung Produktion, E-Commerce</td></tr>
+<tr><td><b>Schiene</b></td><td>hohe Kapazität, umweltfreundlich, wenig Energie pro Tonne, zuverlässige Transportzeiten</td><td>wenig flexibel, abhängig vom Schienennetz, Feinverteilung per LKW nötig</td><td>Massengüter (Stahl, Holz, Chemie), Container, Güterkorridore, <b>Alpentransit</b> (NEAT, Gotthard-Basistunnel)</td></tr>
+<tr><td><b>See</b> (80–90 % des Welthandels)</td><td>sehr günstig bei grossen Mengen, hohe Kapazität, interkontinental</td><td>lange Transportzeiten, abhängig von Häfen/Seewegen, Wetter, Piraterie, Geopolitik</td><td>Rohstoffe, Konsum- und Industriegüter; <b>Containerisierung</b> = schneller Umschlag Schiff–Bahn–LKW, tiefere Kosten</td></tr>
+<tr><td><b>Luft</b> (schnellste)</td><td>sehr kurze Lieferzeiten, hohe Zuverlässigkeit, weltweit</td><td>sehr hohe Kosten, begrenzte Kapazität, hohe Umweltbelastung pro Tonne</td><td>Medikamente, Elektronik, Ersatzteile, Luxusgüter, Express/E-Commerce – wenn <b>Zeit wichtiger als Kosten</b></td></tr>
+</table>
+<p><b>Kombinierter Verkehr:</b> Verkehrsträger verbinden (z. B. lange Strecke Bahn, Feinverteilung LKW). <b>Entscheidungskriterien Transportwahl:</b> Kosten, Lieferzeit/Termin, CO₂/Nachhaltigkeit, Termintreue/Zuverlässigkeit, Flexibilität, Art/Empfindlichkeit/Wert der Ware, Menge/Gewicht, Kundenanforderungen, Zoll- und Verpackungskosten (→ Aufgabe 20.1).</p>
+</div>
+
+<!-- 10 11 -->
+<div class="ub">
+<h2>10 · Verschwendung – Muda, Mura, Muri (3 Mu / 3M)</h2>
+<table>
+<tr><th style="width:16%">Begriff</th><th>Bedeutung</th><th style="width:36%">Optimierung durch</th></tr>
+<tr><td><b>Muda</b><br>Verschwendung</td><td>nicht wertschöpfender Aufwand, der Kosten verursacht (unnötige Transporte, Wartezeiten, fehlerhafte Produkte) → 7 Arten</td><td>Lean-Methoden: Poka Yoke (Fehlervermeidung), Kanban, Takt Zeit, SMED (Single Minute Exchange of Die = Rüstzeitverkürzung), One-Piece-Flow</td></tr>
+<tr><td><b>Mura</b><br>Unausgeglichenheit</td><td>unregelmässige Arbeitslasten, unterschiedliche Prozesszeiten → Überlast hier, Leerlauf dort</td><td>Heijunka (Produktionsglättung), Flow-Prinzip, Standardarbeit</td></tr>
+<tr><td><b>Muri</b><br>Überlastung</td><td>Überstrapazierung von Menschen und Maschinen (oft durch Mura verursacht) → Stress, Fehler, Defekte</td><td>Total Productive Maintenance (TPM)</td></tr>
+</table>
+<div class="cols2">
+<div><h4>7 (+1) Arten der Verschwendung</h4><ol><li>Überproduktion</li><li>Wartezeit</li><li>Transport</li><li>Überflüssige Bewegung</li><li>Prozessübererfüllung (Overprocessing)</li><li>Bestände</li><li>Fehler, Ausschuss, Nacharbeit</li><li><i>(8) Nicht genutztes Mitarbeiterwissen</i></li></ol></div>
+<div><h4>Merkwort TIMWOOD</h4><table>
+<tr><td><b>T</b></td><td>Transport (extern)</td></tr>
+<tr><td><b>I</b></td><td>Inventory – Bestände</td></tr>
+<tr><td><b>M</b></td><td>Motion – Bewegung (intern)</td></tr>
+<tr><td><b>W</b></td><td>Waiting – Wartezeiten</td></tr>
+<tr><td><b>O</b></td><td>Overproduction – Überproduktion</td></tr>
+<tr><td><b>O</b></td><td>Overengineering – überentwickelt / falsche Prozesse</td></tr>
+<tr><td><b>D</b></td><td>Defects – Fehler/Ausschuss</td></tr>
+</table></div>
+</div>
+<p class="small">Jede Verschwendung (alles, was keine Wertschöpfung bringt oder sie behindert) soll minimiert oder eliminiert werden. Überproduktion gilt als schlimmste Form, da sie andere Verschwendungen (Bestände, Transport) nach sich zieht.</p>
+
+<h2 style="margin-top:10px;">11 · Abfall-Entsorgung, Recycling, Kreislaufwirtschaft</h2>
+<table>
+<tr><th>Stufe</th><th>5-stufige Abfallhierarchie (oben = höchste Priorität)</th></tr>
+<tr><td>1</td><td><b>Abfallvermeidung</b> – oberstes Gebot</td></tr>
+<tr><td>2</td><td><b>Vorbereitung zur Wiederverwendung</b></td></tr>
+<tr><td>3</td><td><b>Recycling</b> – Verwertung unter Beibehaltung der Materialeigenschaften</td></tr>
+<tr><td>4</td><td><b>Sonstige Verwertung</b> – z. B. energetisch (Verbrennung mit Energiegewinnung)</td></tr>
+<tr><td>5</td><td><b>Abfallbeseitigung</b> – letzte Möglichkeit (Deponie)</td></tr>
+</table>
+<p><b>Entsorgungsinfrastruktur Schweiz (2019, Mio. t/Jahr):</b> Aushub-/Ausbruchmaterial 54,0 (grösster Strom, v. a. Verwertung 42) · Rückbaumaterial 17,5 · Siedlungsabfall 6,1 · biogene Abfälle 5,7 · Sonderabfälle 1,9 · Eisen-/Stahlschrott 1,7. Anlagen: 345 Deponien (5 Typen), 30 KVA (Kehrichtverbrennung), 6 SAVA (Sonderabfall), 60 Industriefeuerungen, 6 Zementwerke, über 1'000 Recyclingbetriebe, 368 Biogas-/Kompostanlagen, ca. 300 chemisch-physikalische Anlagen.</p>
+<div class="box"><b>Kreislaufwirtschaft (Circular Economy):</b> ersetzt die lineare Wegwerfwirtschaft durch ein <b>regeneratives System</b>; Rohstoffe und Produkte durch langlebiges Design, Reparatur, Wiederverwendung und Recycling <b>so lange wie möglich im Kreislauf</b> halten → Abfall und Ressourcenverbrauch minimieren.<br>
+<b>7 R:</b> <b>Reduce</b> (reduzieren) · <b>Re-use</b> (wieder nutzen) · <b>Repair</b> (reparieren) · <b>Re-fit</b> (überholen) · <b>Re-build</b> (erneuern) · <b>Re-furbish</b> (aufbereiten, Upcycling) · <b>Re-cycle</b> (rezyklieren).</div>
+<p class="small">Bezug SCM: Reverse Logistics (Rücknahme), Entsorgungs- und Verwertungskosten in der TCO, Nachhaltigkeitsziele in der BSC, CO₂ bei Transportwahl.</p>
+</div>
+
+<!-- 12 -->
+<div class="ub">
+<h2>12 · Geschäftsprozessoptimierung (GPO) / Prozess-Design</h2>
+<p><b>Prozess</b> = Bündel von Aktivitäten, durch Inputs angestossen, liefert dem Kunden als Ergebnis einen <b>Wert</b>. <b>Geschäftsprozess</b> = Abfolge von Tätigkeiten zur Erzeugung eines Produkts/einer DL. Unterteilung (St. Galler Managementmodell): <b>Führungs-, Kern- und Unterstützungsprozesse</b>. Ziele des Prozessansatzes: klare Zuständigkeiten, strukturierte Abläufe, messbare Ergebnisverbesserung, Innovationsbewusstsein.</p>
+<p><b>GPO</b> = alle Aktivitäten zur Verbesserung bestehender Geschäftsprozesse. <b>Auslöser:</b> veränderte IT-Umgebung, hohe Verwaltungs-/Prozesskosten, lange Durchlaufzeiten, veränderte Prozessvorgaben, Harmonisierung der Prozesslandschaft. Bei KPIs Qualität/Kosten/Service <b>Wechselwirkungen</b> beachten. Vorgehensmodell: Vorbereitung → Vor- und Hauptuntersuchung → Realisierung → Evaluierung.</p>
+<p><b>Methoden:</b> TQM · Lean Management · KVP/Kaizen · PDCA · 5-Why · Six Sigma · DFSS (Design for Six Sigma) mit DMADV (Define, Measure, Analyse, Design, Verify) · AZPERK (Analyse, Ziele, Planen, Entscheiden, Realisieren, Kontrolle) · Wertstromanalyse · BPR · BPM (Geschäftsprozessmanagement) · SIPOC (Supplier, Input, Process, Output, Customer) · Kreativitätstechniken.</p>
+<table>
+<tr><th style="width:18%">Methode</th><th>Kern</th></tr>
+<tr><td><b>BPR</b> – Business Process Reengineering</td><td><b>Radikale</b> Reorganisation der Geschäftsprozesse durch kundenorientierte Fokussierung auf <b>Kernkompetenzen</b> und Einsatz von <b>IT</b>. 4 R: <b>Renewing</b> (Erneuerung: Qualifizierung, Einbindung, Motivation MA) · <b>Revitalizing</b> (Belebung: Prozessgestaltung) · <b>Reframing</b> (Perspektivenwechsel: herkömmliche Denkmuster ablegen, Visionen) · <b>Restructuring</b> (Neugestaltung der Aktivitäten und Prozessinhalte). In den 90ern verbunden mit Downsizing und Outsourcing.<br><b>Vorteile:</b> Kundenorientierung, neue IKT, Prozesse als Ganzes, Kosten ↓ bei Qualität ↑, ganzheitliche Betrachtung. <b>Nachteile:</b> Strukturen aufbrechen, Personalabbau, Missmut, lange Dauer/späte Erfolge, nicht für jedes Unternehmen; Kritik: zu viel Fokus auf Technik/Kosten, Mensch und Kultur vernachlässigt; teuer und riskant.</td></tr>
+<tr><td><b>TQM</b> – Total Quality Management</td><td>Prozessbezogener Managementansatz mit Fokus auf <b>Kundenorientierung und Qualität</b>; <b>W. Edwards Deming</b> (14 Regeln). Elemente: Kundenfokus, Mitarbeitereinbindung, Prozessorientierung, integriertes System, strategischer/systematischer Ansatz, faktenbasierte Entscheidungen, Kommunikation, kontinuierliche Verbesserung. Konsequente Prozessorientierung erfüllt Bedürfnisse von Mitarbeitern, Lieferanten und Gesellschaft.</td></tr>
+<tr><td><b>Kaizen</b></td><td>Japan. „Veränderung zum Besseren“: Philosophie <b>kontinuierlicher, kleiner Verbesserungen durch alle Mitarbeiter</b> (statt radikaler Umbrüche). 5 Grundpfeiler: Prozessorientierung · Kundenorientierung (intern/extern) · Qualitätsorientierung · Kritikorientierung (Fehler = Chance) · Standardisierung (Verbesserung als neuer Standard).</td></tr>
+<tr><td><b>KVP</b></td><td>Kontinuierlicher Verbesserungsprozess: stetige kleine Schritte; Ziele Effizienz/Qualität ↑, Kosten ↓, Verschwendung vermeiden, MA-Zufriedenheit ↑; <b>Bottom-up</b> in kleinen Teams vor Ort; Methodik meist PDCA.</td></tr>
+<tr><td><b>PDCA / Deming-Kreis</b></td><td><b>Plan</b> (Ist-Analyse, Problem, Ziele, Massnahmen) → <b>Do</b> (umsetzen, ggf. Testphase) → <b>Check</b> (Wirkung prüfen; nicht erfolgreich → zurück zu Plan) → <b>Act</b> (als Standard einführen oder neuer Durchlauf).</td></tr>
+<tr><td><b>Toyota 3M / TPS</b></td><td>Eliminierung von Muda, Mura, Muri (→ Kapitel 10).</td></tr>
+<tr><td><b>5S</b></td><td>Ordnung und Sauberkeit am Arbeitsplatz: <b>Seiri</b> Sortieren (Unnötiges entfernen) · <b>Seiton</b> Systematisieren (nach Wichtigkeit anordnen) · <b>Seiso</b> Säubern (Fehler/Abnutzung früh erkennen) · <b>Seiketsu</b> Standardisieren (zur Regel machen) · <b>Shitsuke</b> Selbstdisziplin (erhalten, Führung prüft).</td></tr>
+<tr><td><b>Gemba Walk</b></td><td>„Ort des Geschehens“: Führungskräfte beobachten Prozesse vor Ort, erkennen Probleme/Verschwendung, Dialog. 7 Schritte: 1 Thema wählen · 2 Team vorbereiten · 3 Fokus auf Prozess, nicht Menschen · 4 hingehen, wo der Wertstrom fliesst · 5 Beobachtungen notieren, keine Vorschläge · 6 ein weiteres Paar Augen · 7 Follow-up.</td></tr>
+<tr><td><b>Wertstromanalyse</b> (Value Stream Mapping)</td><td>Gesamtüberblick vom Lieferanten bis zum Kunden für ein Produkt/eine Produktfamilie. Schritte: Produkt(familie) wählen → <b>Ist-Zustand</b> aufnehmen (Verschwendung, Engpässe, Wertschöpfung) – <b>beginnend beim Warenausgang</b> (Kundensicht) rückwärts zum Wareneingang → Soll-Zustand. Daten: Zykluszeit, Rüstzeit, Betriebszeit, Lagerbestand, Kapazitäten, Losgrössen, Nacharbeits-, Ausschussquote. „Jeder Prozess hat drei Zustände: wie man denkt, dass er ist – wie er wirklich ist – wie er sein sollte.“</td></tr>
+</table>
+<span class="formel">Durchlaufzeit = Prozesszeit (Bearbeitung, wertschöpfend) + Wartezeit (Liege-/Transport-/Wartezeit)</span>
+
+<!-- 13 14 -->
+<h2 style="margin-top:10px;">13 · Produkt-Design &nbsp;·&nbsp; 14 · Design for Manufacturability</h2>
+<table>
+<tr><th style="width:18%">Begriff</th><th>Kern</th></tr>
+<tr><td><b>Design Thinking</b></td><td>Nutzerzentrierter, <b>iterativer</b> Innovationsansatz für komplexe Probleme in <b>interdisziplinären Teams</b>; verbindet menschliche Bedürfnisse, technische Machbarkeit, wirtschaftlichen Erfolg. Phasen (oft 6): Verstehen · Beobachten · Definieren (define) · Ideen finden (ideate) · Prototypen bauen (prototype) · Testen (test). Kultur: schnelles Scheitern erlaubt.</td></tr>
+<tr><td><b>Prototyping</b></td><td>Iterative, schnelle Visualisierung/Erprobung von Produktideen → frühes Feedback, Risiken und Kosten senken, Machbarkeit prüfen, Kommunikation verbessern. Arten: <b>Throwaway</b> (nach Test verworfen) · <b>Evolutionär</b> (weiterentwickelt bis zum Endprodukt) · <b>Paper</b> (Skizzen) · <b>Digital/Interactive</b> (Klick-Simulation ohne Code) · <b>Rapid</b> (physisch, oft 3D-Druck).</td></tr>
+<tr><td><b>User Experience (UX)</b></td><td>Alle Wahrnehmungen, Emotionen, Reaktionen einer Person <b>vor, während und nach</b> der Nutzung; umfasst Usability, Design, Funktionalität, Markenwahrnehmung. Faktoren: emotionale Bindung, Funktionalität &amp; Leistung, Nützlichkeit &amp; Vertrauen; „<b>Joy of Use</b>“.</td></tr>
+<tr><td><b>DfM</b> – Design for Manufacturability</td><td><b>Fertigungsgerechte Konstruktion</b>: Produkte schon in früher Entwurfsphase so gestalten, dass sie <b>einfach, fehlerarm und wirtschaftlich</b> herstellbar sind. Prinzipien: frühzeitige Optimierung (Fertigungsrestriktionen ab erstem Entwurf) · Vereinfachung (weniger Teile, einfache Geometrien, Standardkomponenten) · Materialauswahl passend zu Verfahren (Spritzguss, 3D-Druck, Fräsen) und Einsatz · Toleranz-/Geometrieanpassung (Wandstärken, Radien, Entformschrägen ohne Nacharbeit).</td></tr>
+</table>
+</div>
+
+<!-- 15 -->
+<div class="ub">
+<h2>15 · Logistik und Lager</h2>
+<p><b>Logistik</b> = Planung, Steuerung, Durchführung und Kontrolle aller <b>Material-, Waren-, Informations- und Finanzflüsse</b> entlang der Wertschöpfungskette. Erhöht Wettbewerbsfähigkeit und Lieferfähigkeit, senkt Kosten; volkswirtschaftlich Voraussetzung für Handel und Wohlstand.</p>
+<div class="box"><b>7 R der Logistik:</b> richtige <b>Ware</b> · richtige <b>Menge</b> · richtiger <b>Zustand</b> · richtiger <b>Ort</b> · richtige <b>Zeit</b> · richtiger <b>Kunde</b> · richtige <b>Kosten</b> (+ 8. R: richtige <b>Motivation</b>, nach „Stefan“). <span class="small">(Beschaffung: 6 R – Produkte, Menge, Zeit, Ort, Qualität, Preis.)</span></div>
+<p><b>Lager:</b> geplante Aufbewahrung von Materialien, Halb- und Fertigprodukten; überbrückt zeitliche Unterschiede zwischen Beschaffung, Produktion und Absatz. <b>Aufgaben:</b> Lieferfähigkeit sicherstellen (sofortige Verfügbarkeit) · Ausgleich von Schwankungen · Versorgungssicherheit (Sicherheitsbestände gegen Engpässe/Unterbrüche).</p>
+<table>
+<tr><th></th><th>Festplatzlagerung</th><th>Chaotische Lagerung</th><th>Zonenlagerung</th><th>Reihenfolgelagerung</th></tr>
+<tr><th>Synonym</th><td>Magazinierprinzip, statisch</td><td>dynamisch, Freiplatzlagerung</td><td>Lagerung nach ABC (Umschlags-/Zugriffshäufigkeit)</td><td>gleitende Lagerung</td></tr>
+<tr><th>Beschreibung</th><td>jeder Artikel hat festen Platz</td><td>Ware auf ersten freien Platz</td><td>Zonen nach Kriterien</td><td>Einlagerung nach Entnahmereihenfolge (Lkw-Tour)</td></tr>
+<tr><th>Vorteile</th><td>einfach, gute Übersicht, wenig IT</td><td>maximale Raumnutzung, flexibel</td><td>kurze Laufwege (A-Artikel am Ausgang), effizientes Picken</td><td>sehr schnelle Kommissionierung/Verladung</td></tr>
+<tr><th>Nachteile</th><td>schlechte Raumnutzung (Leerplätze), unflexibel</td><td><b>LVS zwingend</b>, Systemausfall kritisch</td><td>hoher Planungsaufwand, weniger flexibel</td><td>nur für spezifischen Tourenbedarf, unflexibel</td></tr>
+<tr><th>Beispiel</th><td>Kleinteile-, Ersatzteillager</td><td>Distributionszentrum, wechselndes Sortiment</td><td>Lager mit ABC; T-Zonen (Weihnachten)</td><td>Spedition, Paketdienst</td></tr>
+</table>
+<h4>Lagerkosten und Lagerkennzahlen</h4>
+<span class="formel">Lagerkosten/Jahr = Raumkosten + Personal + Schwund + Energie + Wartung + Versicherung + …
+Lagerkostensatz [%] = Lagerkosten pro Jahr ÷ Ø Lagerwert × 100        (Richtwert ≈ 15 %)
+Ø Lagerwert = Ø Lagerbestand × Einstandspreis
+Ø Lagerbestand = Bestellmenge ÷ 2  = (Anfangsbestand + Endbestand) ÷ 2            (einfach)
+Ø Lagerbestand = (Anfangsbestand + Σ 12 Monatsendbestände) ÷ 13                  (exakt, bei Schwankungen)
+Lagerkosten (Produkt) = Ø Lagerwert × Lagerkostensatz
+Lagerhaltungskosten = Ø Lagerwert × Kapitalbindungs-(Zins-)satz;  Lagerhaltungskostensatz = Lagerhaltungskosten ÷ Ø Lagerwert
+Lagerumschlagshäufigkeit = Jahresverbrauch ÷ Ø Lagerbestand   (Mengen oder Werte, nicht mischen!)
+Ø Lagerdauer [Tage] = 360 ÷ Lagerumschlag
+Lagerreichweite [Tage] = Lagerbestand ÷ Tagesverbrauch
+Sicherheitszeit [Tage] = Sicherheitsbestand ÷ Tagesverbrauch
+Bestellpunkt (Meldebestand) = Verbrauch pro Zeiteinheit × Lieferzeit + Sicherheitsbestand</span>
+<p class="small"><b>Interpretation:</b> hoher Lagerumschlag = wenig Kapitalbindung, schnell drehende Ware; tiefer Umschlag (z. B. 2.5) = hohe Kapitalbindung, zu grosse Bestände, Ladenhüter. <b>Zentrallager</b> (tiefere Lager- und Bestandskosten, einfache Steuerung, aber längere Transportwege) vs. <b>Regional-/dezentrale Lager</b> (Kundennähe, kurze Lieferzeit, aber mehr Bestand und Fixkosten) → Aufgabe 20.6.</p>
+</div>
+
+<!-- 16 -->
+<div class="ub">
+<h2>16 · Beschaffung, Beschaffungsformen, -strategien, Bestellpolitiken</h2>
+<p><b>Beschaffung</b> = Gesamtheit aller strategischen und operativen Aktivitäten zur Sicherstellung der <b>externen Versorgung</b> mit Gütern und Dienstleistungen, damit die Leistungserstellung gesichert ist. <b>6 R:</b> richtige Produkte · Menge · Zeit · Ort · Qualität · Preise (optimale wirtschaftliche Bedingungen).</p>
+<h3>16.1 Beschaffungsformen / Bestellzeitpunkte</h3>
+<table>
+<tr><th></th><th>Fallweise Beschaffung (≈ Make to Order)</th><th>Vorratsbeschaffung (≈ Make to Stock)</th><th>Produktionssynchrone Beschaffung (Just in Time)</th></tr>
+<tr><th>Prinzip</th><td>Material erst nach Produktionsauftrag; kurze Pufferzeit</td><td>Güter als Lagervorrat beschafft</td><td>Anlieferung genau wann und wo benötigt; sehr hoher Koordinationsbedarf</td></tr>
+<tr><th>Vorteile</th><td>geringe Kapitalbindung, tiefe Zinsen, keine/geringe Lagerkosten</td><td>Leistungserstellung jederzeit möglich, Mengenrabatt, spekulative Faktoren (Zeitpunkt, Währung)</td><td>bei gleichmässigem Bedarf kontinuierliche Produktion, keine Zins-/Lagerkosten</td></tr>
+<tr><th>Nachteile</th><td>sehr zuverlässige Lieferanten nötig, Verspätungsrisiko, ggf. schlechte Konditionen (Express)</td><td>hohe Kapitalbindung, Lager- und Zinskosten, Ladenhüter (Technologie-Lebenszyklus), Schwund</td><td>hohe Kooperationsbereitschaft, geringe Variantenvielfalt nötig, störanfällig (Geopolitik, Wetter)</td></tr>
+</table>
+<h3>16.2 Beschaffungsstrategien nach ABC-/XYZ-Matrix</h3>
+<table>
+<tr><th></th><th>A (hoher Wertanteil, wenig Menge)</th><th>B (mittel)</th><th>C (geringer Wertanteil, hohe Menge)</th></tr>
+<tr><th>X (gleichförmig, gut planbar)</th><td>Just-in-time, produktionssynchron</td><td>verbrauchsgesteuert, optimierte Lagerhaltung, JIT</td><td>verbrauchsgesteuert, optimierte Lagerhaltung</td></tr>
+<tr><th>Y (Trend/saisonal, bedingt planbar)</th><td>bedarfsgesteuert, keine Lagerung, JIT</td><td>bedarfs- oder verbrauchsgesteuert, optimierte Lagerung</td><td>verbrauchsgesteuert, optimierte Lagerhaltung, Kanban</td></tr>
+<tr><th>Z (unregelmässig, schlecht planbar)</th><td>bedarfsgesteuert, keine Lagerung</td><td>bedarfsgesteuert, optimierte Lagerung, Kanban</td><td>Kanban, Bereinigung (Sortiment prüfen)</td></tr>
+</table>
+<div class="cols2 small">
+<div><p><b>Feld A-X:</b> enge, langfristige Zusammenarbeit mit 1–3 Lieferanten; enge logistische Abstimmung (JIT, JIS, produktionssynchron); Prozesse eng abgestimmt; Optimierung Qualität/Preis.</p><p><b>Feld B-Z:</b> mehrere schnelle, flexible Lieferanten; Bestellung nur bei Bedarf oder nach Kanban; Lieferanten decken Bedarf kurzfristig.</p></div>
+<div><p><b>Feld C-X:</b> ein Lieferant, Fokus Liefermengen und Preise; ggf. eigenes Lager gegen Engpässe; verbrauchsorientierte Bestellung bei festen Bestellpunkten; Produkt- und Abwicklungskosten minimieren.</p><p>Ziel der ABC/XYZ-Betrachtung: optimale Strategie für Beschaffung, Lager und Disposition → Kapitalbindung minimieren, <b>Working Capital Management</b> optimieren.</p></div>
+</div>
+<h3>16.3 Bestellpolitiken (Bestellzeitpunkt × Bestellmenge)</h3>
+<p class="small">t = Bestellzeitintervall (fix) · s = Bestellpunktbestand (Meldebestand) · q = fixe Bestellmenge · S = Sollniveau (Höchstbestand)</p>
+<table>
+<tr><th></th><th>Bestellmenge fix (q)</th><th>Bestellmenge variabel (auf S auffüllen)</th></tr>
+<tr><th>Bestellrhythmus-Verfahren (Zeitpunkt fix, t)</th><td><b>t/q</b>: in festen Intervallen feste Menge – geringer Dispositionsaufwand; für <b>X-Güter</b> ohne Beschaffungsrisiko</td><td><b>t/S</b>: in festen Intervallen prüfen und auf Sollbestand anheben – für X/(Y) und (A) und B-Güter</td></tr>
+<tr><th>Bestellpunkt-Verfahren (Zeitpunkt variabel, s)</th><td><b>s/q</b>: bei Erreichen des Bestellpunkts fixe Losgrösse bestellen – B-, Y/Z-Teile</td><td><b>s/S</b>: bei Erreichen des Bestellpunkts bis Sollniveau auffüllen – A/B- und Y/Z-Teile</td></tr>
+</table>
+<p class="small"><b>Sourcing-Begriffe:</b> Single Sourcing (ein Lieferant: Konditionen, enge Integration, aber Abhängigkeit) · Dual/Multiple Sourcing (mehrere: Versorgungssicherheit, Wettbewerb) · Global Sourcing (weltweit: tiefe Preise, aber lange Wege, Risiken) · Nearshoring (regional: kurze Wege, Resilienz).</p>
+
+<!-- 17 -->
+<h2 style="margin-top:10px;">17 · Make or Buy (MoB)</h2>
+<p>Grundsatzfrage: <b>Selbst machen oder machen lassen?</b> Bestimmt die <b>Wertschöpfungstiefe</b>. <b>Make</b> = Eigenfertigung mit eigenen Ressourcen (<b>Insourcing</b>); <b>Buy</b> = Fremdbezug von externen Spezialisten (<b>Outsourcing</b>). Heute hochdynamisch: wegen globaler Lieferengpässe werden frühere Buy-Teile teils wieder ins Haus geholt (Lieferfähigkeit schützen).</p>
+<table>
+<tr><th>Harte Fakten (quantitativ)</th><th>Strategische Faktoren (qualitativ)</th></tr>
+<tr><td>• <b>Produktionskosten</b> bei Make (Personal, Material, Energie)<br>• <b>Investitionsbedarf</b> (Maschinen, Software-Lizenzen)<br>• <b>Logistikkosten</b> bei Buy (Fracht, Zoll, Lagerhaltung)<br><span class="small">Ergänzend: Beschaffungskosten pro Stück, TCO, Kapazitätsauslastung, Fixkosten</span></td><td>• <b>Kernkompetenz</b>: Herzstück des Business? → Make<br>• <b>Marktmacht</b>: genug alternative Lieferanten oder Monopol?<br>• <b>Qualitätssicherung</b>: halten Externe die Standards?<br>• <b>Nachhaltigkeit (ESG)</b>: bessere CO₂-Kontrolle bei Make?<br><span class="small">Ergänzend: Know-how-Schutz, Abhängigkeit, Flexibilität, Versorgungssicherheit</span></td></tr>
+</table>
+<div class="merke"><b>Taxonomiestufe 6 = höchste Prüfungsanforderung:</b> Make-or-Buy wird erwartet als <b>vollständige Beurteilung</b>: Kostenvergleich rechnen (inkl. Transport, Zoll, Lager, Risiko) <b>und</b> qualitative Kriterien gewichten <b>und</b> begründete Empfehlung, ggf. Zwischenlösung (Dual Sourcing, teilweise Eigenfertigung) → Aufgabe 20.3.</div>
+</div>
+
+<!-- 18 19 -->
+<div class="ub">
+<h2>18 · Total Cost of Ownership (TCO)</h2>
+<p><b>TCO (Gesamtbetriebskosten)</b> = Summe aller <b>direkten und indirekten Kosten über den gesamten Lebenszyklus</b> eines Produkts, einer Dienstleistung oder Investition. Nicht nur der Einkaufspreis zählt!</p>
+<table>
+<tr><th>Kostenkategorie (Lager/Logistik)</th><th>Inhalt</th></tr>
+<tr><td>Beschaffungskosten</td><td>bei Bestellung und Warenanlieferung (Bestellkosten, Fracht, Zoll)</td></tr>
+<tr><td>Lagerhaltungskosten</td><td>direkte Kosten der Lagerung</td></tr>
+<tr><td>Kapitalbindungskosten</td><td>Kosten des im Lager gebundenen Kapitals (Zins)</td></tr>
+<tr><td>Bestandsrisikokosten</td><td>Schwund, Veralterung, Beschädigung</td></tr>
+<tr><td>Prozesskosten der Lagerlogistik</td><td>interne Lagerprozesse (Ein-/Auslagern, Kommissionieren)</td></tr>
+<tr><td>IT- und Administrationskosten</td><td>Steuerung/Überwachung des Lagers</td></tr>
+<tr><td>Qualitätskosten</td><td>Qualitätsabweichungen (Prüfung, Reklamation, Nacharbeit)</td></tr>
+<tr><td>Entsorgungs- und Verwertungskosten</td><td>Ende des Produktlebenszyklus</td></tr>
+</table>
+<span class="formel">Einstandspreis (nur extern) = Angebotspreis − Rabatt − Skonto + Bezugskosten (Fracht, Zoll)
+Einstandskosten (TCO-Sicht) = externe Einstandskosten + interne Bestellkosten (Anzahl Bestellungen × Kosten/Bestellung)
+                              + Lager- und Kapitalkosten (Ø Bestand × Einstandspreis × Satz)
+Anzahl Bestellungen = Jahresbedarf ÷ Bestellmenge</span>
+
+<h2 style="margin-top:10px;">19 · Balanced Scorecard (BSC)</h2>
+<p><b>BSC</b> (Kaplan &amp; Norton) = strategisches Management-/Führungsinstrument, das <b>Vision und Strategie in messbare Ziele übersetzt</b>; betrachtet nicht nur Finanzkennzahlen, sondern den Erfolg gleichwertig aus <b>vier Perspektiven</b>, idealerweise in einer <b>Ursache-Wirkungs-Kette</b>: besser geschulte MA (Lernen) → effizientere Prozesse → zufriedenere Kunden → finanzieller Erfolg.</p>
+<table>
+<tr><th>Perspektive</th><th>Leitfrage</th><th>Typische Ziele</th><th>SCM-KPIs (Beispiele)</th></tr>
+<tr><td><b>1 Finanzen</b></td><td>Wie sehen uns unsere Anteilseigner?</td><td>Umsatzwachstum, Kostensenkung, Rentabilität</td><td>Beschaffungskosten, Logistikkosten/Umsatz, Kapitalbindung, ROI</td></tr>
+<tr><td><b>2 Kunden</b></td><td>Wie sehen uns unsere Kunden?</td><td>Zufriedenheit, Bindung, Marktanteil</td><td>Termintreue/OTIF, Lieferzeit, NPS, Reklamationen</td></tr>
+<tr><td><b>3 Interne Prozesse</b></td><td>Worin müssen wir uns auszeichnen?</td><td>kürzere DLZ, bessere Qualität</td><td>DLZ, Lagerreichweite/-umschlag, OEE, Fehler-/Ausschussquote</td></tr>
+<tr><td><b>4 Lernen &amp; Entwicklung</b></td><td>Wie können wir uns verbessern und Wert schaffen?</td><td>MA-Förderung, Kultur, IT-Infrastruktur</td><td>Weiterbildungstage, % geschulte MA, Verbesserungsvorschläge</td></tr>
+</table>
+<p><b>Mögliche Zusatzperspektiven:</b> <b>CSR/Nachhaltigkeit</b> (Umweltziele) · <b>Compliance</b> (Erfolg stark von Gesetzeseinhaltung abhängig) · <b>Ethik</b>.</p>
+<p><b>Aufbau pro Perspektive:</b> strategisches Ziel → Kennzahl (KPI) → Zielwert/Vorgabe → Massnahme.</p>
+<table>
+<tr><th>Perspektive</th><th>Ziel</th><th>KPI</th><th>Zielwert</th><th>Massnahme</th></tr>
+<tr><td>Finanzen</td><td>Umsatz steigern</td><td>Umsatzwachstum</td><td>+8 % p. a.</td><td>Cross-Selling</td></tr>
+<tr><td>Prozess</td><td>Fehlerquote senken</td><td>Reklamationsrate</td><td>&lt; 2 %</td><td>Qualitätszirkel</td></tr>
+<tr><td>Kunde</td><td>Zufriedenheit erhöhen</td><td>Net Promoter Score</td><td>&gt; 50 %</td><td>Support-Hotline ausbauen</td></tr>
+<tr><td>Lernen</td><td>IT-Kompetenz steigern</td><td>% geschulte MA</td><td>90 % bis Q3</td><td>Inhouse-Software-Training</td></tr>
+</table>
+<p class="small"><b>Ergänzende Kennzahlen-Definitionen:</b> <b>OEE</b> (Overall Equipment Effectiveness, Gesamtanlageneffektivität) = Verfügbarkeit × Leistung × Qualität (Weltklasse ≈ 85 %, 55 % = tief). <b>OTIF</b> = Anteil Lieferungen pünktlich und vollständig. <b>NPS</b> = % Promotoren − % Kritiker. <i>(OEE- und NPS-Formel = allgemeines Fachwissen, nicht explizit auf den Folien.)</i></p>
+</div>
+
+<!-- 20 AUFGABEN -->
+<div class="ub">
+<h2>20 · Aufgaben und Lösungen (aus dem Prüfungsstoff)</h2>
+
+<h3>20.1 Auswahl des optimalen Transportmittels (SwissTech AG)</h3>
+<p class="small">12 Paletten / 8 t nach Deutschland. Lastwagen CHF 1'600, 1 Tag, CO₂ hoch · Bahn CHF 1'200, 3 Tage, CO₂ tief · Luftfracht CHF 5'500, 6 h, CO₂ sehr hoch.</p>
+<ol class="small">
+<li><b>Vergleich:</b> LKW = mittlere Kosten, 1 Tag, hohe CO₂ → gute Kombination Flexibilität/Zeit. Bahn = tiefste Kosten, beste Umweltbilanz, aber 3 Tage → für nicht zeitkritische Lieferungen. Luft = schnellste, aber teuerste und ökologisch schlechteste → nur bei sehr dringenden Lieferungen.</li>
+<li><b>Frist max. 2 Tage:</b> <b>Lastwagen</b> – erfüllt Frist, deutlich günstiger und nachhaltiger als Luft (Bahn mit 3 Tagen zu langsam).</li>
+<li><b>Nachhaltigkeit:</b> <b>Bahn</b> – geringste CO₂, zugleich günstigste.</li>
+<li><b>Weitere Kriterien:</b> Termintreue, Flexibilität, Art/Empfindlichkeit der Ware, Zuverlässigkeit, Kundenanforderungen, Zoll- und Verpackungskosten.</li>
+</ol>
+
+<h3>20.2 Störung einer globalen Lieferkette (Kunststoffgranulat aus Asien, 4 Wochen Verzögerung)</h3>
+<ol class="small">
+<li><b>Auswirkungen:</b> Produktion steht still oder eingeschränkt; Lagerbestände werden aufgebraucht; Kunden erhalten Bestellungen verspätet.</li>
+<li><b>Risiken:</b> Lieferverzögerungen, Umsatzausfälle, zusätzliche Beschaffungskosten, Kundenunzufriedenheit/Abwanderung zur Konkurrenz.</li>
+<li><b>Kurzfristig:</b> alternative Lieferanten suchen, Expresslieferung (Luftfracht), wichtige Kundenaufträge priorisieren, offene Kundenkommunikation.</li>
+<li><b>Langfristig (Resilienz):</b> Dual-/Multi-Sourcing, höhere Sicherheitsbestände, regionale Beschaffung (<b>Nearshoring</b>), aktives Risikomanagement.</li>
+</ol>
+
+<h3>20.3 Make-or-Buy im internationalen Handel (Alpha AG, Metallteile, 10'000 Stk./Jahr)</h3>
+<table class="small">
+<tr><th>Kriterium</th><th>China</th><th>Schweiz</th></tr>
+<tr><td>Stückpreis + Transport</td><td>8.00 + 1.50 = <b>CHF 9.50</b></td><td>12.00 + 0.30 = <b>CHF 12.30</b></td></tr>
+<tr><td>Lieferzeit / Mindestmenge</td><td>8 Wochen / 5'000 Stk.</td><td>1 Woche / 500 Stk.</td></tr>
+</table>
+<ol class="small">
+<li><b>Beschaffungskosten/Stück</b> = (Warenwert + Transport + Zoll + Nebenkosten) ÷ Menge: China 9.50, Schweiz 12.30 → China CHF 2.80/Stk. günstiger = <b>CHF 28'000/Jahr</b>.</li>
+<li><b>China Vorteile:</b> tiefe Preise, grosse Kapazitäten, breite Auswahl. <b>Nachteile:</b> lange Lieferzeit, Transport-/Ausfallrisiko, Qualitäts-, Währungs-, Zollrisiken.</li>
+<li><b>Lagerhaltung:</b> lange Lieferzeit → höhere Sicherheitsbestände; hohe Mindestmenge → höherer Ø Bestand (bei 5'000 Stk. Ø ≈ 2'500 statt 250), mehr Kapitalbindung, Veralterungs- und Lagerrisiko. <i>(Diese Kosten schmälern den Preisvorteil → TCO-Sicht!)</i></li>
+<li><b>Wechsel?</b> Sofortiger Wechsel ohne Prüfung nicht zwingend; empfehlenswert: <b>zusätzlicher europäischer Lieferant (Dual Sourcing)</b> → Risiko senken, Versorgungssicherheit erhöhen.</li>
+</ol>
+
+<h3>20.4 Lagerkennzahlen (Verbrauch 24'000, Ø Bestand 3'000, Lagerwert 180'000, Lagerhaltungskosten 27'000)</h3>
+<p class="small">1. Lagerumschlag = 24'000 ÷ 3'000 = <b>8×/Jahr</b> · 2. Lagerdauer = 360 ÷ 8 = <b>45 Tage</b> · 3. Lagerkostensatz = 27'000 ÷ 180'000 × 100 = <b>15 %</b> · 4. Bestand wird jährlich 8× erneuert, Ware liegt Ø 45 Tage; Lagerhaltung kostet jährlich 15 % des Ø Lagerwerts (= Richtwert).</p>
+
+<h3>20.5 Lagerbestand (1'400 Stk., Sicherheitsbestand 300, Tagesverbrauch 50)</h3>
+<p class="small">Lagerreichweite = 1'400 ÷ 50 = <b>28 Tage</b> · Sicherheitszeit = 300 ÷ 50 = <b>6 Tage</b>. (Ohne Sicherheitsbestand reicht der „freie“ Bestand 1'100 ÷ 50 = 22 Tage.)</p>
+
+<h3>20.6 Zentrallager oder dezentrale Lager (FoodFresh AG)</h3>
+<p class="small">A (1 Zentrallager): 600'000 + 800'000 = <b>CHF 1'400'000</b> · B (4 Regionallager): 1'100'000 + 450'000 = <b>CHF 1'550'000</b> → A ist <b>CHF 150'000</b> günstiger. Zentrallager: tiefere Lagerkosten, einfachere Bestandssteuerung, aber längere Transportwege. Regionallager: kürzere Lieferzeiten, Kundennähe, aber höhere Bestände und Fixkosten. <b>Empfehlung:</b> aus Kostensicht A; sind kurze Lieferzeiten/regionale Lieferbereitschaft entscheidend (Frischprodukte!), kann B trotz Mehrkosten sinnvoll sein.</p>
+
+<h3>20.7 Lagerengpass durch Nachfragespitze (normal 500/Woche, Bestand 1'000, Lieferzeit 3 Wochen, neu 800/Woche)</h3>
+<p class="small">1. Reichweite = 1'000 ÷ 800 = <b>1,25 Wochen</b> (≈ 1 Woche 2 Tage) · 2. <b>Ja, Engpass:</b> Bedarf in Lieferzeit 800 × 3 = 2'400, verfügbar 1'000 → <b>Fehlmenge 1'400 Stk.</b> · 3. Express-/Teillieferung, alternative Lieferanten, Werbeaktion begrenzen, wichtige Kunden priorisieren, Kunden früh informieren · 4. Sicherheitsbestand schützt vor Nachfrage-/Lieferschwankungen; <b>Bestellpunkt anpassen</b>: 800 × 3 = 2'400 + Sicherheitsbestand.</p>
+
+<h3>20.8 Personalbedarfsrechnung (120'000 Stk./Jahr, 6'000 Stk./MA, Fluktuation 5 %, 2 Pensionierungen)</h3>
+<p class="small">Einsatzbedarf = 120'000 ÷ 6'000 = <b>20 MA</b> · Fluktuationsbedarf = 5 % × 20 = <b>1 MA</b> · Ersatz Pensionierungen = <b>2 MA</b> · Gesamtbedarf = 20 + 1 + 2 = <b>23 Mitarbeitende</b>.</p>
+
+<h3>20.9 Auslastungsgrad (Kapazität 1'000 h/Monat, belegt 850 h)</h3>
+<p class="small">Auslastungsgrad = belegte ÷ verfügbare Kapazität × 100 = 850 ÷ 1'000 × 100 = <b>85 %</b> · freie Kapazität = <b>150 h</b> · <b>Risiken bei 100 %:</b> keine Reserve für Störungen, keine Flexibilität für Eilaufträge, höheres Fehlerrisiko, Stress/Überlastung, Wartung wird verdrängt, Lieferverzug bei Abweichungen.</p>
+
+<h3>20.10 Kennzahlen interpretieren (OEE 55 %, Liefertermintreue 82 %, Lagerumschlag 2.5)</h3>
+<p class="small"><b>OEE 55 %</b> relativ tief → Maschinenstillstände, lange Rüstzeiten, Qualitätsprobleme, geringe Geschwindigkeit. <b>Termintreue 82 %</b> kritisch → fast jeder 5. Auftrag verspätet. <b>Lagerumschlag 2.5</b> eher tief → hohe Kapitalbindung, zu grosse Bestände, schlecht drehende Artikel. <b>Priorität 1:</b> OEE und Termintreue analysieren (tiefe Maschineneffektivität → direkter Lieferverzug). <b>Massnahmen:</b> Stillstandsgründe erfassen, Rüstzeiten reduzieren (SMED), Produktionsplanung verbessern, Engpassmaschinen identifizieren, Sicherheitsbestände prüfen, Liefertermine realistischer planen.</p>
+
+<h3>20.11 Ressourcenplanung bei 25 % Wachstum</h3>
+<table class="small">
+<tr><th>Ressourcen anpassen</th><th>Kennzahlen beobachten</th><th>Risiken</th><th>ERP-Daten</th><th>Investitionen</th></tr>
+<tr><td>Personal, Maschinenkapazität, Lagerfläche, Materialbeschaffung, Lieferantenkapazität, Verpackung, Transport, ERP-Stammdaten/Planung</td><td>Auslastungsgrad, OEE, Liefertermintreue, DLZ, Lagerbestand, Lagerumschlag, Ausschussquote, Produktivität/MA, Krankenquote/Überzeit</td><td>Überlastung Personal, Lieferverzug, Qualitätsprobleme, steigende Bestände, Liquiditätsbelastung, Lieferantenengpässe, fehlende Führungskapazität</td><td>Stücklisten, Arbeitspläne, Maschinenbelegung, Einkaufsbestellungen, offene Aufträge, Kapazitätsplanung, Materialbestände, Lieferzeiten, Rückmeldedaten Produktion</td><td>zusätzliche Maschinen, zusätzliche MA, Automatisierung, Lagertechnik, ERP-Erweiterung, Schulung, externe Logistikleistung</td></tr>
+</table>
+<p class="small"><b>Lösungskern:</b> 25 % Wachstum ist nur positiv, wenn Kapazitäten, Prozesse, Personal und Systeme mitwachsen.</p>
+
+<h3>20.12 Total Cost of Ownership – Einstandskosten</h3>
+<p class="small">Jahresbedarf 2'000 Stk., Bestellpunktverfahren, Bestellmenge 80 (konstant), Angebotspreis CHF 50, 10 Tage 2 % Skonto (nutzen), Spediteur 30 Tage netto, interne Bestellkosten CHF 120/Bestellung, Lager- und Kapitalkostensatz 15 %.</p>
+<table class="small">
+<tr><th>Schritt</th><th>Rechnung</th><th>Resultat</th></tr>
+<tr><td>Einstandspreis (extern)</td><td>50.00 − 2 % Skonto (1.00)</td><td><b>CHF 49.00/Stk.</b></td></tr>
+<tr><td>Anzahl Bestellungen</td><td>2'000 ÷ 80</td><td>25</td></tr>
+<tr><td>Externe Einstandskosten</td><td>2'000 × 49</td><td>CHF 98'000</td></tr>
+<tr><td>Interne Bestellkosten</td><td>25 × 120</td><td>CHF 3'000</td></tr>
+<tr><td>Ø Lagerbestand</td><td>80 ÷ 2</td><td>40 Stk.</td></tr>
+<tr><td>Lager- und Kapitalkosten</td><td>40 × 49 × 15 %</td><td>CHF 294</td></tr>
+<tr><td><b>Einstandskosten total</b></td><td>98'000 + 3'000 + 294</td><td><b>CHF 101'294</b></td></tr>
+<tr><td><b>pro Stück</b></td><td>101'294 ÷ 2'000</td><td><b>CHF 50.65</b></td></tr>
+</table>
+<p class="small">Interpretation: trotz Skonto liegen die tatsächlichen Kosten über dem Angebotspreis (50.65 vs. 50.00), weil interne Bestellkosten und Lagerkosten dazukommen. Mit Andler wäre die Menge grösser: √(200×2'000×120 ÷ (49×15)) ≈ 256 Stk. → weniger Bestellungen (eigene Zusatzrechnung).</p>
+
+<h3>20.13 Balanced Scorecard im SCM (AlpineMed AG)</h3>
+<table class="small">
+<tr><th>Kennzahl / Ziel</th><th>Perspektive</th></tr>
+<tr><td>A Beschaffungskosten −10 % in 2 Jahren</td><td>Finanzen</td></tr>
+<tr><td>B Termintreue von 93 % auf ≥ 98 %</td><td>Kunden</td></tr>
+<tr><td>C Lagerreichweite −15 %</td><td>Interne Prozesse</td></tr>
+<tr><td>D ≥ 3 SCM-Weiterbildungen pro MA und Jahr</td><td>Lernen &amp; Entwicklung</td></tr>
+<tr><td>E CO₂ der Lieferkette −20 % (mehr regionale Lieferanten)</td><td>zusätzliche Perspektive <b>Nachhaltigkeit/Umwelt</b> oder Integration in <b>Interne Prozesse</b></td></tr>
+</table>
+<p class="small"><b>2. Nachhaltigkeit integrieren (Musterantwort):</b> Die klassische BSC betrachtet v. a. finanzielle und operative Erfolgsfaktoren. Nachhaltigkeit gewinnt strategisch an Bedeutung und muss systematisch berücksichtigt werden. Sinnvoll ist entweder eine eigenständige Perspektive „Nachhaltigkeit“ oder die Integration entsprechender Kennzahlen in die Prozessperspektive. Dadurch werden ökologische Ziele messbar und regelmässig überwacht. Das stärkt die langfristige Wettbewerbsfähigkeit und erfüllt steigende Kunden- und Gesetzesanforderungen. <i>(Eigene Perspektive, wenn Nachhaltigkeit Kern der Strategie ist; Integration, wenn sie ein Prozessziel unter mehreren ist.)</i><br>
+<b>3. Herausforderungen international + Lösungen:</b> (1) unterschiedliche Datenstandards/IT-Systeme der Standorte → zentrale Datenplattform mit standardisierten Kennzahlen und automatischer Datenerfassung. (2) geringe Akzeptanz neuer Kennzahlen bei MA → frühe Einbindung, Schulungen, transparente Kommunikation von Zielen und Nutzen. <i>Weitere mögliche:</i> kulturelle Unterschiede, zu viele KPIs (Fokus auf wenige), Lieferantendaten fehlen (vertraglich einfordern).</p>
+</div>
+
+<!-- ANHANG -->
+<div class="ub">
+<h2>Anhang A – Formelsammlung</h2>
+<span class="formel">ABC: Jahreswert = Preis × Jahresbedarf; Anteil = Jahreswert ÷ Gesamtwert × 100; kumulieren; A ≈ 70–80 %, B ≈ 15–25 %, C ≈ 5 %
+
+Andler: x_opt = √(200 × Jahresbedarf × Bestellkosten ÷ (Einstandspreis × Lagerkostensatz[%]))
+Anzahl Bestellungen = Jahresbedarf ÷ Bestellmenge;  Bestellkosten/Jahr = Anzahl × Kosten pro Bestellung
+Lagerkosten/Jahr (Produkt) = (Bestellmenge ÷ 2) × Einstandspreis × Lagerkostensatz
+
+Lagerkostensatz [%] = Lagerkosten ÷ Ø Lagerwert × 100   (≈ 15 %)
+Ø Lagerbestand = Bestellmenge ÷ 2 = (AB + EB) ÷ 2 = (AB + 12 Monatsbestände) ÷ 13
+Ø Lagerwert = Ø Lagerbestand × Einstandspreis
+Lagerumschlag = Jahresverbrauch ÷ Ø Lagerbestand
+Ø Lagerdauer = 360 ÷ Lagerumschlag
+Lagerreichweite = Bestand ÷ Verbrauch pro Periode
+Sicherheitszeit = Sicherheitsbestand ÷ Tagesverbrauch
+Bestellpunkt = Verbrauch pro Periode × Lieferzeit + Sicherheitsbestand
+Fehlmenge = Bedarf während Lieferzeit − verfügbarer Bestand
+
+Beschaffungskosten/Stück = (Warenwert + Transport + Zoll + Nebenkosten) ÷ Menge
+Einstandspreis = Angebotspreis − Rabatt − Skonto + Bezugskosten
+Einstandskosten (TCO) = extern + interne Bestellkosten + Lager-/Kapitalkosten
+
+Personal: Einsatzbedarf = Produktionsmenge ÷ Leistung pro MA; Gesamt = Einsatz + Fluktuation (% × Einsatz) + Pensionierungen
+Auslastungsgrad = belegte Kapazität ÷ verfügbare Kapazität × 100; freie Kapazität = verfügbar − belegt
+Durchlaufzeit = Prozesszeit + Wartezeit
+OEE = Verfügbarkeit × Leistung × Qualität (Ergänzung)</span>
+
+<h2 style="margin-top:8px;">Anhang B – Antwort-Schemas für Fallaufgaben</h2>
+<table>
+<tr><th style="width:23%">Aufgabentyp</th><th>Vorgehen / Checkliste</th></tr>
+<tr><td><b>Rechenaufgabe</b></td><td>Gegebene Werte notieren → Formel → einsetzen → Resultat mit Einheit (Stk., Tage, CHF, %) → Interpretation + Handlungsempfehlung.</td></tr>
+<tr><td><b>Transportmittel wählen</b></td><td>Vergleich Kosten / Zeit / CO₂ in Tabelle → Muss-Kriterium (Frist) zuerst → unter den zulässigen günstigste/nachhaltigste → weitere Kriterien (Ware, Zuverlässigkeit, Zoll, Flexibilität).</td></tr>
+<tr><td><b>Lieferkettenstörung</b></td><td>1 Auswirkungen (Produktion, Lager, Kunden) · 2 Risiken (Umsatz, Kosten, Image, Kundenverlust) · 3 kurzfristig (Alternativlieferant, Express, Priorisierung, Kommunikation) · 4 langfristig (Multi-Sourcing, Sicherheitsbestand, Nearshoring, Risikomanagement).</td></tr>
+<tr><td><b>Make or Buy</b></td><td>Kosten pro Stück/TCO vergleichen (inkl. Transport, Zoll, Lager, Kapitalbindung) → qualitative Kriterien (Kernkompetenz, Marktmacht, Qualität, ESG, Abhängigkeit, Lieferzeit) → Vor-/Nachteile → Empfehlung mit Begründung, ggf. Dual Sourcing.</td></tr>
+<tr><td><b>Beschaffungsstrategie</b></td><td>ABC (Wert) + XYZ (Planbarkeit) bestimmen → Feld der Matrix → Disposition (JIT, verbrauchs-/bedarfsgesteuert, Kanban), Sourcing (Single/Multiple), Bestellpolitik (t/q, t/S, s/q, s/S).</td></tr>
+<tr><td><b>Lagerfragen</b></td><td>Kennzahlen (Umschlag, Dauer, Reichweite, Kostensatz) → Engpass prüfen (Bedarf in Lieferzeit vs. Bestand) → Bestellpunkt/Sicherheitsbestand anpassen → Lagerart/-standort begründen (zentral vs. dezentral, chaotisch vs. fest).</td></tr>
+<tr><td><b>Prozessoptimierung</b></td><td>Ist-Analyse (Wertstrom, Gemba, Verschwendung nach TIMWOOD/3 Mu) → Ziele (Zieldreieck beachten) → Methode wählen und begründen (Kaizen/KVP = kleine Schritte; BPR = radikal; PDCA als Zyklus; 5S Arbeitsplatz) → Massnahmen → KPIs zur Kontrolle.</td></tr>
+<tr><td><b>Balanced Scorecard</b></td><td>Ziele den 4 Perspektiven zuordnen (Finanzen–Kunden–Prozesse–Lernen) → je Ziel KPI, Zielwert, Massnahme → Ursache-Wirkungs-Kette erklären → Zusatzperspektive (Nachhaltigkeit, Compliance, Ethik) begründen → Einführungs-Herausforderungen + Lösungen.</td></tr>
+<tr><td><b>Kennzahlen interpretieren</b></td><td>Je Kennzahl: Wert einordnen (gut/kritisch, Richtwert) → mögliche Ursachen → Zusammenhang erkennen (z. B. OEE → Termintreue) → Priorität → konkrete Massnahmen.</td></tr>
+<tr><td><b>Wachstum / Ressourcen</b></td><td>Ressourcen (Personal, Maschinen, Lager, Lieferanten, IT) · KPIs · Risiken · benötigte Daten (ERP) · Investitionen · Kernaussage: Kapazitäten müssen mitwachsen.</td></tr>
+</table>
+
+<h2 style="margin-top:8px;">Anhang C – Typische Fallen</h2>
+<div class="cols2 small">
+<ul>
+<li>ABC nach <b>Jahreswert</b> (Preis × Menge), nicht nach Menge oder Preis allein.</li>
+<li>XYZ = Planbarkeit/Schwankung, nicht Wert.</li>
+<li>Andler: Satz in % als Zahl → Faktor 200; als Dezimal → Faktor 2. Nicht mischen!</li>
+<li>Andler-Voraussetzungen (konstanter Verbrauch/Preis, keine Fehlmengen) nennen können.</li>
+<li>Lagerkosten ≠ Lagerhaltungskosten (Betrieb vs. Kapital/Risiko).</li>
+<li>Ø Bestand = Bestellmenge ÷ 2 (bei regelmässigem Verbrauch).</li>
+<li>Lagerdauer mit <b>360</b> Tagen (Kursstandard).</li>
+<li>Reichweite in der Einheit des Verbrauchs (Tage/Wochen).</li>
+<li>Bestellpunkt enthält den Sicherheitsbestand.</li>
+<li>Skonto nur abziehen, wenn genutzt („soll genutzt werden“).</li>
+</ul>
+<ul>
+<li>Billigster Einkaufspreis ≠ tiefste TCO.</li>
+<li>JIT braucht 100 % Qualität und zuverlässige Lieferanten – erhöht Abhängigkeit.</li>
+<li>Kaizen/KVP = kleine Schritte, bottom-up; BPR = radikal, top-down.</li>
+<li>Wertstromanalyse beginnt beim <b>Warenausgang</b> (Kundensicht).</li>
+<li>Muda = Verschwendung, Mura = Unausgeglichenheit, Muri = Überlastung.</li>
+<li>Abfallhierarchie: Vermeiden vor Wiederverwenden vor Recycling vor energetischer Verwertung vor Beseitigung.</li>
+<li>Werkstatt = Verrichtungsprinzip; Fliess = Objektprinzip.</li>
+<li>Sorten- ≠ Serienfertigung (ähnliche Produkte vs. identische Lose).</li>
+<li>Beschaffung (Porter, unterstützend) ≠ Eingangslogistik (primär).</li>
+<li>BSC: Termintreue = Kunde; Lagerreichweite = Prozess; Kosten = Finanzen; Weiterbildung = Lernen.</li>
+</ul>
+</div>
+</div>
+
+<div class="ub">
+<h2>Anhang D – Stichwortverzeichnis (Begriff → Kapitel)</h2>
+<div class="idx">
+<div><b>A</b> · ABC-Analyse 4 · Abfallhierarchie 11 · Alpentransit 9 · Andler-Formel 7 · Auslastungsgrad 20.9 · AZPERK 12</div>
+<div><b>B</b> · Balanced Scorecard 19, 20.13 · Baustellenfertigung 3 · Bedarfsermittlung 6 · Beschaffung 16 · Beschaffungsformen 16.1 · Beschaffungskosten/Stück 20.3 · Beschaffungsstrategien 16.2 · Bestellkosten 7 · Bestellmenge 7 · Bestellpolitik 16.3 · Bestellpunkt 15, 20.7 · BPR 12 · Bossard 4</div>
+<div><b>C</b> · C-Teile-Management 4 · Chaotische Lagerung 15 · Containerisierung 9 · Compliance (BSC) 19 · CSR 19</div>
+<div><b>D</b> · Deming 12 · Design Thinking 13 · Deterministisch 6 · DfM 14 · DFSS/DMADV 12 · Dual Sourcing 16, 20.3 · Durchlaufzeit 5, 12</div>
+<div><b>E</b> · Einstandskosten 18, 20.12 · Einstandspreis 18 · Einzelfertigung 3 · Entsorgung 11 · Externe Logistik 2</div>
+<div><b>F</b> · Fallweise Beschaffung 16.1 · Festplatzlagerung 15 · Fliessfertigung 3</div>
+<div><b>G</b> · Gemba Walk 12 · Geschäftsprozess 12 · Global Sourcing 16 · GPO 12 · Gruppenfertigung 3</div>
+<div><b>H–I</b> · Heijunka 10 · Heuristisch 6 · Insourcing 17 · Interne Logistik 2</div>
+<div><b>J–K</b> · JIS 8 · JIT 8, 16.1 · Kaizen 12 · Kanban 4, 8, 16 · Kapitalbindung 7, 18 · Kombinierter Verkehr 9 · Kreislaufwirtschaft 11 · KVP 12</div>
+<div><b>L</b> · Lagerdauer 15, 20.4 · Lagerhaltungskosten 7, 15 · Lagerkosten 15 · Lagerkostensatz 15, 20.4 · Lagerplatzzuordnung 15 · Lagerreichweite 15, 20.5 · Lagerumschlag 15, 20.4 · Lean Management 8 · Logistik 15 · Luftfracht 9</div>
+<div><b>M</b> · Magisches Zieldreieck 5 · Make or Buy 17, 20.3 · Make to Order/Stock 3, 16.1 · Massenfertigung 3 · Muda/Mura/Muri 10 · Multiple Sourcing 4</div>
+<div><b>N–O</b> · Nearshoring 16, 20.2 · NPS 19 · OEE 2, 19, 20.10 · OTIF 2 · Outsourcing 17</div>
+<div><b>P</b> · PDCA 12 · Personalbedarf 20.8 · Poka Yoke 10 · Porter 2 · Primäraktivitäten 2 · Produktionssynchron 16.1 · Produktionstypen 3 · Prototyping 13</div>
+<div><b>R</b> · 7 R Kreislauf 11 · 7 R Logistik 15 · 6 R Beschaffung 16 · Recycling 11 · Reihenfolgelagerung 15 · Ressourcenplanung 20.11</div>
+<div><b>S</b> · 5S 12 · Schiene 9 · SCM 1 · Seetransport 9 · Serienfertigung 3 · SFS 4 · Sicherheitsbestand 15, 20.5 · Sicherheitszeit 20.5 · Single Sourcing 4 · SIPOC 12 · Six Sigma 12 · SMED 10 · Sortenfertigung 3 · Stochastisch 6 · Strassentransport 9</div>
+<div><b>T</b> · TCO 18, 20.12 · TIMWOOD 10 · TPM 10 · TPS / Toyota 8, 10 · TQM 12 · Transportwahl 9, 20.1</div>
+<div><b>U–Z</b> · Unterstützungsaktivitäten 2 · UX 13 · Verschwendung 10 · Vorratsbeschaffung 16.1 · Werkstattfertigung 3 · Wertschöpfungskette 2 · Wertstromanalyse 12 · Working Capital 16.2 · Würth 4 · XYZ-Analyse 4, 16.2 · Zentrallager 15, 20.6 · Zonenlagerung 15</div>
+</div>
+</div>
+
+</body>
+</html>
