@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Informatik und Technologie – Prüfungsunterlage UB 1–9</title>
+<style>
+@page { size: A4; margin: 13mm 12mm 15mm 12mm; }
+:root { --c1:#1f4e79; --c2:#2e75b6; --bg:#eef4fa; --warn:#fff4d6; --ok:#e8f5e9; --line:#b8c7d6; }
+* { box-sizing: border-box; }
+body { font-family: "DejaVu Sans", Arial, sans-serif; font-size: 8.9pt; line-height: 1.32; color:#111; margin:0; background:#fff; }
+h1 { font-size: 20pt; color: var(--c1); margin: 0 0 4px; }
+h2 { font-size: 13pt; color:#fff; background: var(--c1); padding: 4px 8px; margin: 0 0 6px; break-after: avoid; }
+h3 { font-size: 10.2pt; color: var(--c1); border-bottom: 1.5px solid var(--c2); margin: 9px 0 4px; padding-bottom: 1px; break-after: avoid; }
+h4 { font-size: 9.2pt; margin: 6px 0 2px; color:#222; break-after: avoid; }
+p { margin: 2px 0 4px; }
+ul, ol { margin: 2px 0 4px 0; padding-left: 15px; }
+li { margin: 0 0 1px; }
+table { width: 100%; border-collapse: collapse; margin: 3px 0 6px; break-inside: auto; }
+tr { break-inside: avoid; }
+th, td { border: 1px solid var(--line); padding: 2px 4px; vertical-align: top; text-align: left; }
+th { background: var(--bg); font-weight: bold; }
+.ub { break-before: page; }
+.box { border-left: 4px solid var(--c2); background: var(--bg); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.merke { border-left: 4px solid #d4a017; background: var(--warn); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.ok { border-left: 4px solid #2e7d32; background: var(--ok); padding: 3px 7px; margin: 4px 0 6px; break-inside: avoid; }
+.merke b:first-child, .box b:first-child, .ok b:first-child { color: #000; }
+.cols2 { column-count: 2; column-gap: 14px; }
+.cols2 > * { break-inside: avoid; }
+.cols2 table { font-size: 8pt; table-layout: fixed; }
+.cols2 td, .cols2 th { overflow-wrap: anywhere; hyphens: auto; }
+.lz { font-size: 8.3pt; color:#333; background:#f6f6f6; border:1px dashed #bbb; padding: 3px 6px; margin-bottom: 6px; }
+.small { font-size: 8pt; }
+code, .mono { font-family: "DejaVu Sans Mono", Consolas, monospace; font-size: 8.4pt; background:#f1f1f1; padding: 0 2px; }
+.formel { font-family: "DejaVu Sans Mono", Consolas, monospace; background:#fff; border:1.5px solid var(--c1); padding: 4px 8px; margin: 4px 0; display:block; font-size: 9pt; break-inside: avoid; white-space: pre-line; }
+.toc td { border: none; border-bottom: 1px dotted #aaa; padding: 2px 4px; }
+.idx { column-count: 3; column-gap: 12px; font-size: 8.2pt; }
+.idx div { break-inside: avoid; }
+.tag { display:inline-block; background: var(--c2); color:#fff; border-radius: 3px; padding: 0 4px; font-size: 7.6pt; font-weight: bold; }
+.ans { color: #1b5e20; font-weight: bold; }
+.cover { border: 3px solid var(--c1); padding: 16px 18px; margin-top: 10px; }
+.flow { font-weight: bold; color: var(--c1); }
+</style>
+</head>
+<body>
+
+<!-- ===================== DECKBLATT + INHALT ===================== -->
+<div class="cover">
+  <h1>Informatik und Technologie</h1>
+  <p style="font-size:11pt; margin:0 0 4px;"><b>Prüfungsunterlage (Open Book) – UB 1 bis UB 9</b></p>
+  <p class="small">Zusammenfassung der Unterrichtsfolien (Dozent: Milan Kostić, HF Wirtschaft, Version 2026). Pro UB: Lernziele, Begriffe, Modelle, Formeln, Beispiele, typische Denkfehler und Quiz-Lösungen. Am Ende: Antwort-Schemas, Rechen-Spick und Stichwortverzeichnis.</p>
+</div>
+
+<h3>Inhaltsverzeichnis</h3>
+<table class="toc">
+<tr><td><b>UB 1</b></td><td>Daten, Information, Informatik · DIKW-Pyramide · Anatomie einer Entscheidung (Input–Prediction–Judgment–Action–Outcome–Feedback)</td></tr>
+<tr><td><b>UB 2</b></td><td>EVA-Prinzip · Von-Neumann-Modell, Bussystem, Flaschenhals · Zentraleinheit vs. Peripherie · Hardware/Software/Firmware · BIOS, ROM, UEFI, Secure Boot</td></tr>
+<tr><td><b>UB 3</b></td><td>Zusammenspiel Anwendung–Betriebssystem–Treiber–Hardware · Aufgaben des Betriebssystems · GUI/CLI-Befehle · Softwarearten · TCO, ROI, Amortisation</td></tr>
+<tr><td><b>UB 4</b></td><td>Netzwerkkomponenten (Switch, Router, Access Point) · LAN/WAN/WLAN/VPN · IP, Gateway, DNS, Port, NAT · ipconfig/nslookup/tracert · Cloud: IaaS/PaaS/SaaS, Public/Private/Hybrid/Community</td></tr>
+<tr><td><b>UB 5</b></td><td>Algorithmus · Regel vs. Lernen · KI, ML, neuronale Netze · Neuron/Perzeptron · Training/Validierung/Test · LLM, Tokens, Embeddings, Transformer, RAG · Turing-Test, Chinesisches Zimmer · Prüffelder · Prompt</td></tr>
+<tr><td><b>UB 6</b></td><td>Digitisation/Digitalisation/digitale Transformation · Industrie 1.0–4.0 · Trend/Megatrend · Geschäftsmodell, Business Model Canvas, Uber · inkrementelle/radikale Innovation</td></tr>
+<tr><td><b>UB 7</b></td><td>Internet of Things · Sensor/Aktor/Anwendung · Datenweg (Erfassen–Verbinden–Verarbeiten–Nutzen) · Gateway, Edge vs. Cloud · Nutzen &amp; Kennzahl · Risiken &amp; Rollen</td></tr>
+<tr><td><b>UB 8</b></td><td>Schutzziele CIA · Schweizer Cyberfälle · Bedrohung/Schwachstelle/Risiko · Phishing, Ransomware, MFA, Backup · Datenschutz (DSG, EDÖB, BACS) · Ethical Hacking · Teamregeln</td></tr>
+<tr><td><b>UB 9</b></td><td>Fall Organkery · Protokolle/Spuren · Umsetzungs- und Kontrollplan · PDCA · ISMS · ISO/IEC 27001 · Geteilte Verantwortung in der Cloud (SaaS)</td></tr>
+<tr><td><b>Anhang</b></td><td>A: Antwort-Schemas für Fallaufgaben · B: Rechen-Spick · C: Typische Fallen · D: Stichwortverzeichnis</td></tr>
+</table>
+
+<div class="box"><b>Roter Faden über alle UBs:</b> Daten → Information → Entscheidung (UB 1) · Hardware verarbeitet Daten (UB 2) · Software und Betriebssystem steuern die Hardware, Investition beurteilen (UB 3) · Netzwerk und Cloud verbinden (UB 4) · KI verarbeitet Daten zu Vorhersagen und Texten (UB 5) · Digitaler Wandel und Geschäftsmodelle (UB 6) · Vernetzte Dinge (UB 7) · Sicherheit und Datenschutz (UB 8) · Sicherheit organisieren und Cloud-Verantwortung (UB 9).</div>
+
+<div class="merke"><b>Prüfungstipp (gilt für alle Fallaufgaben):</b> Immer <b>Begriff + Funktion + konkretes Beispiel aus dem Fall + Begründung</b>. Belegte Angaben von eigenen <b>Annahmen</b> trennen. Bei Empfehlungen: <b>Bedingung, Risiko, zuständige Rolle, Prüfung/Nachweis</b> nennen. Kennzahlen (TCO, ROI) nie allein entscheiden lassen.</div>
+
+<!-- ===================== UB 1 ===================== -->
+<div class="ub">
+<h2>UB 1 – Daten, Information, DIKW und Entscheidungen</h2>
+<div class="lz"><b>Lernziele:</b> (1) Informatik, Information, Daten definieren und unterscheiden. (2) DIKW-Pyramide erklären, eigenes Beispiel anwenden, Anwendungsfälle vergleichen. (3) Input, Prediction, Judgment, Action, Outcome, Feedback erklären, auf betriebliche Entscheidung anwenden, Qualität des Entscheidungsprozesses beurteilen.</div>
+
+<h3>1.1 Definitionen</h3>
+<table>
+<tr><th style="width:17%">Begriff</th><th>Definition / Merkmale</th></tr>
+<tr><td><b>Informatik</b></td><td>Kunstwort aus <b>Information + Automatik</b> (dt. Ursprung, 1950er/60er-Jahre). <i>Arbeitsdefinition:</i> Informatik untersucht, wie Informationen mit technischen Systemen <b>dargestellt, verarbeitet, gespeichert und übertragen</b> werden. Engl. <i>Computer Science</i> (stärkerer Fokus auf wissenschaftlich-theoretische Grundlagen). Duden: „Wissenschaft von den elektronischen Datenverarbeitungsanlagen und den Grundlagen ihrer Anwendung“. Wortbedeutung.info: „Strukturwissenschaft, die sich mit der Information und deren automatischer Verarbeitung befasst“. <i>Gemeinsam:</i> automatische Verarbeitung von Information.</td></tr>
+<tr><td><b>Daten</b></td><td><b>Codierte Darstellungen</b> von Beobachtungen, Messwerten, Ereignissen oder Symbolen. Roh, unverarbeitet. Erst durch Zuordnung zu einer <b>Fragestellung und einem Kontext</b> entsteht Information. Duden: Plural von Datum; Zahlenwerte aus Beobachtungen/Messungen; elektronisch gespeicherte Zeichen; vorgegebene Zahlenwerte (Mathe).</td></tr>
+<tr><td><b>„codiert“</b></td><td>NICHT Geheimschrift, sondern <b>in ein festgelegtes Zeichensystem / standardisiertes Format übersetzt</b> (Zahlen, Text, Symbole, binär). Bsp.: „Es ist sehr warm“ → <code>32</code> (°C); „Kunde hat bezahlt“ → <code>Status: 1</code>/TRUE; Farbe Rot → Hex <code>FF0000</code>.</td></tr>
+<tr><td><b>Information</b></td><td>Lat. Ursprung „Formgeben/Gestalten“. <b>Verarbeitete und kontextualisierte Daten</b>, die für den Empfänger <b>Bedeutung und Nutzen</b> haben. Im Geschäft: kritische Ressource für Entscheidungen (Datenanalyse, Business Intelligence).</td></tr>
+</table>
+
+<h3>1.2 Arten von Daten</h3>
+<table>
+<tr><th>Typ</th><th>Kennzeichen</th><th>Beispiele</th></tr>
+<tr><td><b>Strukturiert</b></td><td>festes Schema, Zeilen und Felder</td><td>Kundentabelle, Transaktionen, Excel-Tabelle, Kundendatenbank</td></tr>
+<tr><td><b>Semistrukturiert</b></td><td>flexible Struktur mit Tags oder Schlüsseln</td><td>JSON, XML</td></tr>
+<tr><td><b>Unstrukturiert</b></td><td>kein einheitliches Inhaltsschema</td><td>Freitext, E-Mail, Bilder, Audio, Video, Social-Media-Post</td></tr>
+</table>
+<p class="small"><b>Wichtigkeit von Daten:</b> Naturwissenschaften (Experimente, Theorien prüfen), Sozialwissenschaften (Umfragen, Interviews), Medizin (Behandlungen, Medikamente), Technik (Systeme optimieren), VWL (Prognosen), <b>BWL</b>: Entscheidungsfindung und Strategie (Umsätze, Kosten, Kundenverhalten, Markttrends) → datengetriebene Entscheidungen, Big-Data, Business-Intelligence. Bsp.: Amazon, Zalando, Digitec Galaxus → personalisierte Empfehlungen, Kaufprognosen.</p>
+
+<h3>1.3 DIKW-Pyramide (Data – Information – Knowledge – Wisdom)</h3>
+<p><b>1989 Russell Ackoff</b> (vier Stufen des Bewusstseins); <b>2007 Jennifer Rowley</b> (Analyse der Konzepte und Verbindungen). Basis = Daten, Spitze = Weisheit.</p>
+<table>
+<tr><th style="width:12%">Stufe</th><th style="width:30%">Bedeutung</th><th style="width:14%">Frage / Entscheidungsebene</th><th>Beispiel (Amazon)</th></tr>
+<tr><td><b>Daten</b></td><td>rohe, unverarbeitete Fakten und Zahlen; allein noch ohne Wert, aber Fundament</td><td>–</td><td>Name, Adresse, E-Mail; Verkaufszahlen; Clickstream; Lagerbestand. „38.5“</td></tr>
+<tr><td><b>Information</b></td><td>Daten organisiert, verarbeitet, interpretiert → Kontext und Relevanz</td><td><b>Was? Wann?</b> → <b>operative</b> Entscheidungen</td><td>„Produkt 4711 wurde in der Schweiz am 18.08.2026 23-mal verkauft.“ Verkaufsberichte, Kundendemografie. „28 % der Laufschuhkäufer kauften innert 24 h Laufsocken.“ „Der Patient hat 38.5 Grad Fieber.“</td></tr>
+<tr><td><b>Wissen</b></td><td>Analyse, Interpretation, Synthese von Informationen + Erfahrung/Expertise</td><td><b>Warum? Wie?</b> → <b>taktische</b> Entscheidungen</td><td>Kunden, die Laufschuhe kaufen, kaufen überdurchschnittlich oft Laufsocken (Hypothese: gleicher Nutzungskontext); Muster tritt wiederholt in mehreren Segmenten auf; saisonale Schwankungen. „Die Conversion stieg, <i>weil</i> der Checkout vereinfacht wurde.“</td></tr>
+<tr><td><b>Weisheit</b></td><td>Wissen und Erfahrung anwenden → fundierte Urteile; langfristige Konsequenzen, Ethik</td><td><b>strategische</b> Entscheidungen</td><td>In AWS investieren; Amazon Prime als Kundenbindung; Datenschutz/Nachhaltigkeit; Empfehlungen einsetzen, aber Nutzen, Datenschutz, Fairness, Kosten, Kundenvertrauen abwägen. „Trotz kurzfristiger Kosten in neues Shop-System investieren.“</td></tr>
+</table>
+<p><b>AWS-Kette:</b> Serverauslastung und Antwortzeiten (Daten) → Leistungsbericht (Information) → Nachfrageprognose / Trends Cloud-Nutzung (Wissen) → Kapazitätsentscheidung unter Abwägung von Kosten, Service-Level, Sicherheit, Ausfallrisiko (Weisheit). AWS-Treiber: interne Infrastrukturprobleme lösen, eigene Kernkompetenzen erkennen, Infrastruktur als Plattform anbieten.</p>
+<div class="merke"><b>Nutzen DIKW:</b> gemeinsames Vokabular, Einordnung von Daten → Urteilsbildung, Rahmen für Datenstrategie / Wettbewerbsvorteil. <b>Grenzen:</b> Transformation ist <b>nicht automatisch und nicht immer linear</b>; Datenqualität, Kontext, Menschen, Technologie, Governance und Ethik bleiben entscheidend. <b>Auch hochwertige Informationen treffen noch keine Entscheidung!</b></div>
+
+<h3>1.4 Anatomie einer Entscheidung</h3>
+<p>Grosse (Haus, Studium, ERP-System) und kleine Entscheidungen (Autopilot). <b>Sich nicht zu entscheiden ist auch eine Entscheidung.</b> Entscheidungen fallen meist unter <b>Ungewissheit</b> → man braucht eine Vorhersage. <b>Aber eine Vorhersage ist keine Entscheidung!</b></p>
+<span class="formel">Input → Prediction + Judgment → Action → Outcome → Feedback (→ Training / nächste Prediction)</span>
+<table>
+<tr><th style="width:14%">Element</th><th>Bedeutung</th><th style="width:34%">Arztbeispiel (Beinschmerzen)</th></tr>
+<tr><td><b>Input</b></td><td>Eingabedaten aus der Umgebung</td><td>Röntgen, Bluttest, Fragen</td></tr>
+<tr><td><b>Training</b></td><td>Erfahrung über Beziehungen zwischen Daten (lernen)</td><td>Medizinstudium, viele ähnliche Patienten</td></tr>
+<tr><td><b>Prediction</b></td><td>beschreibt, <b>was wahrscheinlich geschieht</b></td><td>„höchstwahrscheinlich Muskelkrampf, geringe Wahrscheinlichkeit Blutgerinnsel“</td></tr>
+<tr><td><b>Judgment</b></td><td>bewertet, welche Folgen <b>erwünscht, unerwünscht oder akzeptabel</b> sind (Nutzen aller Ergebnisse, Risiken, Werte, Intuition)</td><td>Fehlbehandlung Krampf als Gerinnsel = kurz unwohl; Gerinnsel als Krampf („Ruhe“) = ernste Komplikationen/Tod → evtl. trotz geringer Wahrscheinlichkeit Medikament</td></tr>
+<tr><td><b>Action</b></td><td>Handlung</td><td>Behandlung verabreichen</td></tr>
+<tr><td><b>Outcome</b></td><td>Ergebnis/Folge (Belohnung, Gewinn)</td><td>Schmerzen weg? Komplikationen?</td></tr>
+<tr><td><b>Feedback</b></td><td>vergleicht Outcome und Vorhersage, verbessert spätere Prognosen/Entscheidungen</td><td>Arzt lernt für nächste Vorhersage</td></tr>
+</table>
+<div class="merke"><b>Merke:</b> Eine gute Entscheidung kann unter Unsicherheit zu einem schlechten Ergebnis führen und umgekehrt (Ergebnis ≠ Entscheidungsqualität). <b>Für Führungskräfte:</b> Vorhersagen sind (zunehmend) automatisierbar (KI), die Bewertung von Zielen, Risiken und Werten (Judgment) bleibt menschlich. Im Strategieprozess (Umwelt-/Unternehmensanalyse = Input, SWOT/Portfolio, Vision/Mission = Judgment, Strategieentwicklung = Prediction, Umsetzung = Action, Strategische Kontrolle = Outcome/Feedback) ergänzen sich Prediction und Judgment; die Modelle sind nicht 1:1 gleichzusetzen.</div>
+</div>
+
+<!-- ===================== UB 2 ===================== -->
+<div class="ub">
+<h2>UB 2 – EVA, Von-Neumann, Hardware, BIOS/UEFI</h2>
+<div class="lz"><b>Lernziele:</b> (1) EVA-Prinzip und Von-Neumann-Architektur erklären und auf IT-Beispiele anwenden. (2) Zentrale Hardwarekomponenten benennen, Aufgaben erläutern, Zentraleinheit und Peripherie unterscheiden. (3) BIOS und UEFI als Firmware einordnen und Auswirkungen typischer Einstellungen beurteilen.</div>
+
+<h3>2.1 Hardware – warum wichtig?</h3>
+<p><b>Hardware</b> = Gesamtheit der physisch vorhandenen technischen Bestandteile (Mainboard, Tastatur …). Wichtig als Grundlage aller IT-Prozesse, Kommunikation mit IT, nachhaltiger Wettbewerbsvorteil, effizientes Arbeiten (keine Verzögerung durch knappe CPU/RAM), Warenströme (Amazon: Server, Scanner, Terminals), Echtzeitanalyse. <b>Kosten/Nutzen:</b> günstig vs. leistungsfähig abwägen; Lebenszyklus, Wartung, Anschlusskosten, Ausfallrisiko → ein teurer, zuverlässiger Server kann sich mehr lohnen (weniger Reparaturen, Skalierbarkeit).</p>
+
+<h3>2.2 EVA-Prinzip (Eingabe → Verarbeitung → Ausgabe)</h3>
+<table>
+<tr><th>Beispiel</th><th>Eingabe (Input)</th><th>Verarbeitung (Processing)</th><th>Ausgabe (Output)</th></tr>
+<tr><td>Zalando</td><td>Suche „weisse Sneaker, Grösse 42“</td><td>Algorithmus durchsucht DB, prüft Lager, Personalisierung, Preise/Rabatte/Versand</td><td>Trefferliste sortiert nach Relevanz/Preis</td></tr>
+<tr><td>Alexa</td><td>„Schalte das Licht ein“</td><td>Spracherkennung, Befehl an Smart-Home</td><td>Licht geht an</td></tr>
+<tr><td>Migros-Kasse</td><td>Barcode scannen</td><td>Preis aus DB, Gesamtbetrag</td><td>Display, Quittung</td></tr>
+<tr><td>Netflix</td><td>Klick auf Film</td><td>Verfügbarkeit, Qualität an Bandbreite anpassen</td><td>Film läuft</td></tr>
+<tr><td>Onlineshop (Quiz)</td><td>Artikelnummer per Tastatur</td><td>Computer sucht Artikel</td><td>Preis + Lagerbestand am Bildschirm</td></tr>
+</table>
+
+<h3>2.3 Von-Neumann-Modell (1945, John von Neumann)</h3>
+<p>Grundarchitektur der meisten Computer. Einheiten: <b>CPU</b> (Rechenwerk + Steuerwerk; real zusätzlich Register, Caches), <b>Hauptspeicher</b>, <b>Eingabe/Ausgabe</b>, <b>Verbindungssystem (Bus)</b>. Kennzeichen: <b>Stored-Program-Prinzip</b> = Programmbefehle und Daten im <b>selben adressierbaren Hauptspeicher</b>.</p>
+<div class="cols2">
+<div><h4>Von-Neumann-Zyklus der CPU</h4><ol><li><b>Fetch</b> – nächsten Befehl aus Speicher holen</li><li><b>Decode</b> – Befehl interpretieren</li><li><b>Execute</b> – ausführen (Daten lesen, verarbeiten, speichern)</li></ol>
+<h4>RAM (Random Access Memory)</h4><p><b>Flüchtig</b>, schnell, hält <b>Daten und Programmcode</b>, die gerade genutzt werden. Bei Ausschalten weg. Deutlich schneller als Massenspeicher. Mehr RAM → mehrere Programme gleichzeitig, weniger Auslagern. 8/16 GB garantieren allein keine hohe Gesamtleistung.</p></div>
+<div><h4>Bussystem (3 Teile)</h4><ul><li><b>Datenbus</b> – überträgt die eigentlichen Daten</li><li><b>Adressbus</b> – Speicheradressen (wo lesen/schreiben)</li><li><b>Steuerbus</b> – Steuer-/Statussignale (z. B. lesen oder schreiben)</li></ul><p class="small">YouTube: Adressbus bestimmt, wo die Videodaten im RAM liegen → Datenbus transportiert die Frames → Steuerbus signalisiert Lesen/Schreiben. Verarbeitungsanweisungen stehen in den Programmbefehlen, nicht im Steuerbus.</p>
+<h4>I/O-Geräte</h4><p>Eingabe: Tastatur, Maus, Mikrofon, Kamera, Touchscreen. Ausgabe: Monitor, Drucker, Lautsprecher, VR-Brille. Autonomes Fahren: Kameras/Sensoren = Eingabe, Bildschirm/Signale = Ausgabe.</p></div>
+</div>
+
+<h3>2.4 Von-Neumann-Flaschenhals</h3>
+<p><b>Begrenzter Datenaustausch zwischen Prozessor und Hauptspeicher</b>: Befehle und Daten liegen im selben Speicher und müssen über begrenzte Übertragungswege (Bandbreite, Latenz) bereitgestellt werden → CPU muss warten (Warteschlangen). Missverhältnis CPU-Geschwindigkeit vs. Datenbereitstellung. <b>Nicht vollständig beseitigbar</b>, nur reduzierbar:</p>
+<table>
+<tr><th>Massnahme</th><th>Wirkung</th><th>Bsp.</th></tr>
+<tr><td>1. Höhere Speicherbandbreite</td><td rowspan="3"><b>direkt</b> auf CPU-RAM-Engpass</td><td>Dual-Channel (zwei Kassen offen)</td></tr>
+<tr><td>2. CPU-Cache + Prefetching</td><td>kleiner schneller Speicher nahe CPU; Daten vorsorglich laden</td></tr>
+<tr><td>3. Passende Verbindungssysteme</td><td>CPU, Mainboard, Chipsatz, RAM müssen zusammenpassen (DDR5 auf DDR4-Board geht nicht; Autobahn → schmale Zufahrt)</td></tr>
+<tr><td>4. Mehrkern-CPU, Beschleuniger (GPU)</td><td rowspan="2">andere Engpässe des Gesamtsystems, <b>nicht direkt</b> CPU-RAM</td><td>nur bei parallelisierbaren Aufgaben (Video rendern); kann Bandbreitenbedarf sogar erhöhen</td></tr>
+<tr><td>5. SSD</td><td>schnelleres Starten/Laden; „SSD verkürzt Ladezeiten, behebt aber nicht den CPU-RAM-Flaschenhals“</td></tr>
+</table>
+<p class="small"><b>Fazit:</b> Welche Massnahme wirkt, hängt davon ab, <b>wo</b> das System wartet. Eine schnellere Einzelkomponente macht nicht automatisch das Gesamtsystem schneller.</p>
+<p><b>Spezialisierte Architekturen</b> (ergänzen, ersetzen nicht): <b>GPU</b> (viele ähnliche Berechnungen parallel: Grafik, Simulation, KI), <b>TPU/NPU</b> (KI-Beschleuniger), <b>Harvard-Architektur</b> (Programme und Daten <b>getrennt</b> gespeichert; Mikrocontroller, eingebettete Systeme), neuromorphe und Quantencomputer (Spezialgebiete). Ein neuronales Netz ist <b>keine</b> Rechnerarchitektur, sondern ein mathematisches Modell. BWL: mehr Tempo/Energieeffizienz vs. Kosten, Abhängigkeiten, Fachwissen.</p>
+
+<h3>2.5 Zentraleinheit vs. Peripherie</h3>
+<p><b>Zentraleinheit</b> („Gehirn“): <b>CPU, RAM, Mainboard</b> (mit ROM, Bussen, Schnittstellen, Chipsatz). Aufgaben: Befehle verarbeiten (CPU), Daten im RAM verwalten, Koordination über Busse/Schnittstellen. <b>Peripherie</b>: Geräte „um“ die Zentraleinheit, erweitern den Funktionsumfang.</p>
+<table>
+<tr><th>Gerät</th><th>Eingabe</th><th>Ausgabe</th><th>Massenspeicher</th></tr>
+<tr><td>Tastatur, Maus, Scanner, Digitalkamera</td><td>x</td><td></td><td></td></tr>
+<tr><td>DVD-ROM-Laufwerk</td><td>x</td><td></td><td>x</td></tr>
+<tr><td>Grafikkarte, Bildschirm, Drucker, Lautsprecher, Kopfhörer</td><td></td><td>x</td><td></td></tr>
+<tr><td>Netzwerkkarte, Modem, Soundkarte</td><td>x</td><td>x</td><td></td></tr>
+<tr><td>Festplatte, USB-Stick, DVD-Brenner</td><td>x</td><td>x</td><td>x</td></tr>
+</table>
+<p class="small">Steuerung: CPU führt Befehle aus; Betriebssystem, Treiber und Controller koordinieren Geräte. BWL: Bedarf bestimmen; neben Preis auch Energie, Wartung, Ausfallzeit, Lebensdauer, Erweiterbarkeit beachten.</p>
+
+<h3>2.6 Hardware, Software, Firmware</h3>
+<table>
+<tr><th style="width:14%">Begriff</th><th>Definition</th><th style="width:32%">Beispiele</th></tr>
+<tr><td><b>Hardware</b></td><td>alle physischen, berührbaren Komponenten</td><td>CPU, Mainboard, RAM, SSD, Bildschirm</td></tr>
+<tr><td><b>Software</b></td><td>Programme, Daten, Anweisungen, die ausgeführt/verarbeitet werden</td><td>Betriebssystem, Anwendungen, Apps</td></tr>
+<tr><td><b>Firmware</b></td><td><b>systemnahe Software</b>, steuert Grundfunktionen eines Geräts; in <b>nichtflüchtigem</b> Speicher (bleibt ohne Strom); näher an Hardware; initialisiert/steuert Hardware; aktualisierbar (Fehler, Sicherheitslücken, Kompatibilität)</td><td>UEFI eines Mainboards, SSD-Steuerung, Router-/Drucker-/Kamera-Firmware</td></tr>
+</table>
+
+<h3>2.7 BIOS, ROM, UEFI</h3>
+<div class="cols2">
+<div><h4>BIOS (Basic Input/Output System)</h4><p>Klassische Systemfirmware, läuft direkt nach dem Einschalten. Früher auf ROM-Chip, später EEPROM/Flash. Führt <b>POST (Power-On Self-Test)</b> durch (CPU, RAM, Hardware prüfen/initialisieren), sucht nach <b>Boot-Reihenfolge</b> ein startfähiges Medium (SSD, USB, Netzwerk). Einstellungen: Boot-Reihenfolge, Datum/Uhrzeit, Schnittstellen an/aus, Passwörter, teils CPU/RAM/Virtualisierung. Heute meist UEFI, „BIOS“ umgangssprachlich weiter verwendet.</p>
+<h4>ROM (Read Only Memory)</h4><p><b>Nichtflüchtig</b>. Klassisch: Inhalt bei Herstellung fix, nur lesbar. Weiterentwicklungen: <b>PROM</b> (einmalig programmierbar), <b>EPROM</b> (mit UV-Licht löschbar), <b>EEPROM</b> (elektrisch löschbar), <b>Flash</b> (blockweise elektrisch löschbar). Heutige BIOS/UEFI im Flash → updatebar. „Read-Only“ = historischer Ursprung.</p></div>
+<div><h4>Startvorgang (vereinfacht)</h4><ol><li>Firmware starten (CPU führt Firmware aus)</li><li>Hardware prüfen und initialisieren</li><li>Konfiguration einlesen (UEFI-Variablen; Uhrzeit aus RTC = Echtzeituhr)</li><li>Startmedium nach Boot-Reihenfolge wählen</li><li>UEFI Boot Manager startet <b>Bootloader</b> → lädt Betriebssystem in RAM</li><li>Kontrolle an Betriebssystem; Treiber verwalten Hardware</li></ol>
+<p class="small"><b>Einstellung ändern ≠ Firmwareupdate</b> (Einstellung = Konfigurationswert; Update = Firmwarecode ersetzt).</p>
+<h4>UEFI (Unified Extensible Firmware Interface)</h4><p>Moderne Systemfirmware, standardisierte Schnittstelle Firmware ↔ Betriebssystem. Prüft/initialisiert Hardware, bestimmt Startdatenträger, startet OS, Hardware-/Sicherheitseinstellungen, moderne Datenträger. <b>Secure Boot</b>: prüft, ob Startprogramme <b>digital signiert und zugelassen</b> sind.</p></div>
+</div>
+<p><b>UEFI im Unternehmen:</b> Beschaffung/Kompatibilität (neue OS setzen UEFI-Funktionen voraus) · Sicherheit (Secure Boot, Firmwareupdates) · Verfügbarkeit (Boot-Reihenfolge, Neustart nach Stromausfall) · Wartung (Versionen dokumentieren, Updates kontrolliert) · Risiken (falsche Einstellung/fehlgeschlagenes Update → Gerät startet nicht).</p>
+<div class="box"><b>Praxisfall Kassensysteme – „AC Power Recovery“:</b> <b>Power Off</b> (bleibt aus) · <b>Power On</b> (startet automatisch) · <b>Last Power State</b> (vorheriger Zustand). Beurteilung: Autostart reduziert Ausfallzeit und Einsätze; unkontrollierter Start problematisch, wenn Netzwerk/Zahlungsdienst/Backend noch nicht bereit. Passende Einstellung hängt von Abläufen, Sicherheit, Wiederanlaufplan ab. Updates getestet, dokumentiert, im Wartungsfenster. <b>Entscheidend: Verhalten bewusst festlegen und dokumentieren.</b></div>
+</div>
+
+<!-- ===================== UB 3 ===================== -->
+<div class="ub">
+<h2>UB 3 – Betriebssystem, Software, TCO/ROI/Amortisation</h2>
+<div class="lz"><b>Lernziele:</b> (1) Zusammenspiel Anwendung–Betriebssystem–Hardware an einem Vorgang erklären. (2) Betriebssystem als Vermittler einordnen, Aufgaben an Beispielen erläutern. (3) System- vs. Anwendungssoftware unterscheiden; Anwendungssoftware nach Funktion und Anpassungsgrad einordnen. (4) TCO, ROI, Amortisation berechnen, interpretieren, begründete Empfehlung formulieren.</div>
+
+<h3>3.1 Schichten: von der Hardware zum Ergebnis</h3>
+<p class="flow">Hardware (CPU, RAM, Speicher, I/O) → Firmware (BIOS/UEFI startet) → Betriebssystem (verwaltet Ressourcen) → Anwendung (Benutzeraufgabe) → Ergebnis</p>
+<p class="flow">Benutzeraktion → Anwendung (erstellt Auftrag) → Betriebssystem (Systemdienste) → Treiber (übersetzt für Gerät) → Hardware (führt aus)</p>
+<table>
+<tr><th>Schritt</th><th>Ebene</th><th>Funktion</th><th>Beispiel PowerPoint speichern</th></tr>
+<tr><td>1</td><td>Benutzeraktion</td><td>Person löst Funktion aus</td><td>„Speichern“ wählen</td></tr>
+<tr><td>2</td><td>Anwendung</td><td>bereitet Daten und Dateiformat vor</td><td>PowerPoint bereitet Präsentationsdaten vor</td></tr>
+<tr><td>3</td><td>Betriebssystem</td><td>prüft Pfad und Rechte, verwaltet Schreibvorgang</td><td>Dateisystem wird aktualisiert</td></tr>
+<tr><td>4</td><td>Hardware</td><td>verarbeiten, halten, speichern</td><td>CPU verarbeitet, RAM hält bereit, SSD speichert dauerhaft</td></tr>
+</table>
+<p class="small"><b>Drucken (Excel):</b> Excel bereitet Inhalt/Druckeinstellungen vor → Betriebssystem prüft Berechtigungen, verwaltet Druckauftrag, übermittelt über Treiber → CPU/RAM verarbeiten, SSD hält Datei, Drucker gibt aus. <b>Störung:</b> zuerst klären, auf welcher Ebene die Ursache liegt.</p>
+
+<h3>3.2 Betriebssystem als Vermittler – 5 Aufgaben</h3>
+<table>
+<tr><th>Aufgabe</th><th>Was wird organisiert?</th><th>Praxisbeispiel</th></tr>
+<tr><td><b>Prozessverwaltung</b></td><td>Start, Ausführung, Reihenfolge, Beendigung laufender Programme; Prozessorzeit verteilen</td><td>Excel und Browser erhalten abwechselnd Rechenzeit; Excel hängt, Teams läuft weiter</td></tr>
+<tr><td><b>Speicherverwaltung</b></td><td>Zuteilung und Freigabe von RAM</td><td>grosse Datei erhält RAM, nach Schliessen frei</td></tr>
+<tr><td><b>Geräteverwaltung</b></td><td>Zugriff auf Ein-/Ausgabegeräte über Treiber</td><td>Druckauftrag an passenden Drucker</td></tr>
+<tr><td><b>Dateiverwaltung</b></td><td>Dateien, Ordner, Speicherorte, Zugriffsrechte</td><td>Präsentation im richtigen Ordner gespeichert</td></tr>
+<tr><td><b>Benutzer &amp; Sicherheit</b></td><td>Anmeldung, Berechtigungen, Schutz von Ressourcen</td><td>nur Berechtigte öffnen vertrauliche Kundendaten</td></tr>
+</table>
+<p><b>Lebenszyklus eines Programms:</b> <b>Start</b> (Code von SSD in RAM laden) → <b>Laufzeit</b> (Prozess einrichten, Ressourcen zuteilen, überwachen) → <b>Schutz</b> (kontrollierte Zugriffe; Excel darf keine Systemdateien ändern) → <b>Ende</b> (Ressourcen freigeben; fehlerhafte Prozesse beenden).</p>
+<p><b>Treiber</b> = Systemsoftware, übersetzt allgemeine Aufträge des Betriebssystems in Befehle für ein bestimmtes Gerät („Gerät führt aus, Treiber übersetzt, Betriebssystem koordiniert“). Bsp.: „Scannen in Farbe, 300 dpi“ → Treiber übersetzt für das Scannermodell.</p>
+
+<h3>3.3 GUI vs. CLI und Windows-Befehle (cmd)</h3>
+<p><b>GUI</b> (Fenster, Symbole, Menüs; visuelle Orientierung, Standardaufgaben) vs. <b>CLI</b> (Textbefehle; Diagnose, wiederholbare Abläufe, Administration). Beide nutzen <b>dieselben Betriebssystemdienste</b>.</p>
+<table>
+<tr><th>Befehl</th><th>Wirkung</th><th>BS-Bezug</th></tr>
+<tr><td><code>systeminfo</code></td><td>OS-Name/Version, Hardware, Arbeitsspeicher</td><td>Systeminfo, Ressourcenübersicht</td></tr>
+<tr><td><code>tasklist</code></td><td>laufende Prozesse (Name, PID, Speicher); ein Programm kann aus mehreren Prozessen bestehen</td><td>Prozessverwaltung</td></tr>
+<tr><td><code>dir</code></td><td>Dateien und Unterordner des aktuellen Pfads</td><td>Datei-/Ordnerverwaltung</td></tr>
+<tr><td><code>mkdir UB3_Test</code></td><td>Ordner erstellen</td><td>Dateisystemverwaltung</td></tr>
+<tr><td><code>cd UB3_Test</code> / <code>cd ..</code></td><td>in Ordner wechseln / eine Ebene zurück</td><td>Navigation im Dateisystem</td></tr>
+<tr><td><code>rmdir UB3_Test</code></td><td>leeren Ordner entfernen</td><td>Dateisystemverwaltung</td></tr>
+</table>
+
+<h3>3.4 Softwarearten</h3>
+<p><b>Kernfrage:</b> Unterstützt die Software den <b>Systembetrieb</b> (→ Systemsoftware) oder eine konkrete <b>Benutzer-/Geschäftsaufgabe</b> (→ Anwendungssoftware)?</p>
+<div class="cols2">
+<div><h4>Systemsoftware</h4><ul><li><b>Betriebssystem</b>: Windows, Linux, macOS</li><li><b>Gerätetreiber</b>: Drucker-, Scannertreiber</li><li><b>Systemnahe Hilfsprogramme</b>: Task-Manager, Windows-Sicherheit, Datenträgerbereinigung, Sicherung</li></ul>
+<h4>Anwendungssoftware nach Funktion</h4><ul><li>Büro/Produktivität: Word, Excel, PowerPoint</li><li>Kommunikation/Zusammenarbeit: Outlook, Teams, Zoom</li><li>Betriebliche Fachanwendung: CRM, ERP, Buchhaltung</li><li>Multimedia/Gestaltung: Photoshop, Filmora</li><li>Lernen/Information: LernGenius, Moodle</li></ul></div>
+<div><h4>Anwendungssoftware nach Anpassungsgrad</h4><table><tr><th>Art</th><th>Merkmale</th><th>Bsp.</th></tr>
+<tr><td><b>Standard</b></td><td>für viele Unternehmen; schnell verfügbar, breite Funktionen, begrenzte Passgenauigkeit</td><td>Microsoft 365</td></tr>
+<tr><td><b>Branchen</b></td><td>für typische Anforderungen einer Branche; spezialisierte Funktionen</td><td>Arztpraxissoftware</td></tr>
+<tr><td><b>Individual</b></td><td>für einen Auftraggeber; hohe Passgenauigkeit, aber Entwicklungs-/Wartungsaufwand</td><td>massgeschneiderte Disposition</td></tr></table></div>
+</div>
+<table>
+<tr><th>Beispiel</th><th>Rolle</th><th>Weitere Einordnung</th></tr>
+<tr><td>Windows 11</td><td>Systemsoftware (Betriebssystem)</td><td>–</td></tr>
+<tr><td>Druckertreiber</td><td>Systemsoftware (Treiber)</td><td>verbindet BS und Drucker</td></tr>
+<tr><td>Excel / Word</td><td>Anwendungssoftware</td><td>Produktivität, Standardsoftware</td></tr>
+<tr><td>CRM ohne weitere Angaben</td><td>Anwendungssoftware</td><td>betriebliche Fachanwendung, <b>Anpassungsgrad offen</b></td></tr>
+<tr><td>Arztpraxis-/Zahnarztsoftware</td><td>Anwendungssoftware</td><td>betriebliche Fachanwendung, Branchensoftware</td></tr>
+<tr><td>Eigene Dispositionslösung</td><td>Anwendungssoftware</td><td>betriebliche Fachanwendung, Individualsoftware</td></tr>
+<tr><td>LernGenius</td><td>Anwendungssoftware</td><td>Lernen/Information; je nach Entstehung Standard- oder Individualsoftware</td></tr>
+</table>
+<p class="small">Nicht der Produktname, sondern Funktion und Nutzungskontext begründen die Einordnung. Fehlende Angaben als „offen“ kennzeichnen.</p>
+
+<h3>3.5 Wirtschaftlichkeit: Kaufpreis, TCO, ROI, Amortisation</h3>
+<table>
+<tr><th>Begriff</th><th>Frage</th><th>Inhalt</th></tr>
+<tr><td><b>Kaufpreis</b></td><td>Was kostet die unmittelbare Beschaffung?</td><td>z. B. Lizenz CHF 50'000</td></tr>
+<tr><td><b>TCO</b> (Total Cost of Ownership)</td><td>Welche direkten und indirekten Kosten entstehen im Betrachtungszeitraum?</td><td><b>Einmalig</b>: Kauf, Einführung/Installation, Anpassung, Datenübernahme, Schulung · <b>Laufend</b>: Lizenzen, Wartung, Support, Betrieb, interne Betreuung · <b>Später</b>: Erweiterung, Wechsel, Datenexport, Ablösung</td></tr>
+<tr><td><b>Nutzen</b></td><td>Welche messbaren Verbesserungen?</td><td>Kosteneinsparung, Zusatzeinnahmen; qualitativer Nutzen beschreiben, nicht beliebig in CHF umrechnen; nicht doppelt zählen</td></tr>
+</table>
+<span class="formel">TCO = einmalige Kosten + jährliche laufende Kosten × Anzahl Jahre&nbsp;&nbsp;(bei konstanten Jahreskosten)
+ROI = (Gesamtnutzen − TCO) ÷ TCO × 100 %&nbsp;&nbsp;&nbsp;= Nettonutzen ÷ TCO
+Amortisationsdauer = einmalige Kosten ÷ (jährlicher Nutzen − jährliche laufende Kosten)
+Kaufpreisanteil = Kaufpreis ÷ TCO × 100 %</span>
+<div class="box"><b>Musterrechnung Lernplattform (5 Jahre, ohne Abzinsung/Inflation):</b><br>
+Einmalig: 50'000 (Kauf) + 10'000 (Installation) + 15'000 (Anpassung) + 5'000 (Schulung) = <b>CHF 80'000</b><br>
+Laufend: 8'000 (Wartung/Updates) + 10'000 (Lizenz/Support) = 18'000/Jahr × 5 = <b>CHF 90'000</b><br>
+<b>TCO = 80'000 + 90'000 = CHF 170'000</b> · Kaufpreisanteil = 50'000 ÷ 170'000 = <b>29,41 %</b><br>
+Nutzen: 40'000 (Einsparung) + 20'000 (Einnahmen) = 60'000/Jahr × 5 = <b>CHF 300'000</b><br>
+Nettonutzen = 300'000 − 170'000 = 130'000 → <b>ROI = 130'000 ÷ 170'000 = 0,7647 = 76,47 %</b><br>
+<i>Interpretation:</i> pro eingesetztem Franken rund CHF 0.76 Nettonutzen über 5 Jahre; gesamter Rückfluss CHF 1.76 pro Franken.<br>
+Amortisation: Rückfluss 60'000 − 18'000 = 42'000/Jahr → 80'000 ÷ 42'000 = <b>1,90 Jahre</b> (0,90 × 12 = 10,8 Monate) ≈ <b>1 Jahr 11 Monate</b>.</div>
+<table>
+<tr><th>Typischer Denkfehler</th><th>Korrektur</th></tr>
+<tr><td>Die günstigste Offerte ist am wirtschaftlichsten.</td><td>TCO und Nutzen im <b>gleichen Zeitraum</b> vergleichen.</td></tr>
+<tr><td>Positiver ROI beweist Erfolg.</td><td>ROI beruht auf <b>Annahmen</b>; Herkunft und Unsicherheit prüfen.</td></tr>
+<tr><td>Qualitativer Nutzen zählt nicht.</td><td>Beschreiben und mit Kriterien beobachten, nicht beliebig in CHF umrechnen.</td></tr>
+<tr><td>Kurze Amortisation beseitigt technische Risiken.</td><td>Datenübernahme, Funktion, Support, Sicherheit, Betriebsfähigkeit bleiben eigene Kriterien.</td></tr>
+</table>
+<p class="small">TCO nur vergleichbar, wenn Zeitraum, Kostenarten, Einheiten (Währung) und Annahmen für alle Varianten gleich. „Eine Zahl ohne Zeitraum und Kostenabgrenzung ist nicht belastbar.“ Entscheidung braucht Anforderungen, TCO <b>und</b> Risiken.</p>
+</div>
+
+<!-- ===================== UB 4 ===================== -->
+<div class="ub">
+<h2>UB 4 – Netzwerke und Cloud</h2>
+<div class="lz"><b>Lernziele:</b> (1) Endgerät, Server, Switch, Router, Access Point in Netzskizze zuordnen und Aufgaben erklären. (2) Datenweg erklären; IP-Adresse, Gateway, DNS, Port anhand von Ausgaben unterscheiden. (3) IaaS/PaaS/SaaS und Bereitstellungsformen unterscheiden, Verantwortlichkeiten zuordnen. (4) Betriebsvarianten für Alpina mit TCO, Anforderungen und Risiken vergleichen und Empfehlung begründen.</div>
+
+<h3>4.1 Netzwerkkomponenten</h3>
+<table>
+<tr><th style="width:15%">Komponente</th><th>Aufgabe</th><th style="width:36%">Beispiel Alpina</th></tr>
+<tr><td><b>Endgerät</b></td><td>Laptop, Smartphone, Drucker – nutzt Dienste</td><td>Laptop im Verkauf</td></tr>
+<tr><td><b>Server</b></td><td>stellt einen Dienst bereit, verarbeitet Anfragen</td><td>Dateiserver, CRM-Dienst</td></tr>
+<tr><td><b>Switch</b></td><td>verbindet Kabelgeräte <b>im selben lokalen Netz</b> (ohne Internet)</td><td>Datei auf Alpina-Dateiserver öffnen</td></tr>
+<tr><td><b>Router</b></td><td>verbindet <b>Netze</b>, leitet Daten in andere Netze weiter (Routing)</td><td>Laptop ruft CRM im Internet auf</td></tr>
+<tr><td><b>Access Point</b></td><td>bindet Geräte per <b>WLAN</b> ans lokale Netz an</td><td>mobiler Laptop erreicht Dateiserver</td></tr>
+<tr><td><b>Modem / ONT</b></td><td>passt Signale an Anschlusstechnik an (DSL, TV-Kabel = Modem; Glasfaser = ONT, optischer Netzabschluss)</td><td>Anschluss beim Anbieter</td></tr>
+</table>
+<div class="merke"><b>Merksatz:</b> Switch = <b>im</b> Netz verbinden · Router = <b>Netze</b> verbinden · Access Point = Geräte per <b>WLAN</b> anbinden. Die Anbieterbox zuhause („Router“) ist <b>ein Gerät mit mehreren Funktionen</b> (Modem/ONT, Router, Switch, Access Point). Lokal drucken braucht die Routerfunktion nicht; Internetdienst (LernGenius) schon. Firmen: Funktionen oft getrennt (viele Anschlüsse, Etagen, Gästezugang, Ausfallsicherheit).</div>
+<p><b>Netzarten:</b> <b>LAN</b> (Local Area Network, begrenzter Bereich, z. B. Büronetz) · <b>WAN</b> (Wide Area Network, grosse Entfernungen, z. B. zwei Standorte) · <b>WLAN</b> (drahtloses LAN, Funk) · <b>VPN</b> (Virtual Private Network, logische verschlüsselte Verbindung über ein anderes Netz, z. B. Fernzugang Homeoffice). LAN/WAN = Ausdehnung; WLAN = Funkanbindung; VPN = logische Verbindung. Smartphone unterwegs: eingebautes Mobilfunkmodem → Antenne → Anbieternetz (mit Routing) → Internet.</p>
+
+<h3>4.2 Datenweg, IP, Routing, NAT, DNS, Port</h3>
+<p class="flow">Laptop → Access Point → Switch → Router → (Anschluss/Anbieter) → Internet → CRM-Dienst (Antwort zurück)</p>
+<table>
+<tr><th style="width:16%">Begriff</th><th>Bedeutung</th><th style="width:34%">Beispiel</th></tr>
+<tr><td><b>IP</b> (Internet Protocol)</td><td>regelt Adressierung und Weiterleitung von Datenpaketen; Paket trägt Ziel-IP</td><td>IPv4</td></tr>
+<tr><td><b>IP-Adresse</b></td><td>adressiert eine <b>Netzwerkschnittstelle</b> im IP-Netz</td><td>Laptop 10.20.30.25</td></tr>
+<tr><td><b>Routing</b></td><td>Router liest Zieladresse → Routingtabelle → wählt nächsten Schritt; Schritt für Schritt, Heimrouter kennt nicht den ganzen Weg</td><td>Heimrouter → Router Anbieter → weitere Router</td></tr>
+<tr><td><b>Standardgateway</b></td><td>nächster Router für Ziele ohne speziellere Route (lokale Routeradresse)</td><td>10.20.30.1</td></tr>
+<tr><td><b>NAT</b> (Network Address Translation)</td><td>Adressübersetzung: Box übersetzt interne Adressen in öffentliche, merkt sich Zuordnung, leitet Antwort richtig zurück; mehrere Geräte teilen eine öffentliche Adresse</td><td>Router ≠ NAT; NAT ist Zusatzfunktion</td></tr>
+<tr><td><b>DNS</b> (Domain Name System)</td><td>löst <b>Namen in IP-Adressen</b> auf; danach geht die Anfrage direkt zum Server, nicht durch DNS</td><td>crm.alpina.example → 192.0.2.80</td></tr>
+<tr><td><b>Port</b></td><td>logische Nummer, unterscheidet Kommunikationsendpunkte zusammen mit Protokoll (keine Buchse!)</td><td>HTTPS = Port 443</td></tr>
+</table>
+<p class="small"><b>Merke:</b> IP adressiert, Routing wählt den Weg, DNS löst Namen auf, Ports unterscheiden Endpunkte. Laptop-Adresse und Gatewayadresse gehören zu unterschiedlichen Schnittstellen. Router hat zwei Schnittstellen (LAN-Seite, Anbieterseite).</p>
+
+<h3>4.3 CLI-Befehle Netzwerk</h3>
+<table>
+<tr><th>Befehl</th><th>Zeigt</th><th>Grenze der Aussage</th></tr>
+<tr><td><code>ipconfig</code></td><td>eigene IPv4-Adresse, Standardgateway</td><td>nur Konfiguration, <b>kein Internetnachweis</b></td></tr>
+<tr><td><code>nslookup www.lerngenius.ch</code></td><td>oben: verwendeter DNS-Server; unten: Adresse(n) zum Namen („nicht autorisierende Antwort“ ist <b>kein Fehler</b>)</td><td>beweist nicht, dass Webseite/Anmeldung funktioniert</td></tr>
+<tr><td><code>tracert -d -4 -h 12 -w 500 …</code></td><td>Zwischenstationen (Hops), 3 Testantworten in ms; <code>*</code> = keine rechtzeitige Antwort (Seite kann trotzdem gehen). -d keine Namen, -4 IPv4, -h max. Stationen, -w Wartezeit ms</td><td>Weg kann unvollständig sein; zeigt nicht sicher Serverstandort</td></tr>
+<tr><td><code>start https://…</code></td><td>öffnet Adresse im Standardbrowser</td><td>Konto, Anmeldung, Zugang sind weitere Voraussetzungen</td></tr>
+</table>
+<p class="small">DNS-Antwort, sichtbarer Testweg, geladene Webseite und erfolgreicher Zugang sind <b>verschiedene Befunde</b>.</p>
+
+<h3>4.4 Cloud Computing</h3>
+<p>Stellt <b>Rechenleistung, Speicher oder Anwendungen über ein Netz nach Bedarf</b> bereit. Nicht bloss ein entfernter Speicherort, sondern eine Bereitstellungsform von Leistungen. Zugriff hängt von funktionierender Netzwerkverbindung ab.</p>
+<p><b>5 Merkmale:</b> (1) <b>Selbstbedienung</b> (Kapazität im Portal buchen, ohne manuelle Bearbeitung durch Anbieter) · (2) <b>Netzwerkzugang</b> (über übliche Netzverfahren) · (3) <b>Ressourcenpool</b> (gemeinsam verwaltet, mehrere Kunden getrennt) · (4) <b>Elastizität</b> (Kapazität erweitern/reduzieren) · (5) <b>Messbare Nutzung</b> (erfasst, überwacht, Nutzungsbericht).</p>
+<p><b>4 Perspektiven:</b> Dienstmodell (welche Leistung?) · Bereitstellungsform (für wen?) · Ort (wo werden Daten verarbeitet?) · Verantwortung (welche Aufgaben bleiben bei uns?).</p>
+<table>
+<tr><th></th><th>IaaS – Infrastructure as a Service</th><th>PaaS – Platform as a Service</th><th>SaaS – Software as a Service</th></tr>
+<tr><td><b>Leistung</b></td><td>Rechenleistung, Speicher, Netz als Dienst</td><td>Anbieter betreibt Plattform, die Kundencode ausführt</td><td>fertige Anwendung als Dienst (Browser)</td></tr>
+<tr><td><b>Bsp.</b></td><td>Azure Virtual Machines; bestehende Spezialanwendung weiter betreiben</td><td>Azure App Service; eigenes Kundenportal</td><td>Microsoft Dynamics 365 CRM, Microsoft 365</td></tr>
+<tr><td><b>Passt wenn</b></td><td>Kontrolle über OS/Systemeinstellungen nötig, keine eigene Hardware kaufen</td><td>eigene Anwendung nötig, kein Server-OS pflegen</td><td>fertige Anwendung deckt Bedarf ab</td></tr>
+<tr><td><b>Vorteil</b></td><td>Kapazität nach Bedarf, volle Kontrolle</td><td>Entwicklungszeit fliesst in Funktionen</td><td>Anbieter betreibt/aktualisiert, kleines IT-Team entlastet</td></tr>
+<tr><td><b>Nachteil</b></td><td>Updates, Sicherung, Überwachung selbst; IT-Personal nötig</td><td>Code und Daten pflegen; Plattformvorgaben, Wechsel aufwendig</td><td>gebunden an Funktionen, Preise, Änderungen; Lock-in</td></tr>
+</table>
+<table>
+<tr><th>Betriebsaufgabe</th><th>Eigener Betrieb</th><th>IaaS</th><th>PaaS</th><th>SaaS</th></tr>
+<tr><td>Datenverwendung, Konten, Freigaben</td><td>Unternehmen</td><td>Unternehmen</td><td>Unternehmen</td><td><b>Unternehmen</b></td></tr>
+<tr><td>Anwendungscode pflegen</td><td>Unternehmen</td><td>Unternehmen</td><td>Unternehmen</td><td>Anbieter</td></tr>
+<tr><td>Laufzeitumgebung</td><td>Unternehmen</td><td>Unternehmen</td><td>Anbieter</td><td>Anbieter</td></tr>
+<tr><td>Server-Betriebssystem</td><td>Unternehmen</td><td>Unternehmen</td><td>Anbieter</td><td>Anbieter</td></tr>
+<tr><td>Rechenzentrum, Hardware</td><td>Unternehmen</td><td>Anbieter</td><td>Anbieter</td><td>Anbieter</td></tr>
+</table>
+<p><b>Auch bei SaaS bleibt beim Kunden:</b> Daten (welche verwendet werden), Konten und Rechte (Austritt → Zugang entziehen), Endgeräte (ungesperrter Laptop gefährdet gutes Cloud-CRM), Konfiguration (z. B. Datenexport nicht für alle). <b>„Ausgelagerter Betrieb ist keine vollständige Abgabe der Verantwortung.“</b></p>
+<table>
+<tr><th>Bereitstellung</th><th>Bedeutung / Beispiel</th><th>Grenze</th></tr>
+<tr><td><b>Public</b></td><td>breiter Kundenkreis, getrennte Kundenumgebungen; junges Unternehmen, schnell Kapazität</td><td>Anbietervorgaben, Abhängigkeit</td></tr>
+<tr><td><b>Private</b></td><td>exklusiv für eine Organisation (intern oder extern betrieben); Konzern mit eigenen Regeln</td><td>dedizierte Kapazität finanzieren/auslasten</td></tr>
+<tr><td><b>Hybrid</b></td><td>verschiedene Cloud-Umgebungen technisch verbunden (Private + Public-Kapazität)</td><td>Verbindungen, Zugänge, Datenflüsse koordinieren</td></tr>
+<tr><td><b>Community</b></td><td>für Gemeinschaft mit gemeinsamen Anforderungen (mehrere Schulen)</td><td>Kosten, Regeln, Änderungen gemeinsam abstimmen</td></tr>
+</table>
+<p class="small"><b>Public ≠ öffentliche Kundendaten. Private ≠ automatisch sicherer.</b> IaaS/PaaS/SaaS = Leistung; Public/Private/Hybrid/Community = Bereitstellung; Datenstandort = dritte Frage.</p>
+<p><b>Cloud Vor-/Nachteile:</b> Kosten (weniger eigene Hardware ↔ Abos, Einführung, Wechsel; günstigere TCO nicht garantiert) · Bedarf ändern (skalieren ↔ mehr Nutzung = mehr Kosten, Vertragsfristen) · Betrieb (Anbieter übernimmt ↔ eigene Aufgaben, Support/Backup prüfen) · Zusammenarbeit (mehrere Standorte ↔ Netz muss verfügbar sein, Wechsel aufwendig).</p>
+
+<h3>4.5 Alpina: CRM-Betriebsvarianten (3 Jahre)</h3>
+<table>
+<tr><th>Variante</th><th>Einmalig</th><th>pro Jahr</th><th>TCO 3 Jahre</th></tr>
+<tr><td>A: Eigener Betrieb</td><td>18'000</td><td>12'000</td><td>18'000 + 36'000 = <b>54'000</b></td></tr>
+<tr><td>B: SaaS-CRM</td><td>6'000</td><td>15'000</td><td>6'000 + 45'000 = <b>51'000</b> (tiefste)</td></tr>
+<tr><td>C: CRM auf IaaS</td><td>8'000</td><td>16'000</td><td>8'000 + 48'000 = <b>56'000</b></td></tr>
+</table>
+<p><b>Anforderungen Alpina:</b> gleicher Datenstand für Verkauf und Service an zwei Standorten · passende Zugänge/Datenverwendung · <b>kleines IT-Team</b> (Betrieb muss machbar sein) · Wechselmöglichkeit (lesbarer Export, mit Testbestand prüfen). Empfehlung z. B. <b>B (SaaS)</b>: tiefste TCO, entlastet kleines IT-Team, mobil/beide Standorte erreichbar. <b>Bedingung prüfen:</b> Exporttest, Sicherung/Wiederherstellung im Vertrag, Datenstandort.</p>
+<table>
+<tr><th>Risiko</th><th>Gegenmassnahme</th></tr>
+<tr><td>Zugriff (zu weite Rechte, gestohlene Zugangsdaten)</td><td>Rollenrechte, Mehrfaktor-Anmeldung</td></tr>
+<tr><td>Ausfall und Datenverlust (Verfügbarkeit ≠ Wiederherstellung)</td><td>Sicherungsumfang vereinbaren, Wiederherstellung testen</td></tr>
+<tr><td>Kostenentwicklung</td><td>Kostenwarnungen, regelmässige Prüfung</td></tr>
+<tr><td>Anbieterwechsel (Export unvollständig)</td><td>Datenformat, Exporttest, Wechselunterstützung prüfen</td></tr>
+</table>
+<p class="small">Jede Gegenmassnahme braucht eine zuständige Person und eine überprüfbare Wirkung. Nicht die niedrigste Zahl allein, sondern die Passung zum Fall begründet die Wahl.</p>
+</div>
+
+<!-- ===================== UB 5 ===================== -->
+<div class="ub">
+<h2>UB 5 – Algorithmen, KI, neuronale Netze, LLM</h2>
+<div class="lz"><b>Lernziele:</b> (1) Feste Regeln vs. lernende Modelle; am kleinen neuronalen Netz erklären, wie Eingaben zu Ausgaben führen. (2) Wie eine KI-Anwendung Kontext bereitstellt und wie ein LLM mit Tokens und Vektoren schrittweise Text erzeugt. (3) Warum überzeugende Sprache weder Verständnis noch Richtigkeit beweist; KI-Antworten mit Belegen und Prüfkriterien beurteilen. (4) Klaren Prompt formulieren, Entwurf an Unterlagen prüfen, überarbeiten, Freigabe begründen.</div>
+
+<h3>5.1 Algorithmus</h3>
+<p><b>Algorithmus</b> = ausführbare Folge klarer Schritte zur Lösung einer Aufgabe. Merkmale: <b>Ein-/Ausgabe, eindeutig, ausführbar, endlich</b>. <b>Deterministisch</b>: gleiche Eingabe → immer gleiche Ausgabe. Algorithmus = Verfahren; Programm = Umsetzung in Programmiersprache. Historisch: <b>Euklid</b> (Antike, grösster gemeinsamer Teiler), <b>Al-Chwarizmi</b> (9. Jh., Namensgeber, nicht alleiniger Erfinder).</p>
+<div class="cols2">
+<div><h4>Versandregel (Entscheidungsalgorithmus)</h4><p><b>Wenn</b> Bestellwert ≥ CHF 100, <b>dann</b> Versand CHF 0, <b>sonst</b> CHF 8. Tests: 99 → 8; 100 → 0; 80 → 8 (Total 88); fehlender Wert → <b>zuerst klären, nicht als 0 behandeln</b>. Für eindeutige Preisregel braucht es <b>kein</b> Sprachmodell.</p>
+<h4>Bestellung schrittweise</h4><p>Positionen (2×30=60, 1×40=40, 2×10=20) nacheinander addieren → 120; Versand erst am Ende prüfen → 120 + 0 = CHF 120.</p></div>
+<div><h4>Dezimal → Binär (13)</h4><table><tr><th>Zahl</th><th>÷2</th><th>Rest</th></tr><tr><td>13</td><td>6</td><td>1</td></tr><tr><td>6</td><td>3</td><td>0</td></tr><tr><td>3</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>1 (stopp)</td></tr></table><p>Reste <b>von unten nach oben</b>: <b>1101₂ = 13</b>. (Kontrolle: 8+4+0+1)</p></div>
+</div>
+<p><b>Algorithmus entwickeln:</b> 1 Aufgabe klären (Eingaben, Ergebnis) → 2 Ablauf beschreiben (Schritte, Bedingungen, Wiederholungen) → 3 Grenzen regeln (fehlende/ungültige Angaben) → 4 Prüfen (Beispiele, Grenzfälle) und umsetzen. Kriterien: Richtigkeit, Nachvollziehbarkeit, Aufwand/Tempo, Daten und Risiko.</p>
+
+<h3>5.2 Feste Regel vs. trainiertes Modell</h3>
+<table>
+<tr><th></th><th>Feste Regel</th><th>Trainiertes Modell (Machine Learning)</th></tr>
+<tr><td>Vor Einsatz</td><td>Menschen legen Regel fest, programmieren sie</td><td>Modell = Rechenfunktion; Lernalgorithmus passt sie an <b>geprüfte Beispiele</b> an</td></tr>
+<tr><td>Neue E-Mail</td><td>sucht „Ausfall“ → dringend, sonst normal</td><td>Text in Zahlen (z. B. Wörter zählen) → Modell berechnet Kategorie</td></tr>
+</table>
+<p class="small"><b>Klassifikation</b> = Kategorie zuordnen (braucht kein LLM). <b>Ticket</b> = gespeicherter Arbeitsauftrag. Wortregel-Fehler: „Wir können nicht mehr produzieren“ → normal (<b>Dringlichkeit übersehen</b>); „Kein Ausfall, Wartungstermin“ → dringend (<b>Fehlalarm</b>). Zum Lernen <b>geprüfte Einstufung</b> verwenden, nicht Regel-Output. Menschen legen das Kriterium fest (hier: aktueller Ausfall, der Produktion verhindert = dringend). Eine Priorität ist noch keine Problemlösung. Eine neue E-Mail trainiert das Modell <b>nicht</b> neu; Nachtrainieren + Freigabe sind eigene Schritte. Menschliche Prüfung: je nach Fehlerfolgen; Einführungsphase alle prüfen, danach Stichproben; leerer Text → Klärung.</p>
+
+<h3>5.3 KI-Landkarte</h3>
+<p><b>Künstliche Intelligenz</b>: Verfahren, die aus Eingaben Vorhersagen, Empfehlungen oder Inhalte ableiten. Darin: <b>Wissensbasierte KI</b> (Schlussfolgern mit hinterlegten Fakten/Regeln, z. B. Expertensystem: Gerät A ∈ Familie M → hat Anschluss B → Zubehör Z passt; Wissen vorgegeben, nicht gelernt) und <b>Maschinelles Lernen</b> (Modell aus Daten anpassen) ⊃ <b>Neuronale Netze</b> ⊃ <b>Deep Learning</b> (tiefe Netze, mehrere Schichten). Nicht jede KI lernt; nicht jedes lernende Modell ist ein NN; nicht jede feste Regel ist KI (Versandformel = Automatisierung).</p>
+<p><b>ML-Beispiel Absatz:</b> ohne Aktion (20+22)/2 = 21; mit Aktion (40+44)/2 = 42 → Prognose 42 Stück (keine Garantie). <b>Verbindung UB 1:</b> Prediction 42 + Judgment (5 Stück Reserve, Lager 10) → Action: 42 + 5 − 10 = <b>37 bestellen</b>. Reserve ist betriebliche Festlegung, nicht Modellergebnis.</p>
+<p><b>KI-Anwendungen:</b> Vorhersagen (Bedarf), Erkennen (Produktfehler auf Bildern), Empfehlen (Ersatzteile), Inhalte erzeugen (Antwortentwurf). Für Absatzprognose/Bildprüfung ist ein LLM nicht automatisch passend.</p>
+
+<h3>5.4 Künstliches Neuron (Perzeptron)</h3>
+<p>Eingaben A (Anlage ausgefallen? 1/0), B (kein Ersatz einsatzbereit? 1/0). Kriterium: A <b>UND</b> B → dringend. <b>Gewicht</b> = Multiplikator; <b>Schwelle</b> = Grenzwert; <b>Bias</b> = zusätzlicher Rechenwert, verschiebt Reaktion.</p>
+<span class="formel">Summe = A × w₁ + B × w₂ &nbsp;→&nbsp; Summe ≥ Schwelle (2)? → Ausgabe 1 (dringend, „Neuron feuert“), sonst 0 (normal)</span>
+<table>
+<tr><th>A</th><th>B</th><th>Summe (w=1,1)</th><th>≥ 2?</th><th>Ausgabe</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>nein</td><td>normal (0)</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>nein</td><td>normal (0)</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>nein</td><td>normal (0)</td></tr>
+<tr><td>1</td><td>1</td><td>2</td><td>ja</td><td><b>dringend (1)</b></td></tr>
+</table>
+<p><b>Lernschritt:</b> Start w = 0, 0 → T1 (1,1, Soll 1): 0 < 2 → 0 ≠ Soll → Lernregel: jedes Ja-Gewicht +1 → w = 1, 1 → Summe 2 → 1 ✓. Schwelle bleibt fest; der <b>Vergleich mit dem Sollwert</b> verändert die Gewichte. T2–T4 ohne Korrektur.</p>
+<table>
+<tr><th>Datensatz</th><th>Zweck</th></tr>
+<tr><td><b>Training</b> (T1–T4)</td><td>Gewichte durch Vergleich mit Sollwerten anpassen</td></tr>
+<tr><td><b>Validierung</b> (V1, V2)</td><td>Modellstände vergleichen, einen auswählen (Start: 1 Fehler; w=1,1: 0 Fehler → wählen)</td></tr>
+<tr><td><b>Test</b> (P1–P4)</td><td>gewählten Stand <b>abschliessend</b> prüfen, <b>nicht</b> zum Nachjustieren (4/4 richtig)</td></tr>
+</table>
+<p class="small">Ticket nur in einer Gruppe. Modell erhält nur A und B, nicht die Soll-Einstufung. Richtig bei Trainingsfällen ≠ zuverlässig später. <b>Anwenden</b> nutzt Parameter, <b>Lernen</b> verändert sie, <b>Prüfen</b> bewertet an anderen Fällen. Grössere Netze: mehrere Schichten, viele Gewichte + Bias, abgestufte Zahlen, Lernverfahren Backpropagation. Ausgabe einer Schicht = Eingabe der nächsten. Mehr Schichten nicht automatisch besser.</p>
+<p><b>Geschichte:</b> 1943 McCulloch &amp; Pitts (math. Neuron) · 1958 Rosenblatt (Perzeptron) · 1986 Rumelhart, Hinton, Williams (Lernen in mehrschichtigen Netzen) · 2017 Vaswani et al. (<b>Transformer</b>).</p>
+
+<h3>5.5 Generative KI und LLM</h3>
+<table>
+<tr><th style="width:18%">Begriff</th><th>Bedeutung</th></tr>
+<tr><td><b>Generative KI</b></td><td>erzeugt Inhalte (Text, Bild, Audio, Video)</td></tr>
+<tr><td><b>LLM</b> (Large Language Model)</td><td>grosses neuronales Modell für Sprache; verarbeitet Sprach-Tokens</td></tr>
+<tr><td><b>Multimodal</b></td><td>verarbeitet mehrere Datenarten (Bild + Text)</td></tr>
+<tr><td><b>KI-Anwendung</b></td><td>verbindet Oberfläche, Modelle, Daten, Werkzeuge (Chat-App verwaltet Eingaben, Verlauf, Upload, Rechte; Werkzeuge: Suche, Dokumente, DB, Rechner). Zuverlässigkeit hängt vom ganzen System ab.</td></tr>
+<tr><td><b>Training vs. Prompten</b></td><td>Training (vorher): viele Beispiele, Parameter angepasst. Prompten: trainiertes Modell anwenden, Kontext geben – <b>verändert nicht die Grundparameter</b>. Verlauf/Erinnerungen ≠ neues Training.</td></tr>
+<tr><td><b>Token</b></td><td>technische Texteinheit (Wort, Wortteil, Satzzeichen): „Erkläre | die | Liefer | bedingungen | kurz | .“ Jedes Token erhält eine <b>Kennnummer</b> (z. B. 417, keine Bedeutung)</td></tr>
+<tr><td><b>Embedding / Vektor</b></td><td>Token als geordnete Zahlenliste (gelernte Zeile der Embedding-Tabelle). Ähnlich verwendete Wörter liegen nahe (Lieferung, Versand, Zustellung). Nähe ≠ gleiche Bedeutung/Richtigkeit. Vektor [2;1;3] = 3 Dimensionen; 4. Dimension = 4. Zahl; 512 Dim. = 512 Zahlen; keine allgemeine Höchstzahl</td></tr>
+<tr><td><b>Kontext</b></td><td>„Bank“ + „Kredit“ → Finanzinstitut; „Bank“ + „Park, sitzen“ → Sitzmöbel. Kontext verändert die berechnete Darstellung, nicht die Modellgewichte</td></tr>
+<tr><td><b>Transformer</b></td><td>neuronales Netz, das <b>Attention</b> mit weiteren Rechenschichten kombiniert; berechnet Wahrscheinlichkeiten für das nächste Token</td></tr>
+<tr><td><b>Attention</b></td><td>berechnet, welche Tokens wie stark einbezogen werden; weder menschliche Aufmerksamkeit noch Wahrheitsprüfung</td></tr>
+<tr><td><b>Texterzeugung</b></td><td>„Der Versand ist“ → kostenlos 65 % / kostenpflichtig 20 % / andere 15 % → auswählen, anhängen, wiederholen. <b>Prozent = sprachliche Passung, NICHT Wahrheitswahrscheinlichkeit</b></td></tr>
+</table>
+<p class="flow">Gesamtweg: 1 Auftrag → 2 Kontext (Anwendung ergänzt Regeln/Gespräch) → 3 Zahlen (Tokens → Vektoren) → 4 Modell verarbeitet → 5 Folgetokens schrittweise → 6 Antwort prüfen (Mensch)</p>
+<p><b>Speicherrechnung Vektoren:</b> 1'000'000 Abschnitte × 512 Dim. × 4 Byte = <b>2,048 GB</b>; bei 1'024 Dim. = 4,096 GB (+ Index). Mehr Dimensionen ≠ garantiert bessere Treffer → Nutzen vs. Aufwand.</p>
+
+<h3>5.6 RAG – Retrieval-Augmented Generation</h3>
+<p>Ablauf in einer Anwendung: <b>passende Informationen suchen und dem LLM als Kontext mitgeben</b> („erst nachschlagen, dann antworten“). Nicht nur aus dem Training antworten.</p>
+<ol>
+<li><b>Chunking</b>: Dokument in sinnvolle Textabschnitte (Chunks) aufteilen (zusammengehörige Regel beisammen; zu kurz → Bedingung fehlt; zu lang → schwer gezielt zu finden). Umsetzungsteam konfiguriert, Fachverantwortliche prüfen.</li>
+<li><b>Embedding-Modell</b> berechnet pro Chunk einen Suchvektor (feste Anzahl Werte, <b>Pooling</b>); gespeichert in <b>Vektordatenbank</b> mit Text und Quelle.</li>
+<li>Frage → Fragevektor (gleiches Embedding-Modell) → Vergleich per <b>Kosinusähnlichkeit</b> → Trefferliste (B1 Versandkosten vor B2 Lieferdauer vor D1 Bürohandbuch). „Porto“ findet „Versand“.</li>
+<li>Optional <b>Reranking</b> (Rangmodell bewertet Frage + Treffer gemeinsam). Auswahl nach Bezug, Gültigkeit, Zugriffsrechten.</li>
+<li><b>Originaltext</b> (nicht Vektor) wird mit Frage und Auftrag dem LLM übergeben → Antwort mit Quelle („Bei CHF 120 ist der Versand kostenlos. Quelle: Lieferbedingungen B1“). Kein Treffer → Rückfrage/Hinweis.</li>
+</ol>
+<p class="small">Rollen: Embedding-Modell → Suchvektor; Rangmodell → Relevanz; LLM → Antworttext; Datenbank speichert, ist <b>kein</b> Sprachmodell. Unternehmen entscheidet: gültige Quellen, Leserechte, Aufwand. <b>LLM + feste Berechnung</b>: LLM entnimmt Bestellwert, Regel/Rechner rechnet (80 + 8 = 88), LLM formuliert – Anwendung muss Werkzeug tatsächlich aufrufen.</p>
+
+<h3>5.7 Kann ein Computer denken? Kritisch prüfen</h3>
+<table>
+<tr><th style="width:20%"></th><th>Turing-Test (Alan Turing, 1950, „Imitation Game“)</th><th>Chinesisches Zimmer (John Searle, 1980)</th></tr>
+<tr><td>Prüft</td><td><b>Verhalten</b>: Kann Befrager A per Text Mensch B und Computer C nicht zuverlässig unterscheiden? Mehrere Durchgänge, festgelegte Dauer (z. B. 5 min)</td><td><b>Verständnis</b>: Person ohne Chinesisch beantwortet chinesische Fragen mit Regelbuch – von aussen verständig, innen kein Verständnis</td></tr>
+<tr><td>Grenze</td><td>beweist kein Bewusstsein, kein Verständnis, keine Richtigkeit. GPT-4.5 (mit Rollenanweisung) in 73 % für Mensch gehalten (Jones &amp; Bergen 2026) – nur für diesen Versuchsaufbau</td><td>umstritten; Systemeinwand (Person + Regeln + Speicher versteht?); kein abschliessender Beweis</td></tr>
+</table>
+<p><b>Sprachleistung, Verständnis und sachliche Richtigkeit sind unterschiedliche Fragen.</b> <b>Halluzination/Konfabulation</b>: Modell stellt falsche/erfundene Inhalte überzeugend dar (z. B. erfundene „Premiumrichtlinie“ ohne Fundstelle).</p>
+<table>
+<tr><th>5 Prüffelder</th><th>Leitfrage</th></tr>
+<tr><td><b>Richtigkeit</b></td><td>Stimmen Begriffe, Zahlen, Zusammenhänge?</td></tr>
+<tr><td><b>Aktualität</b></td><td>Für den benötigten Zeitpunkt gültig? (Datum, Version, Land, Branche)</td></tr>
+<tr><td><b>Quellenbezug</b></td><td>Existiert die Quelle? Belegt die Fundstelle <b>genau diese</b> Aussage?</td></tr>
+<tr><td><b>Verzerrung</b> (Bias)</td><td>Fehlen Perspektiven, werden Personen unfair dargestellt? → Kriterien offenlegen, Gegenbeispiele</td></tr>
+<tr><td><b>Datenschutz</b></td><td>Dürfen Daten so verarbeitet werden? Nur Notwendiges, anonymisieren, Freigabe einholen (EDÖB)</td></tr>
+</table>
+<p class="flow">Prüfkette: Aussage markieren → Risiko bestimmen → Original prüfen → Gegenprüfen (2. Quelle/Rechnung/Fachperson) → Entscheiden (verwenden/überarbeiten/verwerfen, Begründung festhalten)</p>
+
+<h3>5.8 Prompt – 5 Bausteine &amp; Alpina-Fall</h3>
+<p><b>Prompt</b> = Eingabe/Auftrag an ein KI-System. Bausteine: <b>Ziel</b> (was leisten?) · <b>Kontext</b> (für wen, Situation, Vorwissen) · <b>Material</b> (welche Unterlagen/Daten) · <b>Ausgabeformat</b> (Struktur, Länge) · <b>Prüfkriterien</b> (was belegen/rechnen?).</p>
+<div class="box"><b>Guter Prompt:</b> „Entwirf für den Alpina-Kundendienst eine freundliche Antwort mit höchstens 80 Wörtern. Nutze nur die Kundenfrage und die Lieferbedingungen A bis C. Sage keinen unbelegten Termin zu. Nenne nach dem Entwurf für jede Kosten- oder Lieferangabe die passende Stelle.“ (Schlecht: „Beantworte die Kundenfrage.“)</div>
+<p><b>Lieferbedingungen:</b> A Standardlieferung 2–3 Arbeitstage · B Versand &lt; CHF 100 = CHF 8, ab CHF 100 kostenlos · C <b>keine Expresslieferung</b>.</p>
+<table>
+<tr><th>Entwurf</th><th>Prüfung</th></tr>
+<tr><td>„CHF 120 … garantiert morgen per Express. Versand kostenlos.“</td><td>Versand kostenlos ✓ (B). „morgen“ ✗ (A: 2–3 Tage). „Express“ ✗ (C). → <b>nicht versenden</b>, überarbeiten.</td></tr>
+<tr><td>„CHF 80 … morgen per Express, versandkostenfrei.“</td><td>Termin ✗ (A), Express ✗ (C), versandkostenfrei ✗ (B: CHF 8). Folgen: Kundenenttäuschung, Kosten, Reputationsschaden. Prüffelder: Richtigkeit, Quellenbezug → <b>nicht versenden</b>.</td></tr>
+</table>
+<table>
+<tr><th>Denkfehler</th><th>Korrektur</th></tr>
+<tr><td>„Algorithmus oder LLM“ sind Gegensätze</td><td>Auch ein LLM wird mit Algorithmen trainiert und ausgeführt</td></tr>
+<tr><td>Jede KI lernt aus Daten</td><td>Es gibt wissensbasierte KI; nicht jede Regel ist KI</td></tr>
+<tr><td>Ein künstliches Neuron ist eine denkende Zelle</td><td>Mathematischer Rechenbaustein</td></tr>
+<tr><td>Mit jedem Prompt lernt das Grundmodell</td><td>Prompt verändert Kontext, nicht die trainierten Parameter</td></tr>
+<tr><td>Überzeugende Antwort ist verwendbar</td><td>Aussagen belegen und für den Zweck prüfen; Mensch gibt Kundenantworten frei</td></tr>
+</table>
+<p class="small"><b>Fallzuordnung:</b> A „ab CHF 200 genau 5 % Rabatt, programmiert“ = feste Regel (nichts gelernt, kein NN) · B „lernt aus Verkaufszahlen den Bedarf“ = maschinelles Lernen (Werte aus Daten gelernt; NN nicht erkennbar) · C „LLM formuliert Antwortentwurf“ = generative KI, LLM = neuronales Netz.</p>
+</div>
+
+<!-- ===================== UB 6 ===================== -->
+<div class="ub">
+<h2>UB 6 – Digitale Transformation, Industrie 4.0, Geschäftsmodelle, Innovation</h2>
+<div class="lz"><b>Lernziele:</b> (1) Digitalisierung von Informationen, von Abläufen und digitale Transformation unterscheiden; Beispiele Industrie 1.0–4.0 zuordnen. (2) Trends und Megatrends unterscheiden; Auswahl und Branchenwirkung zweier Technologietrends begründen. (3) Grundelemente eines Geschäftsmodells erklären; Uber im Business Model Canvas beschreiben. (4) Inkrementelle vs. radikale Innovation; Laufschuhkonzept mit Vergleichsbasis einordnen.</div>
+
+<h3>6.1 Drei Ebenen der Digitalisierung</h3>
+<table>
+<tr><th style="width:24%">Begriff</th><th>Was verändert sich?</th><th>Beispiele</th></tr>
+<tr><td><b>Informationen digitalisieren</b> (Digitisation)</td><td>analoge Informationen → digitale Daten (Darstellung ändert sich, Ablauf noch nicht)</td><td>Papierrechnung → PDF-Scan; Adresskarten → digitale Liste. Scan ≠ Texterkennung ≠ Rechnungsprüfung</td></tr>
+<tr><td><b>Abläufe digitalisieren</b> (Digitalisation)</td><td>digitale Werkzeuge/Daten verändern Arbeitsabläufe</td><td>Rechnung im System statt Papiermappe freigeben; Online-Terminbuchung (Bestätigung bleibt menschlich)</td></tr>
+<tr><td><b>Digitale Transformation</b></td><td>Wertschöpfung und Organisation verändern sich <b>grundlegend</b> (Angebot, Einnahmen, Leistungserstellung, Organisation, Kompetenzen)</td><td>CD-Verkauf → Streamingabo (Zugang gegen regelmässige Gebühr; Katalog, Nutzungsrechte, neue Rollen)</td></tr>
+</table>
+<p class="small">Grössere Reichweite, aber <b>keine zwingende Reihenfolge</b>. Ganzheitlich = zusammenhängende Veränderungen mitdenken. Entscheidend ist, was sich im Betrieb ändert, nicht das Schlagwort.</p>
+
+<h3>6.2 Industrie 1.0 bis 4.0</h3>
+<table>
+<tr><th>Stufe</th><th>Zeit</th><th>Merkmal</th><th>Beispiel</th></tr>
+<tr><td><b>1.0 Mechanisierung</b></td><td>ab Ende 18. Jh.</td><td>Wasser- und Dampfkraft</td><td>Wasserkraft treibt mechanische Webstühle</td></tr>
+<tr><td><b>2.0 Massenproduktion</b></td><td>um 1900</td><td>Elektrizität und Arbeitsteilung</td><td>elektrische Fliessbänder</td></tr>
+<tr><td><b>3.0 Steuerung/Automatisierung</b></td><td>ab ca. 1970</td><td>Elektronik, Computer, <b>CNC</b> (computergestützte numerische Steuerung)</td><td>CNC fräst nach gespeichertem Programm; <b>Roboter, die nur ein Programm wiederholen, ohne Datenaustausch</b></td></tr>
+<tr><td><b>4.0 Vernetzung</b></td><td>seit 2010er</td><td>Maschinen, Daten und Planung vernetzt (<b>Smart Factory</b>)</td><td>Maschinenzustände und Aufträge digital verbunden; Produktion und Wartung stimmen sich ab</td></tr>
+</table>
+<p class="small">Smart Factory ist <b>nicht menschenleer</b>: Menschen nutzen Daten für Planung, Wartung, Qualität und verantworten Eingriffe. Roboter allein ≠ Industrie 4.0. Übergänge überlappen.</p>
+
+<h3>6.3 Trends</h3>
+<p><b>Trend</b> = über die Zeit erkennbare Entwicklungsrichtung (z. B. Anteil Älterer steigt in einer Region). <b>Megatrend</b> = langfristige, weitreichende Entwicklung, wirkt auf <b>viele Branchen und Lebensbereiche</b> (z. B. demografischer Wandel). Hype ≠ Trend; keine verbindliche Megatrendliste. Gesellschaftlich/technologisch = Thema; Trend/Megatrend = Reichweite und Dauer.</p>
+<p><b>Beispiele:</b> Demografie (Schweiz ab 65: <b>19,9 % (2025) → 25,5 % (2055)</b>, BFS-Referenzszenario, keine sichere Prognose; Fragen: Wissen vor Pensionierung sichern, Beratung/Zugang; Alter bestimmt nicht digitale Fähigkeit) · Arbeit/Lernen (KI, Robotik) · Klima (vernetzte Energiesysteme; WEF 2026 <b>„Everything-to-grid“</b>: Speicher in Gebäuden/Fahrzeugen speisen ins Netz). Trendreport: FTSG 2025 Tech Trends Report. Trend = Ausgangspunkt, Bedeutung erst im konkreten Unternehmen. <b>Schema:</b> Trend + Fundstelle → Grund für Auswahl (warum unsere Branche?) → konkrete mögliche Auswirkung (was, für wen, wie?).</p>
+
+<h3>6.4 Geschäftsmodell und Business Model Canvas</h3>
+<p><b>Geschäftsmodell</b> = Logik der Leistung und ihrer Finanzierung. 3 Kernfragen: <b>Wert schaffen</b> (welches Problem für wen? welcher Nutzen?) · <b>Wert bereitstellen</b> (Tätigkeiten, Ressourcen, Partner) · <b>wirtschaftlich tragen</b> (wofür bezahlen Kunden? welche Kosten decken?).</p>
+<table>
+<tr><th>Schlüsselpartner<br><span class="small">Wer hilft uns?</span></th><th>Schlüsselaktivitäten<br><span class="small">Was tun wir?</span></th><th rowspan="2">Wertangebot<br><span class="small">Welches Problem lösen wir, welchen Nutzen schaffen wir?</span></th><th>Kundenbeziehungen<br><span class="small">Wie betreuen/binden wir?</span></th><th rowspan="2">Kundensegmente<br><span class="small">Für wen?</span></th></tr>
+<tr><th></th><th>Schlüsselressourcen<br><span class="small">Was brauchen wir?</span></th><th>Kanäle<br><span class="small">Wie erreichen/bedienen wir?</span></th></tr>
+<tr><th colspan="2">Kostenstruktur – wofür entstehen wesentliche Kosten?</th><th></th><th colspan="2">Einnahmequellen – wofür und wie wird bezahlt?</th></tr>
+</table>
+<p class="small">Canvas (Strategyzer) zeigt Zusammenhänge, ersetzt weder Belege noch Umsetzungsplan; macht Annahmen sichtbar → mit Gesprächen/Versuchen prüfen.</p>
+<div class="cols2">
+<div><h4>Uber (Plattformmodell, zweiseitig)</h4><ul><li><b>Kundensegmente</b>: Fahrgäste und Fahrer</li><li><b>Wertangebot</b>: Fahrgast → Zugang zu Fahrt; Fahrer → Zugang zu Aufträgen</li><li><b>Schlüsselaktivität</b>: Vermittlung von Fahrtanfragen (Plattform, App)</li><li>Die Fahrt selbst erbringt der <b>Fahrer</b></li><li><b>Einnahmen</b>: Servicegebühren (je Markt verschieden)</li><li><b>Kosten</b>: Technik, Zahlungsabwicklung, Betreuung</li><li>Fahrpreis ≠ Gewinn von Uber</li></ul></div>
+<div><h4>Genevieve (Startup Weekend Bern 2016)</h4><p>Idee: hausgemachtes Essen (Ceviche, Lomo saltado) von Privatpersonen („Home-Chefs“) online bestellen und liefern lassen – wie Uber, Plattform vermittelt zwischen Kochenden und Bestellenden, Lieferservice bringt Essen. Pitch 1 Minute, 3 Stimmen pro Person. Ergebnis: 2. Platz. Lehre: Pitch weckt Interesse; Kochen, Liefern, Verantwortung müssen zusammenpassen; Annahmen durch Befragen/Probieren prüfen.</p></div>
+</div>
+
+<h3>6.5 Innovation</h3>
+<p><b>Innovation</b> = neue oder wesentlich veränderte Lösung wird <b>umgesetzt und eingeführt</b> (Produkt, Dienstleistung, Verfahren). Idee ≠ Erfindung ≠ eingeführte Innovation.</p>
+<table>
+<tr><th></th><th>Inkrementelle Innovation</th><th>Radikale Innovation</th></tr>
+<tr><td>Definition</td><td>Bestehendes <b>schrittweise verbessern</b>; Lösungsprinzip bleibt</td><td><b>grundlegend anderer Lösungsrahmen</b>; Bedürfnis auf neue Weise erfüllt</td></tr>
+<tr><td>Beispiele</td><td>Smartphone: längerer Akku, einfachere Bedienung; LED: weniger Energie; Prozessor: mehr Leistung</td><td>Telefon → mobiler Alltagscomputer (Smartphone); Flamme → elektrisches Licht; Einzelbauteile → integrierte Schaltung</td></tr>
+</table>
+<div class="merke"><b>Immer zuerst die Vergleichsbasis nennen:</b> „Was vergleichen wir womit?“ Smartphone vs. altes Telefon = radikal; Smartphone vs. Vorgängermodell = inkrementell. Beide Arten werden gebraucht und ergänzen sich.</div>
+<p><b>Laufschuhkonzept (3D-Druck):</b> Problem: Passform, Geruch, Einlagen/Stützbedarf → Wunsch: individuell passender Schuh (Inspiration: Star-Trek-Replikator, TED-Vortrag). Canvas: Kunden mit unterschiedlichen Schuhbedürfnissen; Wertangebot individuelle Passform, Gestaltung, Beratung; Ressourcen Fussscanner, 3D-Drucker, Software, Material, geschultes Personal, Partner; Kanäle Schuhgeschäfte, Onlineshop; Beziehung persönliche Beratung, Nachbetreuung; Einnahmen Schuhverkauf, Herstellerbeiträge; Kosten Personal, Räume, Material, Technik, Entwicklung. <b>Einordnung:</b> Vergleichsbasis = Standardgrössen ab Lager → Herstellung kann <b>radikal</b> verändert werden; Erlösprinzip (Schuhverkauf) bleibt → „je nach Teilaspekt“. Offene Fragen: Passform, Material, Qualität, Nachfrage, Wirtschaftlichkeit. Ein radikal veränderter Teil macht nicht das ganze Unternehmen radikal neu.</p>
+<p class="small"><b>Übungslösungen UB 6:</b> 1 Scan, Ablauf gleich = Info digitalisieren · 2 Papierkarten → Liste = Info · 3 Online-Buchung, Team bestätigt = Ablauf · 4 Rechnungen im System = Ablauf · 5 CD → Streaming = Transformation · 6 Wasserkraft-Webstuhl = 1.0 · 7 elektr. Fliessband = 2.0 · 8 CNC = 3.0 · 9 vernetzte Maschinenzustände = 4.0 · 10 Roboter ohne Datenaustausch = <b>3.0</b>.</p>
+</div>
+
+<!-- ===================== UB 7 ===================== -->
+<div class="ub">
+<h2>UB 7 – Internet of Things (IoT)</h2>
+<div class="lz"><b>Lernziele:</b> (1) IoT von nicht vernetztem Gerät unterscheiden; Sensor, Aktor, Anwendung zuordnen. (2) IoT-Datenweg mit vier Funktionsbereichen erklären; lokale vs. Cloud-Verarbeitung. (3) Für einen IoT-Fall Prozessverbesserung, Kennzahl und Voraussetzung begründen. (4) Zwei Risiken beurteilen, je Massnahme und zuständige Rolle nennen.</div>
+
+<h3>7.1 Was ist IoT?</h3>
+<div class="box"><b>Internet of Things:</b> Physische Dinge erfassen Daten oder setzen Befehle um und <b>tauschen Informationen über ein Netzwerk</b> aus. IoT verbindet ein physisches Ding mit einem digitalen Informationsfluss. Ein Gerät ist nicht schon IoT, weil es digital arbeitet. Prüfen: <b>physisches Ding + Daten + Verbindung</b>.</div>
+<p><b>Fälle:</b> A digitales Thermometer nur mit eigenem Display → <b>kein IoT</b> (keine Verbindung) · B Sensor sendet Raumtemperaturen an Gebäudeanwendung → <b>IoT</b> · C Tabelle rechnet mit eingetippten Zahlen → <b>kein IoT</b> (kein physisches Ding, keine Messung). Thermostat ohne Verbindung regelt vor Ort; mit Verbindung tauscht es Werte/Einstellungen mit App aus (ev. Belegung, Wetter). Vernetzung erweitert den Informationsfluss; Regelung kann schon vorher existieren.</p>
+<table>
+<tr><th>Bestandteil</th><th>Aufgabe</th><th>Thermostat-Beispiel</th></tr>
+<tr><td><b>Sensor</b></td><td>erfasst eine physische Grösse, liefert Messwert</td><td>Temperaturfühler misst 19 °C</td></tr>
+<tr><td><b>Aktor</b></td><td>setzt Steuerbefehl in physische Wirkung um</td><td>Ventilantrieb öffnet Heizventil weiter</td></tr>
+<tr><td><b>Anwendung</b></td><td>macht Daten/Funktionen für Nutzung zugänglich</td><td>App zeigt Temperatur und Einstellung</td></tr>
+</table>
+<p><b>Nutzbarer Messwert braucht Kontext:</b> Was und wo (Fühler T1, Besprechungsraum) · Wert und Einheit (19 °C) · Zeitpunkt (12:03) · Status (Messung empfangen).</p>
+
+<h3>7.2 Der IoT-Datenweg (4 Funktionsbereiche)</h3>
+<span class="formel">1. Erfassen (Sensor) → 2. Verbinden (WLAN/LAN, Access Point, Gateway) → 3. Verarbeiten (Steuerung/Plattform vergleicht mit Sollwert) → 4. Nutzen (Aktor handelt / App zeigt an)</span>
+<p><b>Vernetztes Haus:</b> Sollwert 21 °C. T1 Besprechungsraum 19 °C → Steuerung: 19 &lt; 21 → <b>Stellbefehl</b> „Ventil weiter öffnen“ → Ventilantrieb (Aktor) → Heizkörper gibt Wärme ab; später erneut messen, bei 21 °C weniger Wärme. Büros T2/T3 = 21 °C → Ventile zu. <b>Messwert</b> beschreibt Zustand; <b>Stellbefehl</b> soll ihn verändern. Kabel übertragen Signale, Heizwasser liefert Wärme.</p>
+<table>
+<tr><th>Begriff</th><th>Bedeutung</th></tr>
+<tr><td><b>Gateway</b></td><td>Vermittler: verbindet lokale Geräte (z. B. Sensor mit lokalem Funk) mit weiterem System; kann Daten bündeln/weitergeben. <b>Nicht automatisch die Cloud.</b></td></tr>
+<tr><td><b>Edge (lokal)</b></td><td>Verarbeitung im Haus/vor Ort → Regelung läuft auch bei Internetausfall weiter</td></tr>
+<tr><td><b>Cloud</b></td><td>entfernter Dienst: speichert Messwerte, wertet Verlauf aus, Fernzugriff über App (nach Anmeldung)</td></tr>
+<tr><td><b>Interoperabilität</b></td><td>Komponenten können <b>sinnvoll zusammenarbeiten</b>: Übertragungsweg + klares Datenformat/Einheit (19 °C nicht als 19 °F) + geregelter Zugriff/Zuordnung</td></tr>
+</table>
+<table>
+<tr><th>Internet fällt aus</th><th>Variante A: Regel lokal</th><th>Variante B: Regel in Cloud</th></tr>
+<tr><td>Heizung regeln</td><td><b>läuft weiter</b></td><td><b>fällt aus</b> (Messwert und Stellbefehl brauchen Verbindung)</td></tr>
+<tr><td>Fern-App aktuelle Werte</td><td>nein (kein Fernzugriff)</td><td>nein</td></tr>
+</table>
+<p class="small">Weiteres Beispiel: Wetterstation (Wind) → lokale Regel „bei starkem Wind Storen einfahren“; externer Wetterdienst liefert <b>Vorhersage</b> (keine Messung am Haus); Solaranlage misst Leistung 3,2 kW.</p>
+
+<h3>7.3 Nutzen begründen</h3>
+<p class="flow">Daten → Einordnung → Handlung → Nutzen prüfen. „Ein Messwert spart noch keine Arbeit.“ Nutzen entsteht durch eine bessere Entscheidung oder Handlung.</p>
+<table>
+<tr><th>Nutzenidee</th><th>Kennzahl</th><th>Vorher klären</th></tr>
+<tr><td>Schneller reagieren</td><td>Zeit von Störungsmeldung bis erste Reaktion</td><td>gleiche Start-/Endpunkte</td></tr>
+<tr><td>Unnötige Anfahrten vermeiden</td><td>Anteil Fälle ohne Anfahrt gelöst</td><td>nicht alles aus der Ferne lösbar</td></tr>
+<tr><td>Qualität sichern</td><td>erneute Meldungen zum gleichen ungelösten Problem</td><td>Schnelligkeit ≠ Qualität</td></tr>
+</table>
+<p class="small">Kennzahl braucht <b>klare Messregel + Vergleichsbasis</b>.</p>
+<div class="cols2">
+<div><h4>Tesla: Ferndiagnose</h4><p>Autorisierte Fernzugriffe auf Fahrzeugdaten und Fehlercodes (Reifendruck, Kilometerstand, Status) → gemeldetes Problem aus der Ferne einordnen, Serviceeinsatz vorbereiten. <b>Diagnose ≠ Prognose:</b> Diagnose = was liegt <b>jetzt</b> vor?; vorausschauende Wartung = was könnte <b>künftig</b> ausfallen? (braucht Verlaufsdaten, Prognoseverfahren, Zuverlässigkeitsprüfung). Fehlercode/Grenzwertalarm ≠ Ausfallprognose.</p></div>
+<div><h4>Coop: Kühlkette (mit Swisscom, Gimasi)</h4><p>Messen (Sensoren erfassen Temperaturen) → Übertragen → Melden (auffällige Temperaturen lösen Hinweise aus) → Handeln (Mitarbeitende prüfen Ursache). Ein Hinweis verhindert noch keinen Schaden – Reaktion muss folgen.</p></div>
+</div>
+<p><b>Aufwand/Abhängigkeiten:</b> Einführung (Geräte, Anbindung, Schulung) · laufender Betrieb (Verbindungen, Dienst, Wartung – wer zahlt/betreut?) · Erweiterung (Skalierbarkeit planen, keine kostenlose Garantie) · Anbieterbindung (Datenzugriff, Schnittstellen, Kündigung/Ausfall).</p>
+
+<h3>7.4 Risiken und Verantwortung</h3>
+<table>
+<tr><th>Blickrichtung</th><th>Chance</th><th>Bedingung / Risiko</th></tr>
+<tr><td>Gesellschaft</td><td>Komfort, Unterstützung</td><td>Nutzungsdaten erlauben Rückschlüsse auf Personen</td></tr>
+<tr><td>Technologie</td><td>Störungen früher erkennen</td><td>Verbindung, Datenqualität, Komponenten müssen passen</td></tr>
+<tr><td>Natur</td><td>Energie gezielter einsetzen</td><td>Geräte, Batterien, Betrieb brauchen selbst Ressourcen</td></tr>
+<tr><td>Wirtschaft</td><td>Wartung gezielter planen</td><td>Kosten, Fehlalarme, Abhängigkeiten</td></tr>
+</table>
+<table>
+<tr><th>Anzeige um 12:10</th><th>Was wissen wir?</th><th>Was tun?</th></tr>
+<tr><td>19 °C, gemessen 12:10</td><td>aktueller Wert</td><td>im Prozess auswerten</td></tr>
+<tr><td>19 °C, zuletzt 12:03</td><td>aktueller Zustand <b>nicht belegt</b></td><td>Alter kennzeichnen, Verbindung prüfen</td></tr>
+<tr><td>keine Messung</td><td>Wert fehlt</td><td><b>nicht 0 einsetzen</b>, Ursache und Ersatzablauf klären</td></tr>
+</table>
+<p class="small">„Kein neuer Messwert bedeutet nicht: Zustand unverändert.“ Ein alter Messwert beweist weder aktuellen Zustand noch Defekt. Mögliche Ursachen: Verbindung unterbrochen, Sensor/Batterie defekt, Gateway/Plattform gestört. App soll Alter/Zeitstempel sichtbar anzeigen.</p>
+<table>
+<tr><th>Risiko</th><th>Massnahme</th><th>Zuständige Rolle</th></tr>
+<tr><td>Verbindung fällt aus</td><td>Störungsanzeige und festgelegten Ersatzablauf testen</td><td>Betriebsverantwortliche + IT</td></tr>
+<tr><td>Falsche/alte Messdaten</td><td>Zeitpunkt und Plausibilität prüfen, Sensor kontrollieren</td><td>Fachverantwortliche mit Gerätebetreuung</td></tr>
+<tr><td>Unberechtigter Zugriff</td><td>Zugriffe beschränken, Geräte aktuell halten, Änderungen nachvollziehen</td><td>IT mit fachlich verantwortlicher Stelle</td></tr>
+</table>
+</div>
+
+<!-- ===================== UB 8 ===================== -->
+<div class="ub">
+<h2>UB 8 – IT-Sicherheit und Datenschutz</h2>
+<div class="lz"><b>Lernziele:</b> (1) Schutzziele Vertraulichkeit, Integrität, Verfügbarkeit unterscheiden; Folgen ihrer Verletzung erklären. (2) Einfache IT-Risiken beurteilen, Massnahmen und Zuständigkeiten begründen, Priorität setzen. (3) Personendaten erkennen, Datenschutzpflichten erklären, bei Vorfall internes Vorgehen und Meldepflicht-Prüfung begründen. (4) Nutzen externer Sicherheitsleistungen im Canvas erklären; fünf konkrete Teamregeln formulieren.</div>
+
+<h3>8.1 Die drei Schutzziele (CIA)</h3>
+<p><b>Schutzziel</b> = welcher Zustand von Informationen oder IT-Diensten erhalten bleiben soll.</p>
+<table>
+<tr><th style="width:20%">Schutzziel</th><th>Leitfrage / Definition</th><th>Haus</th><th>Zahlung CHF 1'200</th><th>Spital</th></tr>
+<tr><td><b>Vertraulichkeit</b><br>Confidentiality</td><td>Nur <b>Berechtigte</b> dürfen Informationen sehen</td><td>Raumbelegungen nicht öffentlich</td><td>Unbefugte sehen Kontodaten</td><td>Unbefugte lesen Medikamentenliste</td></tr>
+<tr><td><b>Integrität</b><br>Integrity</td><td>Informationen bleiben <b>vollständig und unverfälscht</b></td><td>niemand ändert Sollwert unzulässig</td><td>aus 1'200 werden 12'000</td><td>Dosierung unzulässig verändert</td></tr>
+<tr><td><b>Verfügbarkeit</b><br>Availability</td><td>Informationen/Dienste sind <b>bei Bedarf zugänglich</b></td><td>Berechtigte erreichen Steuerung</td><td>Zahlungsdienst fällt aus</td><td>Team kann Liste nicht öffnen</td></tr>
+</table>
+<p class="small">Schutzziele ergänzen sich, <b>keine feste Rangfolge</b>; ein Vorfall kann <b>mehrere</b> verletzen. Gleiche Schutzziele, aber Folgen hängen vom Einsatzbereich ab (Spital: Gesundheit/Leben).</p>
+
+<h3>8.2 Schweizer (und weitere) Cyberfälle</h3>
+<table>
+<tr><th>Fall</th><th>Was geschah</th><th>Schutzziel</th></tr>
+<tr><td><b>Comparis</b> (7.7.2021)</td><td>Erpresserische Schadsoftware (Ransomware), IT-Systeme blockiert; Zugriff auf Kundendaten, Diebstahl angenommen; Systeme in sicherer Umgebung neu aufgebaut</td><td>Verfügbarkeit + Vertraulichkeit</td></tr>
+<tr><td><b>Xplain</b> (Mai/14.6.2023)</td><td>IT-Anbieter für Behörden angegriffen, Daten des Bundes (inkl. besonders schützenswerte Personendaten) veröffentlicht → Angriff beim Dienstleister trifft Kunden</td><td>Vertraulichkeit</td></tr>
+<tr><td><b>Schlatter</b> (9.8.2024)</td><td>Maschinenbauer Schlieren, Schadsoftware; Systeme bis 19.8. wiederhergestellt (intern + extern)</td><td>Verfügbarkeit</td></tr>
+<tr><td><b>Ricardo</b> (7.10.2026)</td><td>Sicherheitslücke, ~890'000 Konten: Namen, Adressen, Telefonnummern (keine E-Mails/Passwörter); Lücke geschlossen, Betroffene informiert, <b>EDÖB</b> benachrichtigt</td><td>Vertraulichkeit</td></tr>
+<tr><td><b>Bexio</b> (9.5.2026)</td><td>Phishing → nachgebaute Anmeldeseiten → gestohlene Zugangsdaten → <b>Rechnungs-IBAN manipuliert</b> (zentrale Systeme nicht gehackt)</td><td>Integrität</td></tr>
+<tr><td><b>Bremanger</b> (Norwegen, 2025)</td><td>Fernzugriff auf Kontrollpanel einer Stauanlage, Ventile 4 h offen, ~500 l/s Wasser</td><td>Integrität (Steuerung)</td></tr>
+</table>
+<div class="box"><b>Amazon-Szenario (3 h kein Bestellen):</b> Umsatz „Online stores“ Q2 2026 = USD 70'432 Mio. ÷ (91 Tage × 24 h) = USD 32,25 Mio./h × 3 ≈ <b>USD 96,7 Mio.</b> Vereinfachung (gleichmässiger Umsatz); rechnerischer Umsatz ≠ automatisch Verlust (Kunden warten evtl.).</div>
+
+<h3>8.3 IT-Risiko</h3>
+<p class="flow">Bedrohung (was droht?) → Schwachstelle (was erleichtert es?) → Ereignis (was geschieht?) → Geschäftsfolge (was folgt daraus?)</p>
+<p>Bsp.: Jemand will Zugangsdaten stehlen → nur Passwort genügt → unbefugter Kontozugriff → Kundendaten fliessen ab, falsche Nachrichten. <b>Risiko beurteilen = Eintrittswahrscheinlichkeit × Schwere der Folgen</b> (für Betrieb und Betroffene). Gefahr ≠ eingetretener Schaden. <b>Restrisiko</b> = was trotz Massnahmen noch passieren kann.</p>
+<div class="cols2">
+<div><h4>Phishing</h4><p>Versuch, vertrauliche Daten (Zugangsdaten) durch <b>Täuschung</b> zu erbeuten. Signale: Zeitdruck („in 30 Min. gesperrt“), fremde Absenderdomain, Link zur Anmeldung. Richtig: <b>nicht klicken</b>, über bekannten Weg (Telefon/IT-Kontakt) prüfen, melden.</p>
+<h4>Ransomware</h4><p>Schadsoftware zur <b>Erpressung</b>: Zugang (gestohlene Daten, Sicherheitslücke) → Ausbreitung (zu breite Rechte) → Schaden (Verschlüsselung, evtl. Datendiebstahl) → Erpressung (Zahlung garantiert keine Wiederherstellung).</p></div>
+<div><h4>MFA – Mehrfaktor-Anmeldung</h4><p>Mind. <b>zwei unabhängige</b> Nachweise aus verschiedenen Kategorien: <b>Wissen</b> (Passwort) · <b>Besitz</b> (Sicherheitsschlüssel, Handy) · <b>Sein</b> (Fingerabdruck). Zwei Passwörter = nur <b>eine</b> Kategorie.</p>
+<h4>Backup</h4><p>Zusätzliche Sicherungskopie; muss <b>getrennt geschützt</b> sein (angeschlossene Kopie wird mitverschlüsselt) und <b>Wiederherstellung getestet</b>. Hilft gegen Datenverlust, holt <b>gestohlene Daten nicht zurück</b>. Erfolgsmeldung ≠ geprüfte Wiederherstellung.</p></div>
+</div>
+<table>
+<tr><th>Stelle / Schwäche</th><th>Massnahme</th><th>Was bleibt zu prüfen?</th></tr>
+<tr><td>Zugang: bekannte Sicherheitslücke</td><td>Sicherheitsupdates geplant und zeitnah</td><td>Update erfolgreich installiert?</td></tr>
+<tr><td>Zugang: ein Passwort genügt</td><td>MFA</td><td>Anmeldung mit Passwort allein noch möglich?</td></tr>
+<tr><td>Ausbreitung: zu viele Rechte</td><td>nur nötige Rechte (Minimalprinzip), regelmässig prüfen</td><td>Wer genehmigt/entzieht?</td></tr>
+<tr><td>Schaden: Dateien unbrauchbar</td><td>geschütztes Backup + Wiederherstellungstest</td><td>Daten nutzbar? Dauer?</td></tr>
+</table>
+<div class="box"><b>Risikoplan-Schema (5 Felder) – Bsp. Kundenpostfach mit geteiltem Passwort ohne MFA:</b><br>
+1. <b>Bedrohung, Schutzziel, Folge</b>: Unbefugte lesen Nachrichten; Vertraulichkeit; Kundendaten fliessen ab.<br>
+2. <b>Ausnutzbare Schwäche</b>: alle kennen dasselbe Passwort, kein zweiter Faktor.<br>
+3. <b>Massnahme</b>: persönliche Zugänge zum gemeinsamen Postfach + MFA.<br>
+4. <b>Zuständige Rolle und Prüfung</b>: IT richtet ein; Teamleitung bestätigt, wer Zugriff braucht.<br>
+5. <b>Restrisiko</b>: Täuschung, Fehlbedienung bleiben; Rechte weiter prüfen.</div>
+<p class="small"><b>Priorität:</b> Offener Zugang einer ausgeschiedenen Person (A) vor bereits gesperrtem (B) → A zuerst sperren (Zugriff weiterhin möglich). Wahrscheinlichkeit und Folgen vergleichen, fehlende Angaben nennen; Sperre beweist keinen fehlenden Missbrauch.</p>
+
+<h3>8.4 Datenschutz (Schweiz, DSG)</h3>
+<p><b>Personendaten</b> = Angaben über eine <b>bestimmte oder bestimmbare</b> natürliche Person.</p>
+<table>
+<tr><th>Angabe</th><th>Einordnung</th><th>Warum?</th></tr>
+<tr><td>Name, persönliche E-Mail</td><td>Personendaten</td><td>Person erkennbar</td></tr>
+<tr><td>Diagnose mit Patientennummer</td><td><b>besonders schützenswerte</b> Personendaten</td><td>Gesundheitsdaten; Nummer macht <b>nicht</b> automatisch anonym</td></tr>
+<tr><td>Temperatur eines leeren Lagerraums</td><td>keine Personendaten</td><td>kein Personenbezug</td></tr>
+</table>
+<p><b>Datensicherheit</b> (Informationen schützen: Zugänge, Rechte, Backups) vs. <b>Datenschutz</b> (verantwortungsvoller Umgang mit Personendaten: Zweck, Umfang, Weitergabe, Information der Betroffenen). Sichere Speicherung rechtfertigt keine unnötigen Daten (für Rückruf keine Diagnose).</p>
+<table>
+<tr><th>Pflicht (DSG)</th><th>Bedeutung</th><th>Beispiel Kundenservice</th></tr>
+<tr><td><b>Daten schützen</b> – Art. 8</td><td>angemessene technische und organisatorische Massnahmen</td><td>nur Zuständige im Kundenpostfach</td></tr>
+<tr><td><b>Menschen informieren</b> – Art. 19</td><td>Verantwortlicher, Zweck, ggf. Empfänger nennen</td><td>Hinweis im Kontaktformular</td></tr>
+<tr><td><b>Bearbeitungen erfassen</b> – Art. 12</td><td>prüfen, ob Verzeichnis der Bearbeitungstätigkeiten nötig</td><td>Zweck, Datenarten, Empfänger dokumentieren</td></tr>
+<tr><td><b>Vorfälle beurteilen</b> – Art. 24</td><td>Risiko für Betroffene prüfen, nötige Meldung veranlassen</td><td>Kundenliste falsch versandt → zuständige Stelle prüft</td></tr>
+</table>
+<p><b>Cloud-Rollen:</b> Betrieb = <b>Verantwortlicher</b> (entscheidet Zweck/Mittel, bleibt in der Pflicht) · Cloud-Anbieter = <b>Auftragsbearbeiter</b> (bearbeitet im Auftrag, meldet Sicherheitsverletzungen dem Unternehmen) · Mitarbeitende = interner Meldeweg (melden Verdacht intern, entscheiden nicht allein über externe Meldungen).</p>
+<div class="merke"><b>Meldungen:</b> <b>EDÖB</b> (Eidg. Datenschutz- und Öffentlichkeitsbeauftragter): wenn eine Verletzung der Datensicherheit <b>voraussichtlich zu einem hohen Risiko für betroffene Personen</b> führt → Verantwortlicher meldet <b>so rasch als möglich</b>. <b>BACS</b> (Bundesamt für Cybersicherheit) nach <b>ISG</b>: für meldepflichtige <b>kritische Infrastrukturen</b> bei bestimmten Cyberangriffen innert <b>24 Stunden</b> ab Entdeckung – keine allgemeine Pflicht für jedes KMU. <b>Bussen</b> DSG: bis <b>CHF 250'000</b> für bestimmte <b>vorsätzliche</b> Pflichtverletzungen, grundsätzlich gegen die verantwortliche <b>natürliche Person</b>; nicht jeder Angriff/Klick → Busse (Tatbestand, Verschulden prüfen). Im Datenschutz zählt das Risiko für <b>Menschen</b>.</div>
+<div class="box"><b>Übung Arztpraxis (Liste mit Namen + Diagnosen unverschlüsselt an Unbekannten):</b> Daten = besonders schützenswerte Personendaten (Gesundheit); Schutzziel = Vertraulichkeit. Sofort: <b>intern über bekannten Meldeweg melden</b>, nichts löschen/vertuschen, ggf. Empfänger um Löschung bitten (nach Absprache), Fakten festhalten. Verantwortliche Stelle (Praxisleitung/Datenschutzverantwortliche) beurteilt Risiko. EDÖB-Meldung, wenn voraussichtlich hohes Risiko (bei Gesundheitsdaten wahrscheinlich). Fehlende Infos: Wurde geöffnet? Wer ist Empfänger? Wie viele Personen? Weitere Verbreitung? → begründeter Handlungsweg statt Ja/Nein.</div>
+
+<h3>8.5 Sicherheit organisieren</h3>
+<p><b>Menschen</b> (erkennen, ohne Angst früh melden) · <b>Organisation</b> (Rechte, Zuständigkeiten, Notfallweg, regelmässig prüfen) · <b>Technik</b> (Zugänge schützen, Updates, Filter, Backups). Die <b>Leitung</b> legt Ziele, Verantwortlichkeiten und Ressourcen fest.</p>
+<p><b>Ethical Hacking</b> = ausdrücklich beauftragte Tests innerhalb vereinbarter Grenzen: Abgrenzen → Untersuchen → Bewerten → Verbessern (beheben, nachprüfen). Danach nicht „vollständig sicher“; Ergebnisse bewerten und umsetzen. <b>SignalFisher</b> (früher Bug Bounty Switzerland, Umbenennung 31.8.2026): laufende Sicherheitstests, Befunde einordnen; Kunden u. a. Finanzdienstleister, Versicherungen, öffentliche Organisationen. Kundenwert = <b>frühzeitige Erkenntnis über Schwachstellen</b>. Preise nicht öffentlich → als <b>Annahme</b> kennzeichnen.</p>
+<p class="flow">Notfallweg: Melden (Mitarbeitende → interner Kontakt) → Eindämmen (Fachpersonen begrenzen, Spuren sichern) → Beurteilen (Umfang, Risiken, externe Pflichten) → Wiederanlaufen (bereinigte Systeme, Funktion prüfen). Nicht vertuschen, nicht selbst löschen/neu installieren.</p>
+<div class="box"><b>Gute Regel = Wann tue ich was und an wen wende ich mich?</b> Schlecht: „Seid vorsichtig.“ Gut: „Bestätige keine Anmeldung, die du nicht selbst gestartet hast. Melde unerwartete Freigabeanfragen sofort über den bekannten IT-Kontakt.“<br>
+<b>5 Musterregeln:</b> <i>Anmeldung</i>: Nutze MFA, gib Passwort/Code nie weiter, bestätige nur selbst gestartete Anmeldungen. · <i>E-Mails</i>: Bei Zeitdruck/Links zur Anmeldung nicht klicken, Absender über bekannten Kanal prüfen, an IT melden. · <i>Datenfreigabe</i>: Kundendaten nur an Berechtigte, nur nötige Daten, vor Versand Empfänger prüfen. · <i>Updates</i>: Sicherheitsupdates sofort installieren/neu starten, wenn IT es verlangt. · <i>Vorfälle</i>: Verdacht sofort dem internen Kontakt melden, nichts löschen oder vertuschen.</div>
+</div>
+
+<!-- ===================== UB 9 ===================== -->
+<div class="ub">
+<h2>UB 9 – Informationssicherheit organisieren (Fall Organkery)</h2>
+<div class="lz"><b>Lernziele:</b> (1) Am Fall Organkery erklären, wie ein ISMS Schutzmassnahmen organisiert, überprüft und verbessert. (2) Aufgaben des Unternehmens und des Cloud-Anbieters unterscheiden und Zuständigkeiten begründen. (3) Einfachen Umsetzungs- und Kontrollplan erstellen und Bedingungen für die Fortsetzung des Pilotprojekts begründen.</div>
+
+<h3>9.1 Der Fall</h3>
+<table>
+<tr><th>Unternehmen</th><th>Vorhaben</th><th>Vorfall</th><th>Entscheidung</th></tr>
+<tr><td>Organkery: Bio-Backwaren für Geschäftskunden</td><td>Deutschlandgeschäft (beschlossen) digital unterstützen: Kundenportal und gemeinsame Dokumente (Pilot/Testbetrieb)</td><td>Cloud-Speicher <b>36 Stunden öffentlich</b> erreichbar, mit echten Kundenangaben und betrieblichen Unterlagen; ob heruntergeladen wurde: <b>ungeklärt</b></td><td>Unter welchen <b>Bedingungen</b> darf der Pilot weitergehen?</td></tr>
+</table>
+<p><b>3 Fragen vor Fortsetzung:</b> (1) Ist der öffentliche Zugriff wirklich beendet? → <b>Zugriffstest</b> muss zeigen, dass Unberechtigte nicht öffnen können. (2) Wer sorgt künftig für passende Zugriffsrechte? → klare Aufgaben Organkery und Anbieter, auch bei neuen Personen/Ordnern. (3) Unter welchen Bedingungen weiter? → Prüfergebnisse, offene Risiken, begründete Empfehlung.</p>
+<p><b>Sofort reagieren:</b> öffentlichen Zugriff begrenzen, intern melden, Spuren (Protokolle) sichern; Fachpersonen klären Ablauf und Meldepflichten. <b>Parallel:</b> künftigen Zugriff organisieren (wer bewilligt, wer richtet ein, wer prüft).</p>
+
+<h3>9.2 Spuren (Protokolle) richtig lesen</h3>
+<table>
+<tr><th>Spur</th><th>Was lässt sich (nicht) schliessen?</th></tr>
+<tr><td>Öffentliche Freigabe</td><td>Unberechtigte <b>konnten</b> zugreifen; tatsächlicher Zugriff nicht belegt</td></tr>
+<tr><td>Download im Protokoll</td><td>System erfasst Abruf; ob Mensch oder Programm (z. B. KI-Agent) und ob genutzt: offen</td></tr>
+<tr><td>IP-Adresse</td><td>kann Firma, VPN, Cloud-Dienst gehören; identifiziert Handelnden nicht eindeutig</td></tr>
+<tr><td>Keine Einträge</td><td>Protokolle können fehlen/unvollständig sein → <b>keine sichere Entwarnung</b></td></tr>
+<tr><td>Zuordnung</td><td>Konto-, Geräte-, Agentenprotokolle vergleichen; Fragen können offenbleiben</td></tr>
+</table>
+<p class="small">Belegte Tatsachen, Hinweise und offene Fragen trennen. <b>KI-Agent</b> = führt Aufgaben mit Software-Werkzeugen aus; nutzt eigene/übertragene Rechte, kann öffentliche Links ohne Anmeldung abrufen → Rechte begrenzen, verantwortliche Person benennen, IT prüft Zugriffe.</p>
+<p><b>Schutzbereich (4 Blickwinkel):</b> <b>Informationen</b> (welche Unterlagen schützen? Kundenliste mit Namen und geschäftl. E-Mails) · <b>Menschen</b> (wer braucht sie, wer ist für Rechte zuständig?) · <b>Abläufe</b> (Ablage, Rechtevergabe, Kontrolle) · <b>Technik</b> (Anwendungen, Konten, Geräte, automatisierte Zugriffe).</p>
+
+<h3>9.3 Umsetzungs- und Kontrollplan (5 Felder)</h3>
+<table>
+<tr><th style="width:20%">Planungsfrage</th><th>Organkery – Kundenliste</th></tr>
+<tr><td><b>Schutzziel</b></td><td>Vertraulichkeit: nur berechtigte Personen lesen die Projektunterlagen</td></tr>
+<tr><td><b>Massnahme</b></td><td>öffentliche Links sperren; nur festgelegte Personen berechtigen</td></tr>
+<tr><td><b>Zuständigkeit</b></td><td>Fachverantwortliche legen Rechte fest; IT richtet ein und dokumentiert Zugriffstest</td></tr>
+<tr><td><b>Prüfung und Nachweis</b></td><td>Berechtigte können öffnen; Unberechtigte auch über alte Links nicht; Ergebnisse festhalten</td></tr>
+<tr><td><b>Zeitpunkt und Reaktion</b></td><td>vor Fortsetzung und nach wichtigen Änderungen testen; Fehler beheben, erneut prüfen</td></tr>
+</table>
+<table>
+<tr><th>Testfall</th><th>Erwartet</th><th>Beobachtet</th></tr>
+<tr><td>Berechtigte Person</td><td>öffnet</td><td>öffnet ✓</td></tr>
+<tr><td>Unberechtigte, normale Anmeldung</td><td>abgewiesen</td><td>abgewiesen ✓</td></tr>
+<tr><td>Unberechtigte über <b>alten Link</b></td><td>abgewiesen</td><td><b>öffnet noch ✗</b> → Lücke!</td></tr>
+</table>
+<p>→ IT sperrt auch alten Link, wiederholt <b>alle drei</b> Tests; erst wenn Beobachtung = Erwartung, ist die Kontrolle bestanden. Ablauf dauerhaft anpassen: bei neuen Ordnern/Rechten auch bestehende Links prüfen. <b>Geplant ≠ wirksam – erst der Test zeigt es.</b></p>
+
+<h3>9.4 PDCA, ISMS, ISO/IEC 27001</h3>
+<table>
+<tr><th>PDCA-Schritt</th><th>Organkery</th></tr>
+<tr><td><b>1. Plan</b> (Planen)</td><td>Zugriffsziel, Rechte, Zuständigkeiten festlegen</td></tr>
+<tr><td><b>2. Do</b> (Umsetzen)</td><td>geplante Berechtigungen einrichten</td></tr>
+<tr><td><b>3. Check</b> (Prüfen)</td><td>normale Zugriffe und alte Links testen, Ergebnisse festhalten</td></tr>
+<tr><td><b>4. Act</b> (Verbessern)</td><td>alten Link sperren, erneut testen, Prüfablauf ergänzen → neuer Zyklus bei neuen Personen/Ordnern</td></tr>
+</table>
+<p><b>ISMS (Informationssicherheitsmanagementsystem)</b> = geregeltes Zusammenspiel von <b>Zielen, Zuständigkeiten, Regeln und Kontrollen</b> für die Informationssicherheit (Zugriffsrechte, Sicherungen, Vorfälle …). Leitung legt Ziele und Mittel fest; Zuständige setzen um und berichten über Ergebnisse und offene Risiken. Organisiert Sicherheit <b>dauerhaft</b>; eine einzelne Tabelle reicht nicht.</p>
+<p><b>ISO/IEC 27001</b> = Norm mit <b>Anforderungen an ein ISMS</b> (z. B. klare Verantwortlichkeiten, Risikobewertung). Unternehmen legt Geltungsbereich fest. Externe Stelle kann <b>zertifizieren</b>; Zertifikat gilt nur für den Geltungsbereich und <b>garantiert nicht, dass nie ein Vorfall eintritt</b>.</p>
+
+<h3>9.5 Geteilte Verantwortung in der Cloud (SaaS-Dokumentendienst)</h3>
+<table>
+<tr><th>Organkery</th><th>Anbieter</th></tr>
+<tr><td>legt fest, wer welche Unterlagen braucht · richtet verfügbare Zugriffsrechte passend ein · prüft erlaubte/unerlaubte Zugriffe</td><td>betreibt und aktualisiert die Anwendung · stellt Funktionen für Konten/Rechte bereit · liefert vereinbarte Unterstützung und Nachweise</td></tr>
+<tr><td colspan="2">Beide klären: wer Rechte ändern kann, wie Fehler gemeldet/behoben werden. <b>Auslagern verändert Aufgaben, lässt Verantwortung nicht verschwinden.</b></td></tr>
+</table>
+<table>
+<tr><th>Rolle (intern)</th><th>Aufgabe</th></tr>
+<tr><td><b>Geschäftsleitung</b></td><td>Ziele und Mittel festlegen; <b>entscheidet über Fortsetzung</b> anhand der Nachweise</td></tr>
+<tr><td><b>Fachverantwortliche</b></td><td>benötigte Unterlagen und berechtigte Personen festlegen; fachliche Nutzbarkeit prüfen</td></tr>
+<tr><td><b>IT / Dienstbetreuung</b></td><td>Berechtigungen einrichten, Tests koordinieren, Ergebnisse dokumentieren; klärt Fragen mit Anbieter</td></tr>
+<tr><td><b>Mitarbeitende</b></td><td>Vorgaben anwenden, Auffälligkeiten über vereinbarten Weg melden</td></tr>
+</table>
+<p><b>Mit dem Anbieter klären:</b> Wer kann öffentlichen Link sperren, wie prüfen wir das? · Wer stellt gelöschte Dateien wieder her, was bereiten wir vor? (Sicherung ≠ geprüfte Wiederherstellung) · Wie melden wir einen Vorfall, welche Auskünfte/Protokolle erhalten wir? Ungeklärtes = offener Punkt für die Entscheidung.</p>
+
+<h3>9.6 Empfehlung mit Bedingungen + Übungsfälle</h3>
+<div class="box"><b>Schlecht:</b> „Die Cloud ist jetzt sicher. Wir können weitermachen.“ <b>Gut:</b> „Die IT muss alle drei Zugriffstests erfolgreich abschliessen und die Ergebnisse dokumentieren. Diesen Nachweis braucht die Leitung vor ihrem Entscheid. Die Abklärung des ursprünglichen Vorfalls bleibt ein eigener offener Punkt.“ – Ein erfolgreicher Test ist <b>eine Bedingung</b>, ersetzt nicht die ganze Entscheidung.</div>
+<table>
+<tr><th style="width:16%">Feld</th><th>Fall A: Projektzugang bleibt nach Austritt bestehen (kein Meldeweg für Projektwechsel)</th><th>Fall B: Sicherung ohne Wiederherstellungstest (Ziel: Qualitätsdatei in 2 h nutzbar)</th></tr>
+<tr><td>Schutzziel</td><td>Vertraulichkeit</td><td>Verfügbarkeit (und Integrität der wiederhergestellten Datei)</td></tr>
+<tr><td>Massnahme</td><td>Zugang entziehen; Meldeweg für Projektwechsel festlegen; regelmässige Rechteüberprüfung</td><td>Wiederherstellungsablauf mit Anbieter vereinbaren; Test-Wiederherstellung einer Qualitätsdatei durchführen</td></tr>
+<tr><td>Zuständigkeit</td><td>Projektleitung meldet Wechsel → Fachverantwortliche bestätigen Rechte → IT setzt um und prüft</td><td>IT koordiniert mit Anbieter; Fachbereich prüft Nutzbarkeit der Datei</td></tr>
+<tr><td>Prüfung/Nachweis</td><td>Test: ausgeschiedene Person kann Unterlagen <b>nicht</b> mehr öffnen; Ergebnis dokumentiert</td><td>Test: Datei innert <b>≤ 2 h</b> nach Anforderung wiederhergestellt und fachlich nutzbar; Zeit dokumentiert</td></tr>
+<tr><td>Zeitpunkt/Reaktion</td><td>sofort, dann bei jedem Projektwechsel; bei Fehler beheben, erneut testen</td><td>vor Fortsetzung, danach periodisch (z. B. quartalsweise); bei Überschreitung Ablauf anpassen</td></tr>
+</table>
+<p class="small"><b>Empfehlung (Muster):</b> Pilot weiterführen, <b>wenn</b> (1) alle Zugriffstests inkl. alter Links und ausgeschiedener Konten bestanden und dokumentiert sind und (2) eine Test-Wiederherstellung innert 2 h gelungen ist. <b>Offen:</b> Abklärung, ob während der 36 h Daten abgeflossen sind (Protokolle, ggf. EDÖB-Meldepflicht). Annahmen kennzeichnen. Entscheid: <b>Geschäftsleitung</b>.</p>
+</div>
+
+<!-- ===================== QUIZ-LÖSUNGEN ===================== -->
+<div class="ub">
+<h2>Quiz-Lösungen aus den Folien (Start- und Abschlussquiz)</h2>
+<div class="cols2 small">
+<div><h4>UB 2 – Startquiz (Repetition UB 1)</h4><ol>
+<li>„Informatik“ = <span class="ans">A</span> Information + Automatik</li>
+<li>Datenarten: <span class="ans">B</span> Excel = strukturiert, E-Mail = unstrukturiert, JSON = semistrukturiert</li>
+<li>Stufe Information: <span class="ans">D</span> „Der Patient hat 38.5 Grad Fieber.“</li>
+<li>Stufe Wissen: <span class="ans">C</span> „Conversion stieg, weil Checkout vereinfacht“</li>
+<li>Weisheit Amazon: <span class="ans">B</span> standardisierte Infrastruktur als externes Cloud-Angebot</li>
+<li>Kein AWS-Treiber: <span class="ans">C</span> Pakete manuell verpacken</li>
+<li>Prediction/Judgment: <span class="ans">B</span> ergänzen sich (Prognosen anhand Ziele, Risiken, Kosten, Werte beurteilt)</li>
+<li>Judgment-Beispiel: <span class="ans">A</span> „Trotz geringer Wahrscheinlichkeit behandeln wir …“</li>
+<li>Feedback: <span class="ans">D</span> vergleicht Outcome und Vorhersage, verbessert spätere Prognosen</li>
+<li>Für Führungskräfte: <span class="ans">A</span> Vorhersagen automatisierbar, Bewertung bleibt menschlich</li></ol>
+<h4>UB 2 – Abschlussquiz</h4><ol>
+<li>EVA: E = Artikelnummer per Tastatur; V = Computer sucht Artikel (Datenbank, Preis, Lager); A = Preis und Lagerbestand am Bildschirm</li>
+<li>Zalando Verarbeitung: <span class="ans">C</span></li>
+<li>Zentraleinheit: <span class="ans">A</span> CPU, RAM, Mainboard</li>
+<li>RAM wichtig: <span class="ans">B</span> stellt aktuell benötigte Daten schnell bereit</li>
+<li>Flaschenhals: <span class="ans">B</span> Daten und Instruktionen teilen begrenzten Weg</li>
+<li>Nutzen UEFI: <span class="ans">C</span> Kasse startet nach Strom gemäss Wiederanlaufplan</li></ol>
+<h4>UB 3 – Startquiz</h4><p>EVA-Verarbeitung <span class="ans">C</span> · RAM <span class="ans">B</span> · Engpass <span class="ans">B</span> · BIOS/UEFI <span class="ans">B</span></p>
+<h4>UB 4 – Startquiz</h4><p>BS beim Speichern <span class="ans">C</span> verwaltet Dateizugriff · Treiber <span class="ans">A</span> Systemsoftware, gerätespezifische Befehle · CRM <span class="ans">D</span> Anwendungssoftware · TCO 12'000 + 3 × 3'000 = <span class="ans">B</span> CHF 21'000 · ROI 25 % <span class="ans">A</span> 25 Rappen Nettonutzen pro Franken im Zeitraum</p>
+<h4>UB 5 – Startquiz</h4><p>Homeoffice → Internet: <span class="ans">C</span> Router · fertige Browser-Anwendung: <span class="ans">A</span> SaaS · Netzwerk &amp; Cloud: <span class="ans">D</span> Zugriff hängt von Netzverbindung ab</p>
+</div>
+<div><h4>UB 6 – Startquiz (Repetition UB 5)</h4><p>Versandregel: <span class="ans">B</span> Wenn-dann-Regel · RAG: <span class="ans">D</span> Anwendung sucht Textstellen, gibt sie als Kontext · Testfälle: <span class="ans">A</span> gewählten Stand an zurückgehaltenen Fällen prüfen · 65 %: <span class="ans">C</span> sprachliche Fortsetzung · Turing-Test: <span class="ans">B</span> Mensch und Maschine unterscheidbar?</p>
+<h4>UB 7 – Startquiz (Repetition UB 6)</h4><p>PDF-Scan: <span class="ans">B</span> Darstellung analog → digital · Smart Factory: <span class="ans">D</span> vernetzte Zustandsdaten · Megatrend: <span class="ans">A</span> langfristig, viele Branchen · Geschäftsmodell: <span class="ans">C</span> Nutzen, Leistung, wirtschaftlich tragen · Akku: <span class="ans">B</span> inkrementell</p>
+<h4>UB 8 – Startquiz (Repetition UB 7)</h4><p>Sensor/Aktor: <span class="ans">B</span> · Internet aus, Regel lokal: <span class="ans">A</span> lokale Regelung arbeitet weiter · 12:03 → 12:10, alle 90 s: <span class="ans">D</span> 7 Min. alt, 4 Aktualisierungen fehlen (12:04:30, 12:06:00, 12:07:30, 12:09:00) · Diagnose/Prognose: <span class="ans">C</span> · Nutzen prüfen: <span class="ans">B</span> Kennzahl + Vergleichsbasis</p>
+<h4>UB 9 – Startquiz (Repetition UB 8)</h4><p>IBAN verändert: <span class="ans">B</span> Integrität · Schwäche: <span class="ans">D</span> Anmeldung ohne zweiten Faktor · Backup prüfen: <span class="ans">A</span> Datei wiederherstellen und Nutzbarkeit prüfen · Fehlversand: <span class="ans">C</span> internen Meldeweg sofort nutzen · externe Tests: <span class="ans">B</span> Ergebnisse bewerten und Verbesserungen umsetzen</p>
+<h4>UB 9 – Quiz LZ 2</h4><ol>
+<li>Alter Link nach Update: <span class="ans">B</span> Organkery legt Rechte fest, sperrt Link, prüft; Anbieter betreibt</li>
+<li>Mitarbeiterin verlässt Pilot: <span class="ans">D</span> Projektleitung meldet → Fachverantwortliche bestätigen → IT setzt um und prüft</li>
+<li>Datei in 2 h: <span class="ans">A</span> Zuständigkeit/Ablauf der Wiederherstellung klären und testen</li>
+<li>Anbieter „störungsfrei“: <span class="ans">C</span> Zugriffssperre, Protokolle, Meldeweg klären; Fachpersonen bewerten</li>
+<li>Wer entscheidet: <span class="ans">B</span> Geschäftsleitung anhand dokumentierter Ergebnisse, Restrisiken, offener Abklärungen</li></ol>
+<h4>Weitere Übungslösungen</h4><p>UB 7 Fälle: A kein IoT · B IoT · C kein IoT. · UB 8 Spital: 1 Vertraulichkeit · 2 Integrität · 3 Verfügbarkeit. · UB 4 Alpina TCO: A 54'000 · B 51'000 · C 56'000. · UB 5 Fälle: A Regel · B ML · C LLM.</p>
+</div>
+</div>
+</div>
+
+<!-- ===================== ANHANG ===================== -->
+<div class="ub">
+<h2>Anhang A – Antwort-Schemas für Fallaufgaben</h2>
+<table>
+<tr><th style="width:24%">Aufgabentyp</th><th>Schema / Checkliste</th></tr>
+<tr><td><b>DIKW einordnen</b></td><td>Daten (roh, ohne Kontext) → Information (Was/Wann, mit Kontext) → Wissen (Warum/Wie, Muster, Erfahrung) → Weisheit (Entscheidung mit langfristigen Folgen/Ethik). Eigenes Beispiel durchziehen. Grenze nennen (nicht linear/automatisch).</td></tr>
+<tr><td><b>Entscheidung analysieren</b></td><td>Input → Prediction (was wahrscheinlich?) → Judgment (welche Folgen erwünscht/akzeptabel? Kosten Fehlentscheid?) → Action → Outcome → Feedback. Prediction ≠ Entscheidung; Ergebnis ≠ Entscheidungsqualität.</td></tr>
+<tr><td><b>EVA / Von Neumann erklären</b></td><td>Eingabe (Gerät, Daten) → Verarbeitung (CPU: Fetch-Decode-Execute; RAM; Bus) → Ausgabe. Bei Leistungsproblem: wo wartet das System? Passende Massnahme (Bandbreite, Cache, kompatible Komponenten vs. SSD/Mehrkern).</td></tr>
+<tr><td><b>Ebenen-Ablauf (UB 3)</b></td><td>1 Benutzeraktion · 2 Anwendung (Daten/Format) · 3 Betriebssystem (Rechte, Pfad, Ressourcen, Treiber) · 4 Hardware (CPU verarbeitet, RAM hält, SSD speichert, Drucker gibt aus).</td></tr>
+<tr><td><b>Software einordnen</b></td><td>1. System- oder Anwendungssoftware? 2. Funktion (Büro, Kommunikation, Fachanwendung, Multimedia, Lernen) 3. Anpassungsgrad (Standard/Branche/Individual) – mit Merkmal aus dem Fall begründen; fehlende Angabe = „offen“.</td></tr>
+<tr><td><b>Investition / Variantenvergleich</b></td><td>Zeitraum + Einheiten festlegen → einmalige + laufende Kosten = TCO → Nutzen gleicher Zeitraum → ROI, Amortisation → Interpretation → <b>Empfehlung mit Anforderungen, mind. 1 Risiko + Gegenmassnahme, offene Bedingung</b>.</td></tr>
+<tr><td><b>Netzwerk-Datenweg</b></td><td>Gerät → Access Point (WLAN) → Switch (LAN) → Router (Gateway) → Internet → Server. DNS löst Name auf, IP adressiert, Port (443 HTTPS) unterscheidet Dienst. Was beweist eine Ausgabe – und was nicht?</td></tr>
+<tr><td><b>Cloud-Modell wählen</b></td><td>Welche Leistung wird bezogen (IaaS/PaaS/SaaS)? Begründung mit Leistung des Anbieters. 1 Vorteil + 1 Nachteil. Was bleibt beim Kunden (Daten, Konten/Rechte, Endgeräte, Konfiguration)? Bereitstellungsform separat begründen.</td></tr>
+<tr><td><b>Regel, ML oder LLM?</b></td><td>Was ist fest vorgegeben? Was wird gelernt (aus Daten)? Welche Ausgabe (Zahl, Kategorie, Text)? Neuronales Netz erkennbar? Braucht es KI überhaupt?</td></tr>
+<tr><td><b>KI-Antwort prüfen</b></td><td>Jede Aussage (Kosten, Termin, Lieferart) gegen Unterlage prüfen → Beleg nennen → Folge bei Fehler → Prüffelder (Richtigkeit, Aktualität, Quelle, Verzerrung, Datenschutz) → Entscheid: verwenden / überarbeiten / verwerfen, Mensch gibt frei.</td></tr>
+<tr><td><b>Prompt schreiben</b></td><td>Ziel · Kontext (für wen) · Material („nur Unterlagen A–C“) · Ausgabeformat (max. 80 Wörter) · Prüfkriterien („keine unbelegten Zusagen, Fundstelle nennen“).</td></tr>
+<tr><td><b>Wandel/Industrie einordnen</b></td><td>Info digitalisiert (nur Darstellung) / Ablauf digitalisiert (Arbeitsweg) / Transformation (Angebot + Einnahmen + Organisation). Industrie: Antrieb (1.0), Elektrizität/Fliessband (2.0), Programm/CNC (3.0), Vernetzung Daten-Planung (4.0).</td></tr>
+<tr><td><b>Trend begründen</b></td><td>Unternehmen, Branche → Trend + Fundstelle → Warum unsere Branche? → konkrete Auswirkung (was, für wen, wie) → evtl. Voraussetzungen prüfen.</td></tr>
+<tr><td><b>Geschäftsmodell</b></td><td>Für wen (Segment)? Welcher Nutzen (Wertangebot)? Wie erbracht (Aktivitäten, Ressourcen, Partner)? Wie erreicht (Kanäle, Beziehung)? Wofür bezahlt (Einnahmen)? Welche Kosten? Annahmen kennzeichnen.</td></tr>
+<tr><td><b>Innovation</b></td><td>Vergleichsbasis nennen → was verbessert / was grundlegend neu → inkrementell, radikal oder je Teilaspekt → offene Frage.</td></tr>
+<tr><td><b>IoT-Fall</b></td><td>Sensor / Aktor / Anwendung · Datenweg: Erfassen–Verbinden–Verarbeiten–Nutzen · lokal oder Cloud (was läuft bei Internetausfall?) · verbesserte Arbeit + Kennzahl + Vergleichsbasis + Voraussetzung · 2 Risiken mit Massnahme + Rolle.</td></tr>
+<tr><td><b>Sicherheitsrisiko</b></td><td>Bedrohung · Schutzziel (C/I/A) · Schwachstelle · Massnahme · zuständige Rolle + Prüfung · Restrisiko · Priorität (Wahrscheinlichkeit × Folgen), fehlende Angaben nennen.</td></tr>
+<tr><td><b>Datenschutzvorfall</b></td><td>Welche Daten (Personendaten? besonders schützenswert?) · Schutzziel · sofort intern melden, nichts löschen · Verantwortlicher beurteilt Risiko für Betroffene · EDÖB bei voraussichtlich hohem Risiko · ggf. BACS (kritische Infrastruktur, 24 h) · fehlende Infos.</td></tr>
+<tr><td><b>Kontrollplan / Empfehlung</b></td><td>Schutzziel · Massnahme · Zuständigkeit · Prüfung und Nachweis (erwartetes Ergebnis!) · Zeitpunkt und Reaktion. Empfehlung: „Weiter, wenn (Bedingung 1 nachgewiesen) und (Bedingung 2). Offen: …“ Entscheid durch Geschäftsleitung. PDCA nennen.</td></tr>
+</table>
+
+<h2 style="margin-top:8px;">Anhang B – Rechen-Spick</h2>
+<span class="formel">TCO = Einmalig + Jahreskosten × Jahre
+Nettonutzen = Gesamtnutzen (Jahresnutzen × Jahre) − TCO
+ROI = Nettonutzen ÷ TCO × 100 %    (25 % → 0.25 CHF Nettonutzen pro CHF im ganzen Zeitraum, nicht pro Jahr)
+Rückfluss pro Jahr = Jahresnutzen − laufende Jahreskosten
+Amortisation (Jahre) = einmalige Kosten ÷ Rückfluss pro Jahr;  Nachkommastelle × 12 = Monate
+Anteil = Teil ÷ Ganzes × 100 %
+Neuron: Summe = Σ (Eingabe × Gewicht); Ausgabe 1 wenn Summe ≥ Schwelle
+Dezimal → Binär: fortlaufend ÷ 2, Reste von unten nach oben lesen (13 = 1101; 10 = 1010; 6 = 110)
+Binär → Dezimal: Stellenwerte 128 64 32 16 8 4 2 1 addieren
+Vektor-Speicher = Anzahl × Dimensionen × Byte pro Zahl (4)   → 1 Mio × 512 × 4 = 2,048 GB
+Datenalter: jetzt − letzte Messung; Anzahl verpasste Messungen = ⌊Alter ÷ Intervall⌋
+Umsatzausfall ≈ Umsatz Periode ÷ Stunden der Periode × Ausfallstunden</span>
+
+<h2 style="margin-top:8px;">Anhang C – Typische Fallen (Kurzliste)</h2>
+<div class="cols2 small">
+<ul>
+<li>Vorhersage ≠ Entscheidung; gutes Ergebnis ≠ gute Entscheidung.</li>
+<li>DIKW ist nicht automatisch/linear.</li>
+<li>SSD/Mehrkern beheben den CPU-RAM-Flaschenhals nicht direkt.</li>
+<li>GPU ergänzt, ersetzt Von-Neumann nicht; neuronales Netz ist keine Architektur.</li>
+<li>Firmware-Einstellung ändern ≠ Firmwareupdate; nächtlicher Neustart ≠ Update.</li>
+<li>„Read-Only“ ROM: heute oft wiederbeschreibbar (Flash).</li>
+<li>Treiber = Systemsoftware, nicht Hardware.</li>
+<li>Günstigste Offerte ≠ wirtschaftlichste; positiver ROI ≠ Erfolg.</li>
+<li>ROI über den ganzen Zeitraum, nicht pro Jahr.</li>
+<li>Anbieterbox = mehrere Funktionen; lokales Drucken braucht keinen Router.</li>
+<li>Router ≠ NAT; DNS leitet die Anfrage nicht weiter; Port ist keine Buchse.</li>
+<li>ipconfig/nslookup/tracert beweisen nicht, dass der Dienst funktioniert.</li>
+<li>Public Cloud ≠ öffentliche Daten; Private ≠ automatisch sicherer.</li>
+<li>Bei SaaS bleiben Daten, Rechte, Endgeräte, Konfiguration beim Kunden.</li>
+</ul>
+<ul>
+<li>Nicht jede KI lernt; nicht jede Regel ist KI; eindeutige Preisregel braucht kein LLM.</li>
+<li>Prompt trainiert das Modell nicht; neue E-Mail trainiert Modell nicht.</li>
+<li>Token-Wahrscheinlichkeit ≠ Wahrheit; Vektor-Nähe ≠ Richtigkeit.</li>
+<li>Testdaten nicht zum Nachjustieren verwenden.</li>
+<li>Turing-Test bestanden ≠ Bewusstsein/Verständnis/Richtigkeit.</li>
+<li>Fehlender Wert ≠ 0 („zuerst klären“).</li>
+<li>Roboter allein ≠ Industrie 4.0; Smart Factory nicht menschenleer.</li>
+<li>Scan ≠ Ablauf digitalisiert ≠ Transformation.</li>
+<li>Innovation ohne Vergleichsbasis nicht einordenbar.</li>
+<li>Digitales Gerät ≠ IoT; Gateway ≠ Cloud; Diagnose ≠ Prognose.</li>
+<li>Alter Messwert ≠ aktueller Zustand; Hinweis ≠ verhinderter Schaden.</li>
+<li>Zwei Passwörter ≠ MFA; Backup holt gestohlene Daten nicht zurück.</li>
+<li>Nummer statt Name ≠ anonym; sichere Speicherung ≠ Datenschutz erfüllt.</li>
+<li>Keine Protokolleinträge ≠ Entwarnung; IP-Adresse ≠ Täter.</li>
+<li>Zertifikat (ISO 27001) ≠ nie ein Vorfall; Auslagern ≠ Verantwortung abgeben.</li>
+<li>Geplante Massnahme ≠ Nachweis der Wirksamkeit.</li>
+</ul>
+</div>
+</div>
+
+<!-- ===================== STICHWORTVERZEICHNIS ===================== -->
+<div class="ub">
+<h2>Anhang D – Stichwortverzeichnis (Begriff → Abschnitt)</h2>
+<div class="idx">
+<div><b>A</b> · AC Power Recovery 2.7 · Access Point 4.1 · Adressbus 2.3 · Aktor 7.1 · Al-Chwarizmi 5.1 · Algorithmus 5.1 · Amortisation 3.5 · Anpassungsgrad 3.4 · Anwendung (IoT) 7.1 · Anwendungssoftware 3.4 · Attention 5.5 · Auftragsbearbeiter 8.4 · AWS 1.3</div>
+<div><b>B</b> · Backup 8.3 · BACS 8.4 · Bedrohung 8.3 · Bexio 8.2 · Bias (Neuron) 5.4 · BIOS 2.7 · Boot-Reihenfolge 2.7 · Bootloader 2.7 · Branchensoftware 3.4 · Bremanger 8.2 · Bussystem 2.3 · Busse DSG 8.4 · Business Model Canvas 6.4</div>
+<div><b>C</b> · Cache 2.4 · Chinesisches Zimmer 5.7 · Chunk/Chunking 5.6 · CIA 8.1 · CLI 3.3 · Cloud Computing 4.4 · CNC 6.2 · Community Cloud 4.4 · Comparis 8.2 · Coop Kühlkette 7.3 · CPU 2.3</div>
+<div><b>D</b> · Daten 1.1 · Datenarten 1.2 · Datenbus 2.3 · Datenschutz 8.4 · Datensicherheit 8.4 · Deep Learning 5.3 · Denkfehler 3.5/5.8/Anh. C · Deterministisch 5.1 · Diagnose vs. Prognose 7.3 · Digitalisation 6.1 · Digitisation 6.1 · Digitale Transformation 6.1 · DIKW 1.3 · dir 3.3 · DNS 4.2 · DSG 8.4 · Dual-Channel 2.4</div>
+<div><b>E</b> · Edge 7.2 · EDÖB 8.4 · EEPROM/EPROM 2.7 · Embedding 5.5 · Entscheidung 1.4 · Ethical Hacking 8.5 · EVA-Prinzip 2.2 · Everything-to-grid 6.3</div>
+<div><b>F</b> · Feedback 1.4 · Fetch-Decode-Execute 2.3 · Firmware 2.6 · Flaschenhals 2.4 · Flash 2.7</div>
+<div><b>G</b> · Gateway (IoT) 7.2 · Generative KI 5.5 · Geschäftsmodell 6.4 · Gewicht 5.4 · GPU 2.4 · Gerätetreiber 3.2 · GUI 3.3</div>
+<div><b>H</b> · Halluzination 5.7 · Hardware 2.1/2.6 · Harvard-Architektur 2.4 · Hybrid Cloud 4.4</div>
+<div><b>I</b> · IaaS 4.4 · Individualsoftware 3.4 · Industrie 1.0–4.0 6.2 · Information 1.1 · Informatik 1.1 · Inkrementell 6.5 · Innovation 6.5 · Integrität 8.1 · Interoperabilität 7.2 · IoT 7.1 · IP/IP-Adresse 4.2 · ipconfig 4.3 · ISG 8.4 · ISMS 9.4 · ISO/IEC 27001 9.4</div>
+<div><b>J–K</b> · Judgment 1.4 · Kennzahl 7.3 · KI 5.3 · KI-Agent 9.2 · Klassifikation 5.2 · Kontext (LLM) 5.5 · Kontrollplan 9.3 · Kosinusähnlichkeit 5.6</div>
+<div><b>L</b> · LAN 4.1 · Laufschuh 6.5 · LLM 5.5 · Lieferbedingungen A–C 5.8</div>
+<div><b>M</b> · Machine Learning 5.2/5.3 · Mainboard 2.5 · Megatrend 6.3 · MFA 8.3 · Modem 4.1 · Multimodal 5.5</div>
+<div><b>N</b> · NAT 4.2 · Neuron 5.4 · Neuronales Netz 5.3/5.4 · nslookup 4.3 · NPU/TPU 2.4</div>
+<div><b>O–P</b> · ONT 4.1 · Organkery 9.1 · PaaS 4.4 · PDCA 9.4 · Perzeptron 5.4 · Peripherie 2.5 · Personendaten 8.4 · Phishing 8.3 · Pooling 5.6 · Port 4.2 · POST 2.7 · Prediction 1.4 · Prefetching 2.4 · Private/Public Cloud 4.4 · Prompt 5.8 · Protokolle 9.2 · Prozessverwaltung 3.2 · Prüffelder KI 5.7</div>
+<div><b>R</b> · Radikal 6.5 · RAG 5.6 · RAM 2.3 · Ransomware 8.3 · Reranking 5.6 · Restrisiko 8.3 · Ricardo 8.2 · Risiko 8.3 · ROI 3.5 · ROM 2.7 · Router 4.1 · Routing 4.2</div>
+<div><b>S</b> · SaaS 4.4/9.5 · Schlatter 8.2 · Schutzziele 8.1 · Schwachstelle 8.3 · Schwelle 5.4 · Searle 5.7 · Secure Boot 2.7 · Sensor 7.1 · SignalFisher 8.5 · Smart Factory 6.2 · Software 2.6 · SSD 2.4 · Standardgateway 4.2 · Standardsoftware 3.4 · Steuerbus 2.3 · Stored-Program 2.3 · Switch 4.1 · systeminfo 3.3 · Systemsoftware 3.4</div>
+<div><b>T</b> · tasklist 3.3 · TCO 3.5 · Tesla 7.3 · Token 5.5 · Training/Validierung/Test 5.4 · Transformer 5.5 · tracert 4.3 · Trend 6.3 · Treiber 3.2 · Turing-Test 5.7</div>
+<div><b>U–Z</b> · Uber 6.4 · UEFI 2.7 · Verantwortlicher (DSG) 8.4 · Verfügbarkeit 8.1 · Vertraulichkeit 8.1 · Von-Neumann 2.3 · VPN 4.1 · WAN/WLAN 4.1 · Weisheit 1.3 · Wissen 1.3 · Wissensbasierte KI 5.3 · Xplain 8.2 · Zentraleinheit 2.5</div>
+</div>
+</div>
+
+</body>
+</html>
